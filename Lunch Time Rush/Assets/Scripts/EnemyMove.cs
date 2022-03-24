@@ -8,6 +8,7 @@ public class EnemyMove : MonoBehaviour
     public float speed = 2; // metres per second
 
     private int nextWaypoint = 1;
+    private string enemyType;
 
     void Start()
     {
@@ -54,5 +55,18 @@ public class EnemyMove : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    //
+    // Summary:
+    //     set the type of food this enemy wants.
+    public void setType(string s)
+    {
+        this.enemyType = s;
+    }
+
+    public string getType()
+    {
+        return this.enemyType;
     }
 }

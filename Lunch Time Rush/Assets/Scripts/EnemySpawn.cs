@@ -16,10 +16,14 @@ public class EnemySpawn : MonoBehaviour
     public Path[] pathArray;
     public float setSpawnTime;
     public float setSpeed;
+    public string[] foodType = {"burger", "pizza", "drink" };
 
     private float spawnTime;
     private float speed;
     private State state;
+
+    
+
 
     void SpawnEnemy(GameObject setParent)
     {
@@ -27,11 +31,13 @@ public class EnemySpawn : MonoBehaviour
 
         if (spawnTime <= 0)
         {
-            int randInt = Random.Range(0, pathArray.Length);
+            int randPath = Random.Range(0, pathArray.Length);
+            int randType = Random.Range(0, foodType.Length);
             EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());
-            enemy.path = pathArray[randInt];
+            enemy.path = pathArray[randPath];
             enemy.speed = speed;
-            //Debug.Log("Spawning new crep");
+            enemy.setType(foodType[randType]);
+            Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType());
             spawnTime = setSpawnTime;
         }
 
