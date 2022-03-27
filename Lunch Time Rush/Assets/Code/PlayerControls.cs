@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""MultiTap(tapDelay=0.1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pos"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""efc80835-1539-40d8-ace8-1708d4a3a624"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +218,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c770be0-4f81-4e26-baf9-8239c134968e"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +240,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
+        m_Player_Pos = m_Player.FindAction("Pos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +303,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Drop;
+    private readonly InputAction m_Player_Pos;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -289,6 +311,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
+        public InputAction @Pos => m_Wrapper.m_Player_Pos;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +330,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Drop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
                 @Drop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
                 @Drop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
+                @Pos.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPos;
+                @Pos.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPos;
+                @Pos.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPos;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -320,6 +346,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Drop.started += instance.OnDrop;
                 @Drop.performed += instance.OnDrop;
                 @Drop.canceled += instance.OnDrop;
+                @Pos.started += instance.OnPos;
+                @Pos.performed += instance.OnPos;
+                @Pos.canceled += instance.OnPos;
             }
         }
     }
@@ -329,5 +358,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnPos(InputAction.CallbackContext context);
     }
 }

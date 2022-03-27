@@ -20,10 +20,5 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 movement = playerInput.actions["Move"].ReadValue<Vector2>();
         transform.Translate(movement * moveSpeed * Time.deltaTime);
-
-        if (playerInput.actions["Interact"].triggered)
-        {
-            Debug.Log("Interact");
-        }
     }
 }

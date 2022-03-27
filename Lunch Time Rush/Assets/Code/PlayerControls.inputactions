@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "MultiTap(tapDelay=0.1)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pos",
+                    "type": "PassThrough",
+                    "id": "efc80835-1539-40d8-ace8-1708d4a3a624",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -185,6 +194,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c770be0-4f81-4e26-baf9-8239c134968e",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

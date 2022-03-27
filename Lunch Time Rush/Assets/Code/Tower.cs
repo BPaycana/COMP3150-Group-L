@@ -68,7 +68,7 @@ public class Tower : MonoBehaviour
 
                 if (playerInput.actions["Drop"].triggered)
                 {
-                    spriteRenderer.color = Color.yellow;
+                    spriteRenderer.color = Color.green;
                     towerState = TowerState.Close;
                 }
 
