@@ -9,7 +9,7 @@ public class Tower : MonoBehaviour
     public float interactRange = 1;
     public Transform player;
     private SpriteRenderer spriteRenderer;
-    private PlayerInput playerInput;
+    private PlayerInput input;
 
     enum TowerState
     {
@@ -23,7 +23,7 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        input = GetComponent<PlayerInput>();
 
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -45,11 +45,13 @@ public class Tower : MonoBehaviour
                     spriteRenderer.color = Color.yellow;
                     towerState = TowerState.Far;
                 }
+                /*
                 if (playerInput.actions["Interact"].triggered)
                 {
                     spriteRenderer.color = Color.blue;
                     towerState = TowerState.Held;
                 }
+                */
 
                 break;
 
@@ -65,13 +67,13 @@ public class Tower : MonoBehaviour
             case TowerState.Held:
 
                 transform.position = player.position;
-
+                /*
                 if (playerInput.actions["Drop"].triggered)
                 {
                     spriteRenderer.color = Color.green;
                     towerState = TowerState.Close;
                 }
-
+                */
                 break;
         }
     }
