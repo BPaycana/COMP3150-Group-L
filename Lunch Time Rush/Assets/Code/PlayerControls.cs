@@ -62,6 +62,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tap"",
+                    ""type"": ""Button"",
+                    ""id"": ""f40770a7-2c99-4990-9490-5ac9f20864ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryPosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""640dc00f-cd4e-4536-b284-4cdd17460312"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +234,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PrimaryContact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""246318cf-c992-4575-8f7f-f509dcfb70e7"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""784572c9-4de9-49a5-9c1b-5bb14fe921a0"",
+                    ""path"": ""<Touchscreen>/primaryTouch/startPosition"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -538,6 +578,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_PrimaryContact = m_Player.FindAction("PrimaryContact", throwIfNotFound: true);
+        m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
+        m_Player_PrimaryPosition = m_Player.FindAction("PrimaryPosition", throwIfNotFound: true);
         // Input
         m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
         m_Input_TouchInput = m_Input.FindAction("TouchInput", throwIfNotFound: true);
@@ -619,6 +661,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_PrimaryContact;
+    private readonly InputAction m_Player_Tap;
+    private readonly InputAction m_Player_PrimaryPosition;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -627,6 +671,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputAction @PrimaryContact => m_Wrapper.m_Player_PrimaryContact;
+        public InputAction @Tap => m_Wrapper.m_Player_Tap;
+        public InputAction @PrimaryPosition => m_Wrapper.m_Player_PrimaryPosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -648,6 +694,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PrimaryContact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryContact;
                 @PrimaryContact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryContact;
                 @PrimaryContact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryContact;
+                @Tap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
+                @Tap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
+                @Tap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
+                @PrimaryPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryPosition;
+                @PrimaryPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryPosition;
+                @PrimaryPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryPosition;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -664,6 +716,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PrimaryContact.started += instance.OnPrimaryContact;
                 @PrimaryContact.performed += instance.OnPrimaryContact;
                 @PrimaryContact.canceled += instance.OnPrimaryContact;
+                @Tap.started += instance.OnTap;
+                @Tap.performed += instance.OnTap;
+                @Tap.canceled += instance.OnTap;
+                @PrimaryPosition.started += instance.OnPrimaryPosition;
+                @PrimaryPosition.performed += instance.OnPrimaryPosition;
+                @PrimaryPosition.canceled += instance.OnPrimaryPosition;
             }
         }
     }
@@ -845,6 +903,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnPrimaryContact(InputAction.CallbackContext context);
+        void OnTap(InputAction.CallbackContext context);
+        void OnPrimaryPosition(InputAction.CallbackContext context);
     }
     public interface IInputActions
     {

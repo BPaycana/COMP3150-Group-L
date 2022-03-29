@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1129726839}
+  image: {fileID: 1712439603}
 --- !u!1 &1129726839
 GameObject:
   m_ObjectHideFlags: 0
