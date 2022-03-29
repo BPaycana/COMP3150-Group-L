@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pos",
+                    "name": "PrimaryContact",
                     "type": "PassThrough",
-                    "id": "efc80835-1539-40d8-ace8-1708d4a3a624",
+                    "id": "52695376-e7e8-456c-8177-af4717a7f59c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -47,17 +47,6 @@
                     "name": "",
                     "id": "7bddb43a-796c-4cb4-ba36-19b6695384c5",
                     "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cb69daa4-69e6-412b-b0d5-6303cb1a72e4",
-                    "path": "<Touchscreen>/primaryTouch/startPosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -199,12 +188,12 @@
                 },
                 {
                     "name": "",
-                    "id": "7c770be0-4f81-4e26-baf9-8239c134968e",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "id": "0d3fd61a-319c-4af0-959f-783d5023dc4c",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pos",
+                    "action": "PrimaryContact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
         //transform.Translate(movement * moveSpeed * Time.deltaTime);
 
+        
         if(input.actions["PrimaryContact"].ReadValue<float>() > 0)
         {
             
@@ -57,6 +58,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             direction = Vector2.zero;
+        }
+
+        if (input.actions["PrimaryContact"].triggered)
+        {
+            Debug.Log("hello");
         }
     }
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Boundaries : MonoBehaviour
 {
 
-    public Camera MainCamera;
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
@@ -13,7 +12,8 @@ public class Boundaries : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        screenBounds = MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCamera.transform.position.z));
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 
+            Camera.main.transform.position.z));
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
     }
