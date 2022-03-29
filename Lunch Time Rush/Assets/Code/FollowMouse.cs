@@ -55,7 +55,7 @@ public class FollowMouse : MonoBehaviour
             //image.enabled = true;
         }
     */
-        //Vector3 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
+        //MousePosition
         if (input.actions["PrimaryContact"].ReadValue<float>() < 1)
         {
             Vector3 pos = Input.mousePosition;
@@ -63,6 +63,30 @@ public class FollowMouse : MonoBehaviour
             pos.z = 0;
             joystick.transform.position = pos;
         }
+        if (input.actions["Hold"].triggered)
+        {
+            Debug.Log("Mwhaha");
+        }
+        
+
+        /*
+        if (input.actions["PrimaryContact"].ReadValue<float>() < 1)
+        {
+            Vector3 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
+            pos = Camera.main.ScreenToWorldPoint(pos);
+            pos.z = 0;
+            joystick.transform.position = pos;
+        }
+        
+        if (input.actions["Hold"].triggered)
+        {
+            Debug.Log("Mwhaha");
+            Vector3 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
+            pos = Camera.main.ScreenToWorldPoint(pos);
+            pos.z = 0;
+            joystick.transform.position = pos;
+        }
+        */
     }
         
 }
