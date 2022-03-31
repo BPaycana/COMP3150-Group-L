@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class JoystickControl : MonoBehaviour
 {
+    private GameManager gameManager;
     private PlayerInput input;
     public float moveSpeed = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        input = GetComponent<PlayerInput>();
+        gameManager = FindObjectOfType<GameManager>();
+        input = gameManager.gameObject.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame

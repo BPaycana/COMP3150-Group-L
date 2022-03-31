@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     public float interactRange = 1;
     public Transform player;
     private SpriteRenderer spriteRenderer;
+    private GameManager gameManager;
     private PlayerInput input;
 
     enum TowerState
@@ -22,7 +23,8 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        input = GetComponent<PlayerInput>();
+        gameManager = FindObjectOfType<GameManager>();
+        input = gameManager.gameObject.GetComponent<PlayerInput>();
 
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -45,17 +47,19 @@ public class Tower : MonoBehaviour
                     towerState = TowerState.Far;
                 }
 
-                //if (Input.GetMouseButtonDown(0))
-                if (input.actions["PrimaryContact"].ReadValue<float>() == 1)
+                if (input.actions["Interact"].triggered)
                 {
-                    Debug.Log("hello");
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
-                    if(hit2D.transform.gameObject == gameObject)
+                    if(hit2D.collider != null)
                     {
-                        Debug.Log(hit2D.transform.gameObject);
-                        spriteRenderer.color = Color.blue;
-                        towerState = TowerState.Held;
+                        if (hit2D.transform.gameObject == gameObject &&
+                            !gameManager.GetComponent<GameManager>().getTowerHeld())                       
+                        {
+                            gameManager.towerHoldBool();
+                            spriteRenderer.color = Color.blue;
+                            towerState = TowerState.Held;
+                        }                                           
                     }
                 }                
 
@@ -75,8 +79,9 @@ public class Tower : MonoBehaviour
 
                 transform.position = player.position;
                 
-                if (Input.GetMouseButtonDown(0))
+                if(input.actions["drop"].triggered)
                 {
+                    gameManager.towerHoldBool();
                     spriteRenderer.color = Color.green;
                     towerState = TowerState.Close;
                 }

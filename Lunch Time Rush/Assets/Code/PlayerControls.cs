@@ -83,11 +83,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Hold"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""32b937b8-281b-4430-a441-3b44e9123c8c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.05)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -260,7 +260,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""784572c9-4de9-49a5-9c1b-5bb14fe921a0"",
-                    ""path"": ""<Touchscreen>/primaryTouch/startPosition"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
