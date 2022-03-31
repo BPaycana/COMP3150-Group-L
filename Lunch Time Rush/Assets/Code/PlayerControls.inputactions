@@ -16,18 +16,18 @@
                 },
                 {
                     "name": "Interact",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "e3439029-cb4e-4fd0-b9a5-efb794b48c9d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Drop",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "f1565a88-f6cc-4cc4-98dc-19a047c11826",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "MultiTap(tapDelay=0.1)",
                     "initialStateCheck": false
@@ -160,8 +160,8 @@
                 },
                 {
                     "name": "",
-                    "id": "587ee4b4-f98d-4b88-84b9-6a42d97d8e30",
-                    "path": "<Mouse>/leftButton",
+                    "id": "fdce5ab6-1f2d-4b42-b70c-20fe5c8a9f6e",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -205,7 +205,7 @@
                 {
                     "name": "",
                     "id": "1fbaf210-d940-4e85-ac40-a17199372fdc",
-                    "path": "<Touchscreen>/touch*/Press",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
