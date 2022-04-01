@@ -7,9 +7,13 @@ public class Tower : MonoBehaviour
 {
     public float interactRange = 1;
     public Transform player;
+    public int maxTowerAmmo = 5;
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private PlayerInput input;
+    private int towerAmmo;
+
+    
 
     enum TowerState
     {
@@ -29,6 +33,8 @@ public class Tower : MonoBehaviour
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Color.yellow;
+
+        towerAmmo = maxTowerAmmo;
     }
 
     // Update is called once per frame
@@ -61,7 +67,25 @@ public class Tower : MonoBehaviour
                             towerState = TowerState.Held;
                         }                                           
                     }
-                }                
+                }
+
+                if (input.actions["Interact2"].triggered)
+                {
+
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
+                    if (hit2D.collider != null)
+                    {
+                        if (hit2D.transform.gameObject == gameObject &&
+                            gameManager.GetComponent<GameManager>().restockState())
+                        {
+                            Debug.Log("player restocking tower");
+                            gameManager.restock();
+                            towerAmmo = maxTowerAmmo;
+                            spriteRenderer.color = Color.red;
+                        }
+                    }
+                }
 
                 break;
 
@@ -87,6 +111,11 @@ public class Tower : MonoBehaviour
                 }
                 
                 break;
+        }
+
+        if(towerAmmo == 0)
+        {
+            spriteRenderer.color = Color.white;
         }
     }
 }
