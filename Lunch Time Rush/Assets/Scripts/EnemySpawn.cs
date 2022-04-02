@@ -34,6 +34,7 @@ public class EnemySpawn : MonoBehaviour
             int randPath = Random.Range(0, pathArray.Length);
             int randType = Random.Range(0, foodType.Length);
             EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());
+            enemy.tag = "Enemy";
             enemy.path = pathArray[randPath];
             enemy.speed = speed;
             enemy.setType(foodType[randType]);
