@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Tower : MonoBehaviour
+public class TowerMove : MonoBehaviour
 {
     public float interactRange = 1;
     public Transform player;
@@ -101,12 +101,14 @@ public class Tower : MonoBehaviour
 
             case TowerState.Held:
 
-                transform.position = player.position;
                 
-                if(input.actions["drop"].triggered)
+                //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+                transform.position = player.position;
+                if (input.actions["drop"].triggered)
                 {
                     gameManager.towerHoldBool();
                     spriteRenderer.color = Color.green;
+                    //transform.position = player.position;
                     towerState = TowerState.Close;
                 }
                 

@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private bool towerHeld;
+    private bool canRestock;
+    private bool getRestock;
+
+
     private float maxRestaurantHealth;
     public float MaxRestaurantHealth 
     {
@@ -70,6 +74,10 @@ public class GameManager : MonoBehaviour
         maxRestaurantHealth = 5f;
         currentRestaurantHealth = maxRestaurantHealth;
         UIManager.Instance.SetMaxHealth(maxRestaurantHealth);
+
+        towerHeld = false;
+        canRestock = false;
+        getRestock = true;
     }
 
     void Update() 
@@ -86,6 +94,42 @@ public class GameManager : MonoBehaviour
         }
         currentRestaurantHealth -= damage;
         UIManager.Instance.SetHealth(currentRestaurantHealth);
+    }
+
+    public void towerHoldBool()
+    {
+        if (towerHeld == true)
+        {
+            towerHeld = false;
+        }
+        else if (towerHeld == false)
+        {
+            towerHeld = true;
+        }
+    }
+
+    public bool getTowerHeld()
+    {
+        return towerHeld;
+    }
+
+    public void restock()
+    {
+        if (canRestock == true)
+        {
+            canRestock = false;
+        }
+        else if (canRestock == false)
+        {
+            canRestock = true;
+        }
+        Debug.Log(canRestock);
+    }
+
+    public bool restockState()
+    {
+        Debug.Log(canRestock);
+        return canRestock;
     }
 
 }
