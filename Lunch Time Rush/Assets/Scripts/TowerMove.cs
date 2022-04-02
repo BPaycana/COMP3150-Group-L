@@ -11,6 +11,7 @@ public class TowerMove : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private PlayerInput input;
+    private Tower tower;
     private int towerAmmo;
 
     
@@ -29,7 +30,7 @@ public class TowerMove : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
-
+        tower = this.gameObject.GetComponent<Tower>();
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Color.yellow;
@@ -71,20 +72,14 @@ public class TowerMove : MonoBehaviour
 
                 if (input.actions["Interact2"].triggered)
                 {
-
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
-                    if (hit2D.collider != null)
-                    {
-                        if (hit2D.transform.gameObject == gameObject &&
-                            gameManager.GetComponent<GameManager>().restockState())
+                        if (gameManager.GetComponent<GameManager>().restockState())
                         {
                             Debug.Log("player restocking tower");
+                            tower.refillAmmo(maxTowerAmmo);
                             gameManager.restock();
                             towerAmmo = maxTowerAmmo;
                             spriteRenderer.color = Color.red;
                         }
-                    }
                 }
 
                 break;

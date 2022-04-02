@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
     public Transform target; // transform of the customers
 
     public float range = 15f; //tuneable parameter for the range of the tower
+    public int ammoCapacity = 15;
 
     public string enemyTag = "Enemy";
 
@@ -20,10 +21,13 @@ public class Tower : MonoBehaviour
     
     public Transform firePoint;
 
+    private int ammo;
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        ammo = ammoCapacity;
     }
 
 
@@ -79,16 +83,32 @@ public class Tower : MonoBehaviour
         fireCountDown -=Time.deltaTime;
     }
 
+    public void refillAmmo(int refillAmount)
+    {
+        ammo = refillAmount;
+        Debug.Log("refilled tower with ammo amount: " + refillAmount);
+    }
+
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-        if(bullet != null)
+        if(ammo > 0)
         {
-            bullet.Seek(target);
+            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bullet = bulletGO.GetComponent<Bullet>();
+            if(bullet != null)
+            {
+                bullet.Seek(target);
+                ammo--;
 
+            }
+
+            Debug.Log("Shot at the customer, ammo left: " + ammo);
+        } 
+        else
+        {
+            Debug.Log("Out Of Ammo");
         }
 
-        Debug.Log("Shot at the customer");
+
     }
 }
