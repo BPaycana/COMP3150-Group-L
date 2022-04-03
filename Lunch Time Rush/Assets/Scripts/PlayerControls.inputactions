@@ -180,6 +180,17 @@
                 },
                 {
                     "name": "",
+                    "id": "0c48a1e9-c641-4c58-b772-39c17f96132a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f6a9952c-babd-4250-b820-46f7f5f412d2",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -235,6 +246,17 @@
                 },
                 {
                     "name": "",
+                    "id": "03ba09e8-7d2b-4145-a797-f7c0246a4b1f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryContact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "246318cf-c992-4575-8f7f-f509dcfb70e7",
                     "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "Tap,Press,Hold",
@@ -257,8 +279,30 @@
                 },
                 {
                     "name": "",
+                    "id": "728b1b11-a047-4587-ae19-e4178e557641",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1b0f3c50-f5b1-456c-ae41-4a7606325cfe",
                     "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e4d9c90-fe00-48c7-bb3a-f2dd3fb04d0b",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
