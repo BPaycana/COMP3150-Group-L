@@ -85,15 +85,17 @@ public class Tower : MonoBehaviour
         fireCountDown -=Time.deltaTime;
     }
 
-    public void refillAmmo(int refillAmount)
+    public bool refillAmmo(int refillAmount)
     {
         if(ammo <= 0)
         {
             ammo = refillAmount;
             ammoBar.fillAmount = ammo / ammoCapacity;
             Debug.Log("refilled tower with ammo amount: " + refillAmount);
+            return true;
         }
         Debug.Log("Tower still has ammo!");
+        return false;
 
     }
 

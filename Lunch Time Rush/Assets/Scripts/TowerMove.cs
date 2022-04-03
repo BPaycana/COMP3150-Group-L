@@ -75,8 +75,11 @@ public class TowerMove : MonoBehaviour
                         if (gameManager.GetComponent<GameManager>().restockState())
                         {
                             Debug.Log("player restocking tower");
-                            tower.refillAmmo(maxTowerAmmo);
+                        if (tower.refillAmmo(maxTowerAmmo))
+                        {
                             gameManager.restock();
+                        }
+                            
                             spriteRenderer.color = Color.red;
                         }
                 }
