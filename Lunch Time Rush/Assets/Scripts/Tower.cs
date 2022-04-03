@@ -87,9 +87,14 @@ public class Tower : MonoBehaviour
 
     public void refillAmmo(int refillAmount)
     {
-        ammo = refillAmount;
-        ammoBar.fillAmount = ammo / ammoCapacity;
-        Debug.Log("refilled tower with ammo amount: " + refillAmount);
+        if(ammo <= 0)
+        {
+            ammo = refillAmount;
+            ammoBar.fillAmount = ammo / ammoCapacity;
+            Debug.Log("refilled tower with ammo amount: " + refillAmount);
+        }
+        Debug.Log("Tower still has ammo!");
+
     }
 
     void Shoot()

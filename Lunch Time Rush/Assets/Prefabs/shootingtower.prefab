@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1352071103044068589}
   - component: {fileID: 869765374}
   - component: {fileID: 869765373}
-  - component: {fileID: 869765368}
   m_Layer: 6
   m_Name: shootingtower
   m_TagString: Untagged
@@ -30,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352071103044068593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.89, y: 3.31, z: 0}
+  m_LocalPosition: {x: 0.89, y: 3.31, z: -1}
   m_LocalScale: {x: 0.3365, y: 1.7063, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -124,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 1
-  player: {fileID: 0}
+  player: {fileID: 4213458263141513883, guid: 94c4528bf104bef41a2dbc5810fffdf8, type: 3}
   maxTowerAmmo: 5
 --- !u!50 &869765374
 Rigidbody2D:
@@ -173,21 +172,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &869765368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352071103044068593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b34cfdcf298c31345b8c8ad1045614e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactRange: 1
-  player: {fileID: 0}
-  maxTowerAmmo: 5
 --- !u!1 &1352071103951947297
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_LocalRotation.w
