@@ -71,7 +71,8 @@ public class GameManager : MonoBehaviour
     {
 
         restaurantIsAlive = true;
-        maxRestaurantHealth = 5f;
+        maxRestaurantHealth = 5f; // set restaurant health at the start
+
         currentRestaurantHealth = maxRestaurantHealth;
         UIManager.Instance.SetMaxHealth(maxRestaurantHealth);
 
@@ -82,18 +83,32 @@ public class GameManager : MonoBehaviour
 
     void Update() 
     {
-      
+        UIManager.Instance.UpdateHealth();
     }
 
 
     public void DamageRestaurant(float damage)
     {
-        if(currentRestaurantHealth < 0)
+        if(currentRestaurantHealth <= 1) // weird bug, doesnt work at <=0
         {
-            
+            // game over
+            Die(); 
         }
         currentRestaurantHealth -= damage;
         UIManager.Instance.SetHealth(currentRestaurantHealth);
+    }
+
+    public void Die()
+    {
+        restaurantIsAlive = false;
+        //Debug.Log("car died");
+        GameOver(false);
+
+    }
+
+    public void GameOver(bool win)
+    {
+        UIManager.Instance.ShowGameOver(win);
     }
 
     public void towerHoldBool()
