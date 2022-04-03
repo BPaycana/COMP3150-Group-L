@@ -70,7 +70,7 @@ public class TowerMove : MonoBehaviour
                     }
                 }
 
-                if (input.actions["Interact2"].triggered)
+                if (input.actions["Interact"].triggered && tower.getAmmo() == 0)
                 {
                         if (gameManager.GetComponent<GameManager>().restockState())
                         {

@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TowerPickup.unity
     guid: b3c74a04cb2cdd54eb2e31e95d4ea5d8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerController.unity
     guid: bd405ff2c571ae64eac091df3e81a5c0
   m_configObjects: {}

@@ -122,4 +122,9 @@ public class Tower : MonoBehaviour
 
 
     }
+
+    public float getAmmo()
+    {
+        return ammo;
+    }
 }
