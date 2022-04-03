@@ -22,15 +22,16 @@ public class UIManager : MonoBehaviour
 
  
     public GameObject gameOverPanel;
+    public Text gameOverText;
 
+
+    private string winText = "You Survived the Lunch Time Rush!";
+    private string loseText = "Nice job running your restaurant to 0 star review!";
+
+    public float playerHealth;
     
-    public int health;
-    public int numOfStars;
+    [SerializeField] private Image[] stars;
 
-    public Image[] stars;
-    public Sprite emptyStar;
-    public Sprite  halfEmptyStar;
-    public Sprite fullStar;
 
     void Awake() 
     {
@@ -48,39 +49,60 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-
+        gameOverPanel.SetActive(false);
+        UpdateHealth();
     }
-
-    void Update()
+    
+    public void UpdateHealth()
     {
-
-        if ( health> numOfStars)
+        for(int i = 0; i < stars.Length; i++)
         {
-            health = numOfStars;
+            if (i < playerHealth)
+            {
+                stars[i].color = Color.yellow; // as long as i is less than player health, then set all stars to yellow as they are available
+            }
+            else 
+            {
+                stars[i].color = Color.black; // if i is above player health, it means that health is lost
+            }
         }
-        
-      for (int i = 0; i< stars.Length; i++)
-      {
-          if (i< health){
-              stars[i].sprite= fullStar;
-          } else{
-              stars[i].sprite = emptyStar;
-          }
-
-          if(i < numOfStars){
-              stars[i].enabled=true;
-          } else {
-              stars[i].enabled=false;
-          }
-      }
+   
     }
 
     public void SetMaxHealth(float health)
     {
+        playerHealth = health;
     }
 
     public void SetHealth (float health)
     {
-    
+        playerHealth = health;
     }
+
+     public void ShowGameOver(bool win)
+    {
+
+
+        if (win)
+        {
+            gameOverText.text = winText;
+        }
+        else 
+        {
+            gameOverText.text = loseText;
+        }
+        gameOverPanel.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        // reload this scene
+        //SceneManager.LoadScene(0); // 
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        gameOverPanel.SetActive(false);
+        GameManager.Instance.Start();
+    }
+
+
+
 }

@@ -7,6 +7,7 @@ public class EnemyMove : MonoBehaviour
     public Path path;
     public float speed = 2; // metres per second
 
+    private float reviewDamage = 1f;
     private int nextWaypoint = 1;
     private string enemyType;
 
@@ -53,6 +54,7 @@ public class EnemyMove : MonoBehaviour
         // destroy self if we have reached the end of the path.
         if (nextWaypoint == path.Length)
         {
+            GameManager.Instance.DamageRestaurant(reviewDamage);
             Destroy(gameObject);
         }
     }

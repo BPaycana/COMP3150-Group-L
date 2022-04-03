@@ -7,11 +7,15 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
-    public float speed = 70f;
+    public float bulletStrength = 50f;
+    
+    public float speed = 50f;
     public void Seek(Transform _target){
         target = _target;
 
     }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +29,7 @@ public class Bullet : MonoBehaviour
 
         if(dir.magnitude <= distanceThisFrame)
         {
-            HitTarget();
+            HitTarget(target);
             return;
         }
 
@@ -33,7 +37,10 @@ public class Bullet : MonoBehaviour
  
     }
 
-    void HitTarget(){
+    void HitTarget(Transform target){
+
+        EnemyHealth enemy = target.GetComponent<EnemyHealth>();
+        enemy.TakeDamage(bulletStrength);
         Destroy(gameObject);
         Debug.Log("Hit something");
     }

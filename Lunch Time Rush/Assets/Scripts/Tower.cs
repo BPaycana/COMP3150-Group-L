@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class Tower : MonoBehaviour
     public Transform target; // transform of the customers
 
     public float range = 15f; //tuneable parameter for the range of the tower
-    public int ammoCapacity = 5;
-
+    public float ammoCapacity = 15;
+    private float ammo;
+    
     public string enemyTag = "Enemy";
 
     public float fireRate = 1f;
@@ -21,7 +23,7 @@ public class Tower : MonoBehaviour
     
     public Transform firePoint;
 
-    private int ammo;
+    public Image ammoBar;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +88,7 @@ public class Tower : MonoBehaviour
     public void refillAmmo(int refillAmount)
     {
         ammo = refillAmount;
+        ammoBar.fillAmount = ammo / ammoCapacity;
         Debug.Log("refilled tower with ammo amount: " + refillAmount);
     }
 
@@ -99,6 +102,7 @@ public class Tower : MonoBehaviour
             {
                 bullet.Seek(target);
                 ammo--;
+                ammoBar.fillAmount = ammo / ammoCapacity;
 
             }
 
