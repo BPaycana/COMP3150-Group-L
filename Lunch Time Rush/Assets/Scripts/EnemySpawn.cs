@@ -14,6 +14,7 @@ public class EnemySpawn : MonoBehaviour
     public GameObject Parent;
     //public Path path;
     public Path[] pathArray;
+    public float maxEnemies;
     public float setSpawnTime;
     public float setSpeed;
     public string[] foodType = {"burger", "pizza", "drink" };
@@ -22,14 +23,13 @@ public class EnemySpawn : MonoBehaviour
     private float speed;
     private State state;
 
-    
-
+    public float enemiesLeft;
 
     void SpawnEnemy(GameObject setParent)
     {
         spawnTime -= Time.deltaTime;
 
-        if (spawnTime <= 0)
+        if (spawnTime <= 0 && enemiesLeft > 0)
         {
             int randPath = Random.Range(0, pathArray.Length);
             int randType = Random.Range(0, foodType.Length);
@@ -40,6 +40,7 @@ public class EnemySpawn : MonoBehaviour
             enemy.setType(foodType[randType]);
             Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType());
             spawnTime = setSpawnTime;
+            enemiesLeft--;
         }
 
     }
@@ -54,6 +55,7 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemiesLeft = maxEnemies;
         spawnTime = setSpawnTime;
         speed = setSpeed;
     }
