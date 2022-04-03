@@ -9,7 +9,7 @@ public class Tower : MonoBehaviour
     public Transform target; // transform of the customers
 
     public float range = 15f; //tuneable parameter for the range of the tower
-    public int ammoCapacity = 15;
+    public int ammoCapacity = 5;
 
     public string enemyTag = "Enemy";
 
