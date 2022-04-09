@@ -98,7 +98,8 @@ public class UIManager : MonoBehaviour
     {
         // reload this scene
         //SceneManager.LoadScene(0); // 
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
         gameOverPanel.SetActive(false);
         GameManager.Instance.Start();
     }
