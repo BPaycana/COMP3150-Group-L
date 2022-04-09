@@ -10,12 +10,21 @@ public class EnemyMove : MonoBehaviour
     private float reviewDamage = 1f;
     private int nextWaypoint = 1;
     private string enemyType;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         // start at waypoint 0
         transform.position = path.Waypoint(0);
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if(enemyType == "pizza")
+        {
+            spriteRenderer.color = Color.red;
+        }
+        if (enemyType == "burger")
+        {
+            spriteRenderer.color = Color.blue;
+        }
         // rotate to face the next waypoint
         Vector3 waypoint = path.Waypoint(1);
         Vector3 direction = waypoint - transform.position;
