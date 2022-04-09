@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
         target = _target;
 
     }
+    public string bulletType;
 
 
     // Update is called once per frame
@@ -40,7 +41,15 @@ public class Bullet : MonoBehaviour
     void HitTarget(Transform target){
 
         EnemyHealth enemy = target.GetComponent<EnemyHealth>();
-        enemy.TakeDamage(bulletStrength);
+
+        // get the enemy type, if it matches the bullet type then deal damage, if not dont deal damage
+        EnemyMove enemyMove = target.GetComponent<EnemyMove>();
+
+        string enemyType = enemyMove.getType(); 
+
+        if(string.Equals(bulletType, enemyType)){
+            enemy.TakeDamage(bulletStrength);
+        }
         Destroy(gameObject);
         Debug.Log("Hit something");
     }
