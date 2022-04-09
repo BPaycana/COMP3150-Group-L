@@ -11,6 +11,8 @@ public class EnemyMove : MonoBehaviour
     private int nextWaypoint = 1;
     private string enemyType;
 
+    public bool isLastEnemy = false;
+
     void Start()
     {
         // start at waypoint 0
@@ -54,8 +56,18 @@ public class EnemyMove : MonoBehaviour
         // destroy self if we have reached the end of the path.
         if (nextWaypoint == path.Length)
         {
-            GameManager.Instance.DamageRestaurant(reviewDamage);
+            EnemyHealth enemyHealth = gameObject.GetComponent<EnemyHealth>();
+
+            if(enemyHealth.Health < enemyHealth.TargetHealth){
+                GameManager.Instance.DamageRestaurant(reviewDamage);
+            }
+
             Destroy(gameObject);
+
+            if(isLastEnemy && GameManager.Instance.CurrentRestaurantHealth > 0){
+                // win
+                GameManager.Instance.GameOver(true);
+            }
         }
     }
 

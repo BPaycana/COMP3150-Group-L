@@ -31,16 +31,34 @@ public class EnemySpawn : MonoBehaviour
 
         if (spawnTime <= 0 && enemiesLeft > 0)
         {
-            int randPath = Random.Range(0, pathArray.Length);
-            int randType = Random.Range(0, foodType.Length);
-            EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());
-            enemy.tag = "Enemy";
-            enemy.path = pathArray[randPath];
-            enemy.speed = speed;
-            enemy.setType(foodType[randType]);
-            Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType());
-            spawnTime = setSpawnTime;
-            enemiesLeft--;
+            if(enemiesLeft == 1)
+            {
+                int randPath = Random.Range(0, pathArray.Length);
+                int randType = Random.Range(0, foodType.Length);
+                EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());               
+                enemy.tag = "Enemy";
+                enemy.path = pathArray[randPath];
+                enemy.speed = speed;
+                enemy.isLastEnemy = true;
+                enemy.setType(foodType[randType]);
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", isLastEnemy: " + enemy.isLastEnemy);
+                spawnTime = setSpawnTime;
+                enemiesLeft--;
+            } 
+            else
+            {
+                int randPath = Random.Range(0, pathArray.Length);
+                int randType = Random.Range(0, foodType.Length);
+                EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());
+                enemy.tag = "Enemy";
+                enemy.path = pathArray[randPath];
+                enemy.speed = speed;
+                enemy.setType(foodType[randType]);
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", isLastEnemy: " + enemy.isLastEnemy);
+                spawnTime = setSpawnTime;
+                enemiesLeft--;
+            }
+
         }
 
     }
