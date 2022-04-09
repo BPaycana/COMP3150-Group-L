@@ -1942,9 +1942,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1114776339}
   - {fileID: 482225563}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482225562
 GameObject:
@@ -1979,7 +1980,7 @@ RectTransform:
   m_Children:
   - {fileID: 1574576557}
   m_Father: {fileID: 389512979}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2312,9 +2313,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1352071103044068592, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2018159026554746807, guid: 92efb4a265aa03c4d8d8e34b110e5da7, type: 3}
     - target: {fileID: 1352071103044068593, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
       propertyPath: m_Name
-      value: shootingtower (1)
+      value: TowerBurger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352071103044068593, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 869765368, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
@@ -2572,8 +2581,8 @@ RectTransform:
   - {fileID: 1009008160}
   - {fileID: 1390508807}
   - {fileID: 1733948231}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 389512979}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3016,9 +3025,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1352071103044068592, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 1614121784297162835, guid: 43e5852e83d15e54cadf5867754de309, type: 3}
     - target: {fileID: 1352071103044068593, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
       propertyPath: m_Name
-      value: shootingtower
+      value: TowerPizza
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 869765368, guid: 08f91b869b09ebf4b87cd321da90136b, type: 3}
