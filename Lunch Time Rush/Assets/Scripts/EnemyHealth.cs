@@ -8,9 +8,24 @@ public class EnemyHealth : MonoBehaviour
 
     public float startHealth = 0;
     private float health;
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+    }
+
 
     public float targetHealth = 100f;
 
+    public float TargetHealth
+    {
+        get
+        {
+            return targetHealth;
+        }
+    }
     public Image healthBar;
     // Start is called before the first frame update
     void Start()
@@ -31,4 +46,7 @@ public class EnemyHealth : MonoBehaviour
         healthBar.fillAmount = health / targetHealth;
 
     }
+
+
+    
 }
