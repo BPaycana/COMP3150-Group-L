@@ -8,6 +8,7 @@ public class FollowMouse : MonoBehaviour
 {
 
     public GameObject joystick;
+    private GameManager gameManager;
     private PlayerInput input;
     public Image image;
     private Vector3 lastPos;
@@ -16,7 +17,8 @@ public class FollowMouse : MonoBehaviour
     void Start()
     {
         //image.enabled = false;
-        input = GetComponent<PlayerInput>();
+        gameManager = FindObjectOfType<GameManager>();
+        input = gameManager.gameObject.GetComponent<PlayerInput>();
         lastPos = gameObject.transform.position;
     }
 
@@ -56,7 +58,8 @@ public class FollowMouse : MonoBehaviour
         }
     */
         //MousePosition
-        if (input.actions["PrimaryContact"].ReadValue<float>() < 1)
+        //if (input.actions["PrimaryContact"].ReadValue<float>() < 1) // OH IT'S BECAUSE IT'S UNDER ZERO SO TOUCH ONLY ON RELEASE
+        if (input.actions["PrimaryContact"].ReadValue<float>() > 0)
         {
             Vector3 pos = Input.mousePosition;
             pos = Camera.main.ScreenToWorldPoint(pos);
