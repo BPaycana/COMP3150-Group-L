@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "Hold(duration=0.05)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StartPosition",
+                    "type": "PassThrough",
+                    "id": "cb0e4134-f047-4cf9-b037-755879af9466",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -254,6 +263,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "673a18b9-7944-4c1a-afb5-c3f0f7f80ed4",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

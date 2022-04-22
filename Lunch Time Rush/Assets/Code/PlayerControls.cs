@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.05)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartPosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""cb0e4134-f047-4cf9-b037-755879af9466"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -276,6 +285,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Hold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""673a18b9-7944-4c1a-afb5-c3f0f7f80ed4"",
+                    ""path"": ""<Touchscreen>/primaryTouch/startPosition"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -601,6 +621,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
         m_Player_PrimaryPosition = m_Player.FindAction("PrimaryPosition", throwIfNotFound: true);
         m_Player_Hold = m_Player.FindAction("Hold", throwIfNotFound: true);
+        m_Player_StartPosition = m_Player.FindAction("StartPosition", throwIfNotFound: true);
         // Input
         m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
         m_Input_TouchInput = m_Input.FindAction("TouchInput", throwIfNotFound: true);
@@ -685,6 +706,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Tap;
     private readonly InputAction m_Player_PrimaryPosition;
     private readonly InputAction m_Player_Hold;
+    private readonly InputAction m_Player_StartPosition;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -696,6 +718,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Tap => m_Wrapper.m_Player_Tap;
         public InputAction @PrimaryPosition => m_Wrapper.m_Player_PrimaryPosition;
         public InputAction @Hold => m_Wrapper.m_Player_Hold;
+        public InputAction @StartPosition => m_Wrapper.m_Player_StartPosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -726,6 +749,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Hold.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHold;
                 @Hold.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHold;
                 @Hold.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHold;
+                @StartPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPosition;
+                @StartPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPosition;
+                @StartPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPosition;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -751,6 +777,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Hold.started += instance.OnHold;
                 @Hold.performed += instance.OnHold;
                 @Hold.canceled += instance.OnHold;
+                @StartPosition.started += instance.OnStartPosition;
+                @StartPosition.performed += instance.OnStartPosition;
+                @StartPosition.canceled += instance.OnStartPosition;
             }
         }
     }
@@ -935,6 +964,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTap(InputAction.CallbackContext context);
         void OnPrimaryPosition(InputAction.CallbackContext context);
         void OnHold(InputAction.CallbackContext context);
+        void OnStartPosition(InputAction.CallbackContext context);
     }
     public interface IInputActions
     {
