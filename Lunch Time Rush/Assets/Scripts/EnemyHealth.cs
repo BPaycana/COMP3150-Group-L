@@ -31,7 +31,6 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         health = startHealth;
-        Debug.Log(health);
     }
 
     // Update is called once per frame

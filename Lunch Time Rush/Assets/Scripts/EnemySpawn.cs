@@ -16,10 +16,12 @@ public class EnemySpawn : MonoBehaviour
     public Path[] pathArray;
     public float maxEnemies;
     public float setSpawnTime;
-    public float setSpeed;
+    //public float setSpeed;
     public float setMinHealth;
     public float setMaxHealth;
-    
+    public float setMinSpeed;
+    public float setMaxSpeed;
+
     public string[] foodType = {"burger", "pizza", "drink" };
 
     private float spawnTime;
@@ -37,6 +39,7 @@ public class EnemySpawn : MonoBehaviour
         if (spawnTime <= 0 && enemiesLeft > 0)
         {
             health = Random.Range(setMinHealth, setMaxHealth);
+            speed = Random.Range(setMinSpeed, setMaxSpeed);
             if (enemiesLeft == 1)
             {
                 int randPath = Random.Range(0, pathArray.Length);
@@ -48,7 +51,7 @@ public class EnemySpawn : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().startHealth = health;
                 enemy.isLastEnemy = true;
                 enemy.setType(foodType[randType]);
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", isLastEnemy: " + enemy.isLastEnemy);
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
             } 
@@ -62,7 +65,7 @@ public class EnemySpawn : MonoBehaviour
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().startHealth = health;
                 enemy.setType(foodType[randType]);
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", isLastEnemy: " + enemy.isLastEnemy);
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
             }
@@ -83,7 +86,7 @@ public class EnemySpawn : MonoBehaviour
     {
         enemiesLeft = maxEnemies;
         spawnTime = setSpawnTime;
-        speed = setSpeed;
+        //speed = setSpeed;
     }
 
     // Update is called once per frame
