@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DeltaMovement : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class DeltaMovement : MonoBehaviour
     {
         if(Input.touchCount > 0)
         {
+            Debug.Log("TEST");
             Touch touch = Input.GetTouch(0);
             if(touch.deltaPosition.magnitude > deltaMag)
             {

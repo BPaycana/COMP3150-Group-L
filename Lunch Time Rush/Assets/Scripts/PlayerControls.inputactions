@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact2",
-                    "type": "PassThrough",
-                    "id": "225fe81d-68d6-44f5-a263-db9938993132",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Tap",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Drop",
                     "type": "PassThrough",
                     "id": "f1565a88-f6cc-4cc4-98dc-19a047c11826",
@@ -75,6 +66,24 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=0.05)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartPosition",
+                    "type": "PassThrough",
+                    "id": "cb0e4134-f047-4cf9-b037-755879af9466",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Delta",
+                    "type": "PassThrough",
+                    "id": "dbb9438e-e292-432c-9339-d79df79a650c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -180,17 +189,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0c48a1e9-c641-4c58-b772-39c17f96132a",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f6a9952c-babd-4250-b820-46f7f5f412d2",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -246,17 +244,6 @@
                 },
                 {
                     "name": "",
-                    "id": "03ba09e8-7d2b-4145-a797-f7c0246a4b1f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrimaryContact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "246318cf-c992-4575-8f7f-f509dcfb70e7",
                     "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "Tap,Press,Hold",
@@ -279,17 +266,6 @@
                 },
                 {
                     "name": "",
-                    "id": "728b1b11-a047-4587-ae19-e4178e557641",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrimaryPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1b0f3c50-f5b1-456c-ae41-4a7606325cfe",
                     "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
@@ -301,34 +277,23 @@
                 },
                 {
                     "name": "",
-                    "id": "3e4d9c90-fe00-48c7-bb3a-f2dd3fb04d0b",
-                    "path": "<Mouse>/leftButton",
+                    "id": "673a18b9-7944-4c1a-afb5-c3f0f7f80ed4",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hold",
+                    "action": "StartPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "eb33555c-9b11-493b-b059-584354c3b461",
-                    "path": "<Keyboard>/f",
+                    "id": "559766f6-96ac-4c1a-9081-be04201d9c07",
+                    "path": "<Touchscreen>/primaryTouch/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "77040d2a-f287-45c9-bbe9-7f63aec63426",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact2",
+                    "action": "Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
