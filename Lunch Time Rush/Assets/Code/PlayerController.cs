@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private bool touching;
     public Image joystick;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +70,7 @@ public class PlayerController : MonoBehaviour
                 
                 joystick.transform.position = worldStartPos;
                 joystick.enabled = true;
+
             }
 
         }

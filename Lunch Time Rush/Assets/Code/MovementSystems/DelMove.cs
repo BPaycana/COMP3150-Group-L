@@ -37,24 +37,19 @@ public class DelMove : MonoBehaviour
             }
             if (touching)
             {
-                Vector2 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
-                Vector2 startPos = input.actions["StartPosition"].ReadValue<Vector2>();
-                Vector3 worldStartPos = Camera.main.ScreenToWorldPoint(startPos);
-                Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
-                worldPos.z = 0;
-                worldStartPos.z = 0;
+                if (input.actions["Delta"].ReadValue<Vector2>().magnitude
+                > changeReq)
+                {
+                    direction = input.actions["Delta"].ReadValue<Vector2>();
 
-                direction = (worldPos - worldStartPos);
-
-                //transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
-                direction = Vector3.ClampMagnitude(direction, 1);
+                    direction = Vector2.ClampMagnitude(direction, 1);
+                }
                 transform.Translate(direction * moveSpeed * Time.deltaTime);
-                Debug.Log(direction.normalized.magnitude);
-            }
+            }           
         }
         else
         {
-            //direction = Vector2.zero;
+            direction = Vector2.zero;
             touching = false;
         }
 

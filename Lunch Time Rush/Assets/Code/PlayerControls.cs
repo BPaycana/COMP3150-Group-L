@@ -98,6 +98,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Delta"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""dbb9438e-e292-432c-9339-d79df79a650c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -296,6 +305,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StartPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""559766f6-96ac-4c1a-9081-be04201d9c07"",
+                    ""path"": ""<Touchscreen>/primaryTouch/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Delta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -622,6 +642,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_PrimaryPosition = m_Player.FindAction("PrimaryPosition", throwIfNotFound: true);
         m_Player_Hold = m_Player.FindAction("Hold", throwIfNotFound: true);
         m_Player_StartPosition = m_Player.FindAction("StartPosition", throwIfNotFound: true);
+        m_Player_Delta = m_Player.FindAction("Delta", throwIfNotFound: true);
         // Input
         m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
         m_Input_TouchInput = m_Input.FindAction("TouchInput", throwIfNotFound: true);
@@ -707,6 +728,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PrimaryPosition;
     private readonly InputAction m_Player_Hold;
     private readonly InputAction m_Player_StartPosition;
+    private readonly InputAction m_Player_Delta;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -719,6 +741,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @PrimaryPosition => m_Wrapper.m_Player_PrimaryPosition;
         public InputAction @Hold => m_Wrapper.m_Player_Hold;
         public InputAction @StartPosition => m_Wrapper.m_Player_StartPosition;
+        public InputAction @Delta => m_Wrapper.m_Player_Delta;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -752,6 +775,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPosition;
                 @StartPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPosition;
                 @StartPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPosition;
+                @Delta.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDelta;
+                @Delta.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDelta;
+                @Delta.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDelta;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -780,6 +806,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartPosition.started += instance.OnStartPosition;
                 @StartPosition.performed += instance.OnStartPosition;
                 @StartPosition.canceled += instance.OnStartPosition;
+                @Delta.started += instance.OnDelta;
+                @Delta.performed += instance.OnDelta;
+                @Delta.canceled += instance.OnDelta;
             }
         }
     }
@@ -965,6 +994,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPrimaryPosition(InputAction.CallbackContext context);
         void OnHold(InputAction.CallbackContext context);
         void OnStartPosition(InputAction.CallbackContext context);
+        void OnDelta(InputAction.CallbackContext context);
     }
     public interface IInputActions
     {
