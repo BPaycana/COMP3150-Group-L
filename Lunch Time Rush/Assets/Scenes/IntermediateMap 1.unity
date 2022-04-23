@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: range
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1104276683009897179, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: towerColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382e045859317e54686743441acf9195, type: 3}
 --- !u!1001 &132296964
@@ -290,6 +294,14 @@ PrefabInstance:
     - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: range
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: towerColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: towerColor.r
+      value: 0.9960785
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 963842208826ec444847057e171dbf38, type: 3}
@@ -8261,7 +8273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 125
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8563697504901265708, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Interpolate

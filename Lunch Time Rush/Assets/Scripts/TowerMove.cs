@@ -33,7 +33,7 @@ public class TowerMove : MonoBehaviour
         tower = this.gameObject.GetComponent<Tower>();
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.yellow;
+        //spriteRenderer.color = Color.yellow;
 
         towerAmmo = maxTowerAmmo;
     }
@@ -50,7 +50,7 @@ public class TowerMove : MonoBehaviour
 
                 if(Mathf.Abs(dist) > interactRange)
                 {
-                    spriteRenderer.color = Color.yellow;
+                    spriteRenderer.color = tower.getColor();
                     towerState = TowerState.Far;
                 }
 
@@ -113,7 +113,9 @@ public class TowerMove : MonoBehaviour
                 break;
         }
 
-        if(towerAmmo == 0)
+        //spriteRenderer.color = towerColor;
+
+        if (towerAmmo == 0)
         {
             spriteRenderer.color = Color.white;
         }

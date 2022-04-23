@@ -23,6 +23,8 @@ public class Tower : MonoBehaviour
     public GameObject bulletPrefab;
 
     private GameManager gameManager;
+
+    private Color towerColor;
     
     public Transform firePoint;
 
@@ -34,8 +36,14 @@ public class Tower : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         ammo = ammoCapacity;
+        towerColor = gameObject.GetComponent<SpriteRenderer>().color;
+        Debug.Log(towerColor);
     }
 
+    public Color getColor()
+    {
+        return towerColor;
+    }
 
     void UpdateTarget()
     {

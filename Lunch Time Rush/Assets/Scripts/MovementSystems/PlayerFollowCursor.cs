@@ -48,8 +48,10 @@ public class PlayerFollowCursor : MonoBehaviour
                 Vector3 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
                 pos = Camera.main.ScreenToWorldPoint(pos);
                 pos.z = 0;
-
+                
+                //only move if we are some distance from mouse to prevent jitter at mouse pos
                 direction = pos - transform.position;
+                    
                 //transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
             }           
         }
@@ -62,6 +64,14 @@ public class PlayerFollowCursor : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(direction.normalized.x, direction.normalized.y) * moveSpeed * Time.deltaTime; //this makes player not clip through walls/jitter around
+        if (direction.x > .05f || direction.y > .05f || direction.x < -.05f || direction.y < -.05f)
+        {
+            rb.velocity = new Vector2(direction.normalized.x, direction.normalized.y) * moveSpeed * Time.deltaTime; //this makes player not clip through walls/jitter around
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+        
     }
 }
