@@ -7755,6 +7755,14 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
+      propertyPath: setMaxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
+      propertyPath: setMinHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setSpawnTime
       value: 8
       objectReference: {fileID: 0}
@@ -8273,7 +8281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 500
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 8563697504901265708, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Interpolate

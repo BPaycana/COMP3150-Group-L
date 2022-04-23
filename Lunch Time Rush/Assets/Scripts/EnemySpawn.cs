@@ -17,13 +17,18 @@ public class EnemySpawn : MonoBehaviour
     public float maxEnemies;
     public float setSpawnTime;
     public float setSpeed;
+    public float setMinHealth;
+    public float setMaxHealth;
+    
     public string[] foodType = {"burger", "pizza", "drink" };
 
     private float spawnTime;
     private float speed;
     private State state;
-
+    private float health;
     public float enemiesLeft;
+
+    
 
     void SpawnEnemy(GameObject setParent)
     {
@@ -31,7 +36,8 @@ public class EnemySpawn : MonoBehaviour
 
         if (spawnTime <= 0 && enemiesLeft > 0)
         {
-            if(enemiesLeft == 1)
+            health = Random.Range(setMinHealth, setMaxHealth);
+            if (enemiesLeft == 1)
             {
                 int randPath = Random.Range(0, pathArray.Length);
                 int randType = Random.Range(0, foodType.Length);
@@ -39,6 +45,7 @@ public class EnemySpawn : MonoBehaviour
                 enemy.tag = "Enemy";
                 enemy.path = pathArray[randPath];
                 enemy.speed = speed;
+                enemy.GetComponent<EnemyHealth>().startHealth = health;
                 enemy.isLastEnemy = true;
                 enemy.setType(foodType[randType]);
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", isLastEnemy: " + enemy.isLastEnemy);
@@ -53,6 +60,7 @@ public class EnemySpawn : MonoBehaviour
                 enemy.tag = "Enemy";
                 enemy.path = pathArray[randPath];
                 enemy.speed = speed;
+                enemy.GetComponent<EnemyHealth>().startHealth = health;
                 enemy.setType(foodType[randType]);
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
