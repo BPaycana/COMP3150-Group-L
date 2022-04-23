@@ -9,17 +9,18 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private PlayerInput input;
     public float moveSpeed = 5;
-    private Vector2 direction;
+    private Vector3 direction;
     public float changeReq = 5;
     private bool touching;
     public Image joystick;
+    public Image joystickRing;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
-        direction = new Vector2(0, 0);
+        direction = new Vector3(0, 0, 0);
         touching = false;
     }
 
@@ -67,8 +68,10 @@ public class PlayerController : MonoBehaviour
                 direction = Vector3.ClampMagnitude(direction, 1);
                 transform.Translate(direction * moveSpeed * Time.deltaTime);
                 Debug.Log(direction.normalized.magnitude);
-                
-                joystick.transform.position = worldStartPos;
+
+                joystickRing.transform.position = worldStartPos;
+                joystick.transform.position = worldStartPos + (direction/2);
+                joystickRing.enabled = true;
                 joystick.enabled = true;
 
             }
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
             //direction = Vector2.zero;
             touching = false;
             joystick.enabled = false;
+            joystickRing.enabled = false;
         }
 
 
