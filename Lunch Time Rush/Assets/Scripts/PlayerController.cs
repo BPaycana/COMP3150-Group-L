@@ -9,17 +9,21 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private PlayerInput input;
     public float moveSpeed = 5;
-    private Vector2 direction;
+    private Vector3 direction;
     public float changeReq = 5;
     private bool touching;
     public Image joystick;
+    public Image joystickRing;
+
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
-        direction = new Vector2(0, 0);
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        direction = new Vector3(0, 0, 0);
         touching = false;
     }
 
@@ -54,9 +58,9 @@ public class PlayerController : MonoBehaviour
             }
             if (touching)
             {
-                
+
                 Vector2 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
-                
+
                 Vector2 startPos = input.actions["StartPosition"].ReadValue<Vector2>();
                 Vector3 worldStartPos = Camera.main.ScreenToWorldPoint(startPos);
                 Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
@@ -65,10 +69,12 @@ public class PlayerController : MonoBehaviour
 
                 direction = (worldPos - worldStartPos);
                 direction = Vector3.ClampMagnitude(direction, 1);
-                transform.Translate(direction * moveSpeed * Time.deltaTime);
+                //transform.Translate(direction * moveSpeed * Time.deltaTime);
                 Debug.Log(direction.normalized.magnitude);
-                
-                joystick.transform.position = worldStartPos;
+
+                joystickRing.transform.position = worldStartPos;
+                joystick.transform.position = worldStartPos + (direction / 2);
+                joystickRing.enabled = true;
                 joystick.enabled = true;
 
             }
@@ -76,9 +82,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //direction = Vector2.zero;
+            direction = Vector3.zero;
             touching = false;
             joystick.enabled = false;
+            joystickRing.enabled = false;
         }
 
 
@@ -87,29 +94,28 @@ public class PlayerController : MonoBehaviour
 
         //if (input.actions["PrimaryContact"].ReadValue<float>() > 0)
         //{
-            /*
-            if (input.actions["Delta"].ReadValue<Vector2>().magnitude 
-                > changeReq)
-            {
-                direction = input.actions["Delta"].ReadValue<Vector2>();
-                
-                direction = Vector2.ClampMagnitude(direction, 1);
-                              
-            }
+        /*
+        if (input.actions["Delta"].ReadValue<Vector2>().magnitude 
+            > changeReq)
+        {
+            direction = input.actions["Delta"].ReadValue<Vector2>();
 
-            transform.Translate(direction * moveSpeed * Time.deltaTime);
-            Debug.Log(direction.magnitude);
-            */
-            /*
-            if (input.actions["CurrentPosition"].ReadValue<Vector2>().magnitude !=
-                input.actions["StartPosition"].ReadValue<Vector2>().magnitude)
-            {
-                float dir = Vector2.Distance(input.actions["CurrentPosition"].ReadValue<Vector2>(),
-                    input.actions["StartPosition"].ReadValue<Vector2>());
-            }
-            */
+            direction = Vector2.ClampMagnitude(direction, 1);
+
+        }
+        transform.Translate(direction * moveSpeed * Time.deltaTime);
+        Debug.Log(direction.magnitude);
+        */
+        /*
+        if (input.actions["CurrentPosition"].ReadValue<Vector2>().magnitude !=
+            input.actions["StartPosition"].ReadValue<Vector2>().magnitude)
+        {
+            float dir = Vector2.Distance(input.actions["CurrentPosition"].ReadValue<Vector2>(),
+                input.actions["StartPosition"].ReadValue<Vector2>());
+        }
+        */
         //}
-        
+
         /*
         if (input.actions["PrimaryContact"].triggered)
         {
@@ -118,5 +124,16 @@ public class PlayerController : MonoBehaviour
         */
     }
 
+    private void FixedUpdate()
+    {
+        if (direction.x > .05f || direction.y > .05f || direction.x < -.05f || direction.y < -.05f)
+        {
+            rb.velocity = new Vector2(direction.x, direction.y) * moveSpeed * Time.deltaTime; //this makes player not clip through walls/jitter around
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
 
+    }
 }
