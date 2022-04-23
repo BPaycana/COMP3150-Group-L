@@ -21,7 +21,7 @@ public class EnemyMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(enemyType == "pizza")
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.color = Color.yellow;
         }
         if (enemyType == "burger")
         {

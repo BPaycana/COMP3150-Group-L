@@ -43,7 +43,7 @@ public class TowerMove : MonoBehaviour
     {
 
         float dist = Vector3.Distance(player.position, transform.position);
-
+        //Debug.Log(dist);
         switch (towerState)
         {
             case TowerState.Close:
@@ -65,6 +65,7 @@ public class TowerMove : MonoBehaviour
                         {
                             gameManager.towerHoldBool();
                             spriteRenderer.color = Color.blue;
+                            Debug.Log(gameManager.getTowerHeld());
                             towerState = TowerState.Held;
                         }                                           
                     }
@@ -108,7 +109,7 @@ public class TowerMove : MonoBehaviour
                     //transform.position = player.position;
                     towerState = TowerState.Close;
                 }
-                
+                Debug.Log(gameManager.getTowerHeld());
                 break;
         }
 

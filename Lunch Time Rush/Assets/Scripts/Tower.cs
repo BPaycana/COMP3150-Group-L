@@ -18,8 +18,11 @@ public class Tower : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountDown = 0f;
 
+    private bool held = false;
+
     public GameObject bulletPrefab;
-    
+
+    private GameManager gameManager;
     
     public Transform firePoint;
 
@@ -28,6 +31,7 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         ammo = ammoCapacity;
     }
@@ -101,27 +105,23 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        if(ammo > 0)
-        {
-            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Bullet bullet = bulletGO.GetComponent<Bullet>();
-            if(bullet != null)
+             if(ammo > 0 && gameManager.getTowerHeld() == false)
             {
-                bullet.Seek(target);
-                ammo--;
-                ammoBar.fillAmount = ammo / ammoCapacity;
-
+                GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Bullet bullet = bulletGO.GetComponent<Bullet>();
+                if(bullet != null)
+                {
+                    bullet.Seek(target);
+                    ammo--;
+                    ammoBar.fillAmount = ammo / ammoCapacity;
+                }
+                Debug.Log("Shot at the customer, ammo left: " + ammo);
             }
-
-            Debug.Log("Shot at the customer, ammo left: " + ammo);
-        } 
-        else
-        {
-            Debug.Log("Out Of Ammo");
+            else
+            {
+                Debug.Log("Out Of Ammo");
+            }
         }
-
-
-    }
 
     public float getAmmo()
     {

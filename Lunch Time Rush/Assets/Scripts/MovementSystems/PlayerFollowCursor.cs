@@ -11,6 +11,7 @@ public class PlayerFollowCursor : MonoBehaviour
     public float moveSpeed = 5;
     private Vector3 direction;
     private bool touching;
+    private Rigidbody2D rb;
     //private float direction;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class PlayerFollowCursor : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         touching = false;
     }
 
@@ -46,13 +48,20 @@ public class PlayerFollowCursor : MonoBehaviour
                 Vector3 pos = input.actions["PrimaryPosition"].ReadValue<Vector2>();
                 pos = Camera.main.ScreenToWorldPoint(pos);
                 pos.z = 0;
+
                 direction = pos - transform.position;
-                transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
+                //transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
             }           
         }
         else
         {
             touching = false;
+            direction = new Vector3(0,0,0);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(direction.normalized.x, direction.normalized.y) * moveSpeed * Time.deltaTime; //this makes player not clip through walls/jitter around
     }
 }
