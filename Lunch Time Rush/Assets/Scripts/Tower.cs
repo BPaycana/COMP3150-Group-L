@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour
     public float range = 15f; //tuneable parameter for the range of the tower
     public float ammoCapacity = 15;
     private float ammo;
-    
+
     public string enemyTag = "Enemy";
 
     public float fireRate = 1f;
@@ -25,14 +25,17 @@ public class Tower : MonoBehaviour
     private GameManager gameManager;
 
     private Color towerColor;
-    
+
     public Transform firePoint;
 
     public Image ammoBar;
 
+    public AudioSource shootingSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        shootingSound = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         ammo = ammoCapacity;
@@ -47,7 +50,7 @@ public class Tower : MonoBehaviour
 
     void UpdateTarget()
     {
-        
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
         //store shortest distance to an enemy found so far
@@ -56,21 +59,21 @@ public class Tower : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
-            
-            if(distanceToEnemy < shortestDistance)
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
 
-            }        
+            }
         }
 
         if (nearestEnemy != null && shortestDistance <= range) // check if nearest enemy is found and if the shorest distance is within tower range
         {
             // found enemy and within tower range
             target = nearestEnemy.transform; // set target to that enemy
-        }  
+        }
         else
         {
             target = null;
@@ -83,7 +86,7 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             return;
         }
@@ -91,15 +94,15 @@ public class Tower : MonoBehaviour
         if (fireCountDown <= 0f)
         {
             Shoot();
-            fireCountDown = 1f/fireRate;
+            fireCountDown = 1f / fireRate;
         }
 
-        fireCountDown -=Time.deltaTime;
+        fireCountDown -= Time.deltaTime;
     }
 
     public bool refillAmmo(int refillAmount)
     {
-        if(ammo <= 0)
+        if (ammo <= 0)
         {
             ammo = refillAmount;
             ammoBar.fillAmount = ammo / ammoCapacity;
@@ -113,23 +116,24 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-             if(ammo > 0 && gameManager.getTowerHeld() == false)
+        if (ammo > 0 && gameManager.getTowerHeld() == false)
+        {
+            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bullet = bulletGO.GetComponent<Bullet>();
+            if (bullet != null)
             {
-                GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                Bullet bullet = bulletGO.GetComponent<Bullet>();
-                if(bullet != null)
-                {
-                    bullet.Seek(target);
-                    ammo--;
-                    ammoBar.fillAmount = ammo / ammoCapacity;
-                }
-                Debug.Log("Shot at the customer, ammo left: " + ammo);
+                bullet.Seek(target);
+                shootingSound.Play();
+                ammo--;
+                ammoBar.fillAmount = ammo / ammoCapacity;
             }
-            else
-            {
-                Debug.Log("Out Of Ammo");
-            }
+            Debug.Log("Shot at the customer, ammo left: " + ammo);
         }
+        else
+        {
+            Debug.Log("Out Of Ammo");
+        }
+    }
 
     public float getAmmo()
     {
