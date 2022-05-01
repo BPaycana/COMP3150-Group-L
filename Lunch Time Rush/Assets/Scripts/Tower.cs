@@ -15,6 +15,8 @@ public class Tower : MonoBehaviour
     
     public string enemyTag = "Enemy";
 
+    public float bulletDamage = 5f;
+
     public float fireRate = 1f;
     private float fireCountDown = 0f;
 
@@ -117,6 +119,7 @@ public class Tower : MonoBehaviour
             {
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Bullet bullet = bulletGO.GetComponent<Bullet>();
+                bullet.bulletStrength = bulletDamage;
                 if(bullet != null)
                 {
                     bullet.Seek(target);

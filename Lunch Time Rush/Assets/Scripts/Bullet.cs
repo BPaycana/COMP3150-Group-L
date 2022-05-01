@@ -51,6 +51,6 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(bulletStrength);
         }
         Destroy(gameObject);
-        Debug.Log("Hit something");
+        Debug.Log("Hit something for damage: " + bulletStrength);
     }
 }
