@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
     {
         get
         {
-            return TargetHealth;
+            return targetHealth;
         }
     }
     public Image healthBar;
