@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     private bool towerHeld;
     private bool canRestock;
     private bool getRestock;
@@ -56,12 +57,12 @@ public class GameManager : MonoBehaviour
         if (instance != null) 
         {
             // destroy duplicates
-            Destroy(gameObject);            
+            //Destroy(gameObject);            
         }
         else 
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }        
     }
 
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
             Die(); 
         }
         currentRestaurantHealth -= damage;
+        Debug.Log("restHealth: " + currentRestaurantHealth);
         UIManager.Instance.SetHealth(currentRestaurantHealth);
     }
 

@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public float playerHealth;
 
     [SerializeField] private Image[] stars;
-
+    private int levelCount = 0;
 
     void Awake()
     {
@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -113,13 +113,15 @@ public class UIManager : MonoBehaviour
     public void NextLevel()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(1);
+        levelCount++;
+        SceneManager.LoadScene(levelCount);
+        
     }
 
     public void Won()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("GameWon");
     }
 
 

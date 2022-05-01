@@ -17,6 +17,7 @@ public class TowerRestock : MonoBehaviour
         _restockAmt = restockAmt;
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
+        Debug.Log(input.gameObject.name);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
