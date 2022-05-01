@@ -5602,12 +5602,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 125
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1940972007}
+    - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
       value: 400
