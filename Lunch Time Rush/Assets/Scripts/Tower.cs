@@ -18,7 +18,7 @@ public class Tower : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountDown = 0f;
 
-    private bool held = false;
+    public bool held = false;
 
     public GameObject bulletPrefab;
 
@@ -113,7 +113,7 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-             if(ammo > 0 && gameManager.getTowerHeld() == false)
+             if(ammo > 0 && held == false)
             {
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Bullet bullet = bulletGO.GetComponent<Bullet>();
@@ -125,11 +125,14 @@ public class Tower : MonoBehaviour
                 }
                 Debug.Log("Shot at the customer, ammo left: " + ammo);
             }
-            else
+            else if( held == true)
+            {
+                Debug.Log("Holding tower, not shooting");
+            } else
             {
                 Debug.Log("Out Of Ammo");
             }
-        }
+    }
 
     public float getAmmo()
     {

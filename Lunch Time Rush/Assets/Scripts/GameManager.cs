@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
 
     public bool getTowerHeld()
     {
+        Debug.Log("isTowerHeld: " + towerHeld);
         return towerHeld;
     }
 
@@ -138,12 +139,12 @@ public class GameManager : MonoBehaviour
         {
             canRestock = true;
         }
-        Debug.Log(canRestock);
+        //Debug.Log(canRestock);
     }
 
     public bool restockState()
     {
-        Debug.Log(canRestock);
+        //Debug.Log(canRestock);
         return canRestock;
     }
 

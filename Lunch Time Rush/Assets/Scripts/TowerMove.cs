@@ -65,8 +65,9 @@ public class TowerMove : MonoBehaviour
                         {
                             gameManager.towerHoldBool();
                             spriteRenderer.color = Color.blue;
-                            Debug.Log(gameManager.getTowerHeld());
+                            //Debug.Log(gameManager.getTowerHeld());
                             towerState = TowerState.Held;
+                            tower.held = true;
                         }                                           
                     }
                 }
@@ -108,6 +109,7 @@ public class TowerMove : MonoBehaviour
                     spriteRenderer.color = Color.green;
                     //transform.position = player.position;
                     towerState = TowerState.Close;
+                    tower.held = false;
                 }
                 Debug.Log(gameManager.getTowerHeld());
                 break;

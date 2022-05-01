@@ -4812,6 +4812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JoystickHome
       objectReference: {fileID: 0}
+    - target: {fileID: 5131459707877289611, guid: e9f13c8af640ca640aff847a60bbb5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5131459708594465632, guid: e9f13c8af640ca640aff847a60bbb5b4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 3
@@ -7869,19 +7873,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: maxEnemies
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setMaxSpeed
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setMinSpeed
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setMaxHealth
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setMinHealth
@@ -7889,7 +7893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setSpawnTime
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: pathArray.Array.size
@@ -8157,7 +8161,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!1 &1873265571
 GameObject:
@@ -8311,7 +8315,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5.8069115
-  m_Depth: -1
+  m_Depth: 4
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
