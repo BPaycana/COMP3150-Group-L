@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
 
-    public float targetHealth = 0;
+    public float startHealth = 0;
     private float health;
     public float Health
     {
@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    //public float targetHealth = 100f;
+    public float targetHealth = 100f;
 
     public float TargetHealth
     {
@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = targetHealth;
+        health = startHealth;
     }
 
     // Update is called once per frame
