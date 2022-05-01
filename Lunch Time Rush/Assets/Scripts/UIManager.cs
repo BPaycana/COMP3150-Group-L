@@ -40,12 +40,12 @@ public class UIManager : MonoBehaviour
         if (instance != null)
         {
             // if there is already a UIManager in the scene, destroy this one
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
     }
 

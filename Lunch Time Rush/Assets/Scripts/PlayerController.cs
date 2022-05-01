@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        
         direction = new Vector3(0, 0, 0);
         touching = false;
     }

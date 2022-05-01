@@ -56,12 +56,12 @@ public class GameManager : MonoBehaviour
         if (instance != null) 
         {
             // destroy duplicates
-            Destroy(gameObject);            
+            //Destroy(gameObject);            
         }
         else 
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }        
     }
 
