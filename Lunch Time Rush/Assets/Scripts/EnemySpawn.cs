@@ -48,7 +48,7 @@ public class EnemySpawn : MonoBehaviour
                 enemy.tag = "Enemy";
                 enemy.path = pathArray[randPath];
                 enemy.speed = speed;
-                enemy.GetComponent<EnemyHealth>().startHealth = health;
+                enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.isLastEnemy = true;
                 enemy.setType(foodType[randType]);
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);

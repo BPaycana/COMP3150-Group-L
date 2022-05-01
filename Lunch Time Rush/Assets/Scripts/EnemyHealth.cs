@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
 
-    public float startHealth = 0;
+    public float targetHealth = 0;
     private float health;
     public float Health
     {
@@ -17,20 +17,20 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    public float targetHealth = 100f;
+    //public float targetHealth = 100f;
 
     public float TargetHealth
     {
         get
         {
-            return targetHealth;
+            return TargetHealth;
         }
     }
     public Image healthBar;
     // Start is called before the first frame update
     void Start()
     {
-        health = startHealth;
+        health = targetHealth;
     }
 
     // Update is called once per frame
