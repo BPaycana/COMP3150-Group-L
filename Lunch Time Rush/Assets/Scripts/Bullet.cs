@@ -45,11 +45,18 @@ public class Bullet : MonoBehaviour
         // get the enemy type, if it matches the bullet type then deal damage, if not dont deal damage
         EnemyMove enemyMove = target.GetComponent<EnemyMove>();
 
-        string enemyType = enemyMove.getType(); 
+        string enemyType = enemyMove.getType();
+        string enemySpecType = enemyMove.getSpecType();
 
-        if(string.Equals(bulletType, enemyType)){
-            enemy.TakeDamage(bulletStrength);
+        if (string.Equals(bulletType, enemyType)){
+            enemy.TakeDamage(bulletStrength, bulletType);
         }
+
+        if(string.Equals(bulletType, enemySpecType))
+        {
+            enemy.SpecTakeDamage(bulletStrength, bulletType);
+        }
+
         Destroy(gameObject);
         Debug.Log("Hit something for damage: " + bulletStrength);
     }

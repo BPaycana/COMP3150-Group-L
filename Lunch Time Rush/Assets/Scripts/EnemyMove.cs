@@ -10,9 +10,11 @@ public class EnemyMove : MonoBehaviour
     private float reviewDamage = 1f;
     private int nextWaypoint = 1;
     private string enemyType;
+    private string enemySpecType;
     private SpriteRenderer spriteRenderer;
 
     public bool isLastEnemy = false;
+
 
     void Start()
     {
@@ -91,5 +93,14 @@ public class EnemyMove : MonoBehaviour
     public string getType()
     {
         return this.enemyType;
+    }
+    public void setSpecType(string s)
+    {
+        this.enemySpecType = s;
+    }
+
+    public string getSpecType()
+    {
+        return this.enemySpecType;
     }
 }

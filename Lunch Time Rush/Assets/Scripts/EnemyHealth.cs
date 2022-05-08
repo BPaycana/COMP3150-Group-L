@@ -8,11 +8,20 @@ public class EnemyHealth : MonoBehaviour
 
     public float targetHealth;
     private float health = 0f;
+    private float specHealth = 0f;
+
     public float Health
     {
         get
         {
             return health;
+        }
+    }
+    public float SpecHealth
+    {
+        get
+        {
+            return specHealth;
         }
     }
 
@@ -24,6 +33,8 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     public Image healthBar;
+    public Image specHealthBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +47,24 @@ public class EnemyHealth : MonoBehaviour
         
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, string type)
     {
+        
         health += amount;
 
         healthBar.fillAmount = health / targetHealth;
 
     }
 
+    public void SpecTakeDamage(float amount, string type)
+    {
 
-    
+        specHealth += amount;
+
+        specHealthBar.fillAmount = specHealth / targetHealth;
+        //specHealthBar.fillAmount = 100f;
+
+    }
+
+
 }

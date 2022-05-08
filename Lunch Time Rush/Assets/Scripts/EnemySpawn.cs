@@ -22,15 +22,16 @@ public class EnemySpawn : MonoBehaviour
     public float setMinSpeed;
     public float setMaxSpeed;
 
-    public string[] foodType = {"burger", "pizza"};
+    public string[] foodType = {"burger", "pizza", "soda"};
 
     private float spawnTime;
     private float speed;
     private State state;
     private float health;
     public float enemiesLeft;
-
-    
+    public int specialEnemyChance = 25;  //between 1-100, percentage. default to 25%
+    private int isSpecial;
+    private bool specialState;
 
     void SpawnEnemy(GameObject setParent)
     {
@@ -40,6 +41,14 @@ public class EnemySpawn : MonoBehaviour
         {
             health = Random.Range(setMinHealth, setMaxHealth);
             speed = Random.Range(setMinSpeed, setMaxSpeed);
+            isSpecial = (int) Random.Range(1, 100);   
+            if(isSpecial < specialEnemyChance)
+            {
+                specialState = true;
+            } else
+            {
+                specialState = false;
+            }
             if (enemiesLeft == 1)
             {
                 int randPath = Random.Range(0, pathArray.Length);
@@ -51,7 +60,11 @@ public class EnemySpawn : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.isLastEnemy = true;
                 enemy.setType(foodType[randType]);
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
+                if (specialState)
+                {
+                    enemy.setSpecType("drink");
+                }
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
             } 
@@ -65,7 +78,11 @@ public class EnemySpawn : MonoBehaviour
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.setType(foodType[randType]);
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
+                if (specialState)
+                {
+                    enemy.setSpecType("drink");
+                }
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
             }
