@@ -60,9 +60,15 @@ public class EnemySpawn : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.isLastEnemy = true;
                 enemy.setType(foodType[randType]);
+                //enemy.GetComponent<EnemyHealth>().specHealthBarBack.enabled = false;
+                enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
+                enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 if (specialState)
                 {
                     enemy.setSpecType("drink");
+                    enemy.isSpecialEnemy = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
@@ -78,9 +84,14 @@ public class EnemySpawn : MonoBehaviour
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.setType(foodType[randType]);
+                enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
+                enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 if (specialState)
                 {
                     enemy.setSpecType("drink");
+                    enemy.isSpecialEnemy = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;

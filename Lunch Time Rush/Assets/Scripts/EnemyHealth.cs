@@ -34,11 +34,12 @@ public class EnemyHealth : MonoBehaviour
     }
     public Image healthBar;
     public Image specHealthBar;
+    public Image specHealthBarBackground;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -53,7 +54,6 @@ public class EnemyHealth : MonoBehaviour
         health += amount;
 
         healthBar.fillAmount = health / targetHealth;
-
     }
 
     public void SpecTakeDamage(float amount, string type)
@@ -62,9 +62,6 @@ public class EnemyHealth : MonoBehaviour
         specHealth += amount;
 
         specHealthBar.fillAmount = specHealth / targetHealth;
-        //specHealthBar.fillAmount = 100f;
 
     }
-
-
 }

@@ -466,6 +466,7 @@ MonoBehaviour:
   targetHealth: 100
   healthBar: {fileID: 33234131}
   specHealthBar: {fileID: 2153879540299105557}
+  specHealthBarBackground: {fileID: 3554152728162493381}
 --- !u!1 &5034937989873143646
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +555,7 @@ GameObject:
   - component: {fileID: 7700893486884513495}
   - component: {fileID: 3554152728162493381}
   m_Layer: 5
-  m_Name: Health Background (1)
+  m_Name: Special Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
