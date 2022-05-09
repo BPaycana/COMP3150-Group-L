@@ -266,6 +266,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fe944327-3880-49bf-b88f-a6288c8a2bfa"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryContact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""246318cf-c992-4575-8f7f-f509dcfb70e7"",
                     ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": ""Tap,Press,Hold"",
