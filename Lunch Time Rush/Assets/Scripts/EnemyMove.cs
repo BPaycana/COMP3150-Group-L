@@ -19,13 +19,17 @@ public class EnemyMove : MonoBehaviour
         // start at waypoint 0
         transform.position = path.Waypoint(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if(enemyType == "pizza")
+        if (enemyType == "pizza")
         {
             spriteRenderer.color = Color.yellow;
         }
         if (enemyType == "burger")
         {
             spriteRenderer.color = Color.blue;
+        }
+        if (enemyType == "drink")
+        {
+            spriteRenderer.color = Color.black;
         }
         // rotate to face the next waypoint
         Vector3 waypoint = path.Waypoint(1);
@@ -67,13 +71,15 @@ public class EnemyMove : MonoBehaviour
         {
             EnemyHealth enemyHealth = gameObject.GetComponent<EnemyHealth>();
 
-            if(enemyHealth.Health < enemyHealth.TargetHealth){
+            if (enemyHealth.Health < enemyHealth.TargetHealth)
+            {
                 GameManager.Instance.DamageRestaurant(reviewDamage);
             }
 
             Destroy(gameObject);
 
-            if(isLastEnemy && GameManager.Instance.CurrentRestaurantHealth > 0){
+            if (isLastEnemy && GameManager.Instance.CurrentRestaurantHealth > 0)
+            {
                 // win
                 GameManager.Instance.GameOver(true);
             }

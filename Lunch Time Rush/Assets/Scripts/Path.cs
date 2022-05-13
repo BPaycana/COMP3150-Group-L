@@ -24,9 +24,9 @@ public class Path : MonoBehaviour
             waypoints[i] = transform.GetChild(i).position;
         }
 
-        lineRenderer = GetComponent<LineRenderer>();
+/*        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = waypoints.Length;
-        lineRenderer.SetPositions(waypoints);
+        lineRenderer.SetPositions(waypoints);*/
     }
 
     public Vector3 Waypoint(int i)
@@ -36,13 +36,13 @@ public class Path : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+        //Gizmos.color = Color.yellow;
 
         Vector3 last = transform.GetChild(0).position;
         for (int i = 1; i < transform.childCount; i++)
         {
             Vector3 next = transform.GetChild(i).position;
-            Gizmos.DrawLine(last, next);
+            //Gizmos.DrawLine(last, next);
             last = next;
         }
 

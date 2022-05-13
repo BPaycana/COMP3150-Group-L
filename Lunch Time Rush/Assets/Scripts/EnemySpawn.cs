@@ -22,7 +22,7 @@ public class EnemySpawn : MonoBehaviour
     public float setMinSpeed;
     public float setMaxSpeed;
 
-    public string[] foodType = {"burger", "pizza"};
+    public string[] foodType = { "burger", "pizza", "drink" }; // pick a secondary 1 as well, if only primary, set the bar to be inactive
 
     private float spawnTime;
     private float speed;
@@ -30,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
     private float health;
     public float enemiesLeft;
 
-    
+
 
     void SpawnEnemy(GameObject setParent)
     {
@@ -44,7 +44,7 @@ public class EnemySpawn : MonoBehaviour
             {
                 int randPath = Random.Range(0, pathArray.Length);
                 int randType = Random.Range(0, foodType.Length);
-                EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());               
+                EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());
                 enemy.tag = "Enemy";
                 enemy.path = pathArray[randPath];
                 enemy.speed = speed;
@@ -54,7 +54,7 @@ public class EnemySpawn : MonoBehaviour
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
-            } 
+            }
             else
             {
                 int randPath = Random.Range(0, pathArray.Length);
@@ -74,12 +74,12 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
-/*    int RandPath(Path[] path)
-    {
-        int numPaths = path.GetLength();
+    /*    int RandPath(Path[] path)
+        {
+            int numPaths = path.GetLength();
 
-        return n;
-    }*/
+            return n;
+        }*/
 
     // Start is called before the first frame update
     void Start()

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        
         direction = new Vector3(0, 0, 0);
         touching = false;
     }
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
                 direction = (worldPos - worldStartPos);
                 direction = Vector3.ClampMagnitude(direction, 1);
                 //transform.Translate(direction * moveSpeed * Time.deltaTime);
-                //Debug.Log(direction.normalized.magnitude);
+                Debug.Log(direction.normalized.magnitude);
 
                 joystickRing.transform.position = worldStartPos;
                 joystick.transform.position = worldStartPos + (direction / 2);
