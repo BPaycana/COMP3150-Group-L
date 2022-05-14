@@ -22,15 +22,16 @@ public class EnemySpawn : MonoBehaviour
     public float setMinSpeed;
     public float setMaxSpeed;
 
-    public string[] foodType = { "burger", "pizza", "drink" }; // pick a secondary 1 as well, if only primary, set the bar to be inactive
+    public string[] foodType = {"burger", "pizza", "soda"};
 
     private float spawnTime;
     private float speed;
     private State state;
     private float health;
     public float enemiesLeft;
-
-
+    public int specialEnemyChance = 25;  //between 1-100, percentage. default to 25%
+    private int isSpecial;
+    private bool specialState;
 
     void SpawnEnemy(GameObject setParent)
     {
@@ -40,21 +41,39 @@ public class EnemySpawn : MonoBehaviour
         {
             health = Random.Range(setMinHealth, setMaxHealth);
             speed = Random.Range(setMinSpeed, setMaxSpeed);
+            isSpecial = (int) Random.Range(1, 100);   
+            if(isSpecial < specialEnemyChance)
+            {
+                specialState = true;
+            } else
+            {
+                specialState = false;
+            }
             if (enemiesLeft == 1)
             {
                 int randPath = Random.Range(0, pathArray.Length);
                 int randType = Random.Range(0, foodType.Length);
-                EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());
+                EnemyMove enemy = Instantiate(Enemy.GetComponent<EnemyMove>());               
                 enemy.tag = "Enemy";
                 enemy.path = pathArray[randPath];
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.isLastEnemy = true;
                 enemy.setType(foodType[randType]);
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
+                //enemy.GetComponent<EnemyHealth>().specHealthBarBack.enabled = false;
+                enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
+                enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
+                if (specialState)
+                {
+                    enemy.setSpecType("drink");
+                    //enemy.isSpecialEnemy = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
+                }
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
-            }
+            } 
             else
             {
                 int randPath = Random.Range(0, pathArray.Length);
@@ -65,7 +84,16 @@ public class EnemySpawn : MonoBehaviour
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.setType(foodType[randType]);
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isLastEnemy: " + enemy.isLastEnemy);
+                enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
+                enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
+                if (specialState)
+                {
+                    enemy.setSpecType("drink");
+                    //enemy.isSpecialEnemy = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
+                }
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
             }
@@ -74,12 +102,12 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
-    /*    int RandPath(Path[] path)
-        {
-            int numPaths = path.GetLength();
+/*    int RandPath(Path[] path)
+    {
+        int numPaths = path.GetLength();
 
-            return n;
-        }*/
+        return n;
+    }*/
 
     // Start is called before the first frame update
     void Start()
