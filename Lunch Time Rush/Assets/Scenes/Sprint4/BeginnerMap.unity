@@ -230,6 +230,18 @@ PrefabInstance:
       propertyPath: towerColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2130387667636553429, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130387667636553429, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130387667636553430, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2130387667636553430, guid: 382e045859317e54686743441acf9195, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 10
@@ -253,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 4213458263274349091}
     - target: {fileID: 5515274419942380800, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: interactRange
-      value: 0.6
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380802, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_Color.b
@@ -352,12 +364,24 @@ PrefabInstance:
       value: 0.9960785
       objectReference: {fileID: 0}
     - target: {fileID: 6794160920087126288, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794160920087126288, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6794160920087126288, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794160920087126291, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794160920087126291, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 963842208826ec444847057e171dbf38, type: 3}
@@ -5554,7 +5578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205154, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_RootOrder
@@ -5655,6 +5679,14 @@ PrefabInstance:
     - target: {fileID: 8563697504901265708, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Interpolate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563697504901265708, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563697504901265709, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b27e32b763484e04d858dccabd657f00, type: 3}
