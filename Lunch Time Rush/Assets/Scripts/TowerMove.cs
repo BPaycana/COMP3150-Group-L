@@ -20,7 +20,8 @@ public class TowerMove : MonoBehaviour
     {
         Close,
         Far,
-        Held
+        Held,
+        Depleted
     };
 
     private TowerState towerState;
@@ -56,22 +57,46 @@ public class TowerMove : MonoBehaviour
 
                 if (input.actions["Interact"].triggered)
                 {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
-                    if(hit2D.collider != null)
+                    if (tower.getAmmo() == 0)
                     {
-                        if (hit2D.transform.gameObject == gameObject &&
-                            !gameManager.GetComponent<GameManager>().getTowerHeld())                       
+                        if (gameManager.GetComponent<GameManager>().restockState())
                         {
-                            gameManager.towerHoldBool();
-                            spriteRenderer.color = Color.blue;
-                            //Debug.Log(gameManager.getTowerHeld());
-                            towerState = TowerState.Held;
-                            tower.held = true;
-                        }                                           
+                            Debug.Log("player restocking tower");
+                            if (tower.refillAmmo(maxTowerAmmo))
+                            {
+                                gameManager.restock();
+                            }
+
+                            spriteRenderer.color = Color.red;
+                        }
                     }
+                    else
+                    {
+                        /*
+                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                        RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
+                        if (hit2D.collider != null)
+                        {
+                            if (hit2D.transform.gameObject == gameObject &&
+                                !gameManager.GetComponent<GameManager>().getTowerHeld())
+                            {
+                                gameManager.towerHoldBool();
+                                spriteRenderer.color = Color.blue;
+                                //Debug.Log(gameManager.getTowerHeld());
+                                towerState = TowerState.Held;
+                                tower.held = true;
+                            }
+                        }
+                        */
+                        gameManager.towerHoldBool();
+                        spriteRenderer.color = Color.blue;
+                        //Debug.Log(gameManager.getTowerHeld());
+                        towerState = TowerState.Held;
+                        tower.held = true;
+                    }                 
                 }
 
+                /*
                 if (input.actions["Interact"].triggered && tower.getAmmo() == 0)
                 {
                         if (gameManager.GetComponent<GameManager>().restockState())
@@ -85,16 +110,18 @@ public class TowerMove : MonoBehaviour
                             spriteRenderer.color = Color.red;
                         }
                 }
+                */
 
                 break;
 
             case TowerState.Far:
-
+                
                 if (Mathf.Abs(dist) <= interactRange)
                 {
                     spriteRenderer.color = Color.green;
                     towerState = TowerState.Close;
                 }
+                
 
                 break;
 

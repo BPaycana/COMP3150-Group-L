@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 4213458263274349091}
     - target: {fileID: 5515274419942380800, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: interactRange
-      value: 0.6
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380802, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_Color.b
@@ -261,6 +261,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380802, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515274419942380802, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380803, guid: 963842208826ec444847057e171dbf38, type: 3}
