@@ -13,6 +13,7 @@ public class TowerMove : MonoBehaviour
     private PlayerInput input;
     private Tower tower;
     private int towerAmmo;
+    private bool tooClose;
 
 
 
@@ -35,6 +36,7 @@ public class TowerMove : MonoBehaviour
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
         //spriteRenderer.color = Color.yellow;
+        tooClose = false;
 
         towerAmmo = maxTowerAmmo;
     }
@@ -132,11 +134,23 @@ public class TowerMove : MonoBehaviour
                 transform.position = player.position;
                 if (input.actions["drop"].triggered)
                 {
+                    /*
+                    if(tooClose == false)
+                    {
+                        gameManager.towerHoldBool();
+                        spriteRenderer.color = Color.green;
+                        //transform.position = player.position;
+                        towerState = TowerState.Close;
+                        tower.held = false;
+                    }
+                    */
                     gameManager.towerHoldBool();
                     spriteRenderer.color = Color.green;
                     //transform.position = player.position;
                     towerState = TowerState.Close;
                     tower.held = false;
+
+
                 }
                 Debug.Log(gameManager.getTowerHeld());
                 break;
@@ -147,6 +161,22 @@ public class TowerMove : MonoBehaviour
         if (towerAmmo == 0)
         {
             spriteRenderer.color = Color.white;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            tooClose = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            tooClose = false;
         }
     }
 }
