@@ -13,6 +13,7 @@ public class EnemyMove : MonoBehaviour
     private string enemySpecType;
     private SpriteRenderer spriteRenderer;
 
+
     public bool isLastEnemy = false;
 
 

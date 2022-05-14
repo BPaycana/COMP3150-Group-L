@@ -66,7 +66,7 @@ public class EnemySpawn : MonoBehaviour
                 if (specialState)
                 {
                     enemy.setSpecType("drink");
-                    enemy.isSpecialEnemy = true;
+                    //enemy.isSpecialEnemy = true;
                     enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
                 }
@@ -89,7 +89,7 @@ public class EnemySpawn : MonoBehaviour
                 if (specialState)
                 {
                     enemy.setSpecType("drink");
-                    enemy.isSpecialEnemy = true;
+                    //enemy.isSpecialEnemy = true;
                     enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
                 }
