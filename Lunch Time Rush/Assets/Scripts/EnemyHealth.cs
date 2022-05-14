@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
 
-    public float startHealth = 0;
-    private float health;
+    public float targetHealth;
+    private float health = 0f;
+    private float specHealth = 0f;
+
     public float Health
     {
         get
@@ -15,9 +17,13 @@ public class EnemyHealth : MonoBehaviour
             return health;
         }
     }
-
-
-    public float targetHealth = 100f;
+    public float SpecHealth
+    {
+        get
+        {
+            return specHealth;
+        }
+    }
 
     public float TargetHealth
     {
@@ -27,10 +33,13 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     public Image healthBar;
+    public Image specHealthBar;
+    public Image specHealthBarBackground;
+
     // Start is called before the first frame update
     void Start()
     {
-        health = startHealth;
+
     }
 
     // Update is called once per frame
@@ -39,14 +48,20 @@ public class EnemyHealth : MonoBehaviour
         
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, string type)
     {
+        
         health += amount;
 
         healthBar.fillAmount = health / targetHealth;
-
     }
 
+    public void SpecTakeDamage(float amount, string type)
+    {
 
-    
+        specHealth += amount;
+
+        specHealthBar.fillAmount = specHealth / targetHealth;
+
+    }
 }

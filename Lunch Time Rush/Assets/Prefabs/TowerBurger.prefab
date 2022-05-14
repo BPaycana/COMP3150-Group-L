@@ -61,8 +61,8 @@ Transform:
   m_GameObject: {fileID: 1104276683009897178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.15, y: -0.04, z: 0}
-  m_LocalScale: {x: 0.3365, y: 1.7063, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1104276682307424267}
   - {fileID: 2130387667357931146}
@@ -110,8 +110,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 75beb7475aca10643a4033b3a2c46039, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,7 +137,9 @@ MonoBehaviour:
   range: 15
   ammoCapacity: 5
   enemyTag: Enemy
+  bulletDamage: 5
   fireRate: 1
+  held: 0
   bulletPrefab: {fileID: 2018159026554746807, guid: 92efb4a265aa03c4d8d8e34b110e5da7, type: 3}
   firePoint: {fileID: 1104276682307424267}
   ammoBar: {fileID: 9110332122869673893}
@@ -190,18 +192,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.3426628, y: 0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.9691772, y: 8.966909}
   m_EdgeRadius: 0
 --- !u!1001 &7550357848276047902
 PrefabInstance:
@@ -219,6 +221,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d77f2ef59bb3c6241a4cc813377d0e10, type: 3}
     - target: {fileID: 1632032294924040123, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632032294924040123, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632032294924040123, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.98551786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632032294924040123, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
@@ -226,9 +240,33 @@ PrefabInstance:
       propertyPath: m_FillMethod
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3391160286653933074, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391160286653933074, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391160286653933074, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391160286653933074, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391160286653933074, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.7026
+      objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343632, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455765854329343634, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343635, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_SortingOrder
@@ -272,11 +310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.9717681
+      value: 2.1474447
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5860634
+      value: 1.6591858
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,11 +346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.432394
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.082634926
+      value: -2.11
       objectReference: {fileID: 0}
     - target: {fileID: 8455765854329343636, guid: 7a438c1a75b777e4b8bc11e6190d1bf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
