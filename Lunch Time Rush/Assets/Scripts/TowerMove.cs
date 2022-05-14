@@ -102,7 +102,7 @@ public class TowerMove : MonoBehaviour
 
                 
                 //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-                transform.position = player.position;
+                transform.position = new Vector3(player.position.x - 0.1f, player.position.y);
                 if (input.actions["drop"].triggered)
                 {
                     gameManager.towerHoldBool();
