@@ -223,6 +223,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1104276683009897179, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: towerType
+      value: burger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1104276683009897179, guid: 382e045859317e54686743441acf9195, type: 3}
       propertyPath: towerColor.r
       value: 1
       objectReference: {fileID: 0}
@@ -334,6 +338,10 @@ PrefabInstance:
     - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: range
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: towerType
+      value: pizza
       objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: towerColor.b
