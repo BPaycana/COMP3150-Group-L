@@ -21,7 +21,7 @@ public class TowerMove : MonoBehaviour
         Close,
         Far,
         Held,
-        Depleted
+        
     };
 
     private TowerState towerState;
