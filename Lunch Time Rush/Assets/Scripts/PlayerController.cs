@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool touching;
     public Image joystick;
     public Image joystickRing;
+    public Animator animator;
 
     private Rigidbody2D rb;
 
@@ -135,6 +136,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.sqrMagnitude);
 
     }
 }
