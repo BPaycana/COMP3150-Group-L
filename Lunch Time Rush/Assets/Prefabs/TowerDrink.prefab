@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 2
+  range: 3
   ammoCapacity: 5
   enemyTag: Enemy
   bulletDamage: 5
@@ -112,7 +112,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1978883091328128890, guid: dc34753681d09a14c8acab96cdbb91c5, type: 3}
   firePoint: {fileID: 5788306604033287312}
   ammoBar: {fileID: 2407588752662190910}
-  towerType: 
+  towerType: drink
 --- !u!114 &5788306603326359133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 1
-  player: {fileID: 0}
+  player: {fileID: 4213458263141513883, guid: 94c4528bf104bef41a2dbc5810fffdf8, type: 3}
   maxTowerAmmo: 5
 --- !u!50 &4798505899318866510
 Rigidbody2D:

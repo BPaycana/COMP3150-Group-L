@@ -150,7 +150,8 @@ public class Tower : MonoBehaviour
         Debug.Log("Custome target health is " + targetHealth);
         Debug.Log("Custome health is " + health);
         Debug.Log("Custome drink health is " + specHealth);
-        if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType))
+        //if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType) || string.Equals(towerType, "drink"))
+        if (health < targetHealth && string.Equals(towerType, enemyType) || (specHealth < targetHealth) && string.Equals(towerType, "drink"))
         {
 
             if (ammo > 0 && held == false)
