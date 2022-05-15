@@ -12,6 +12,9 @@ public class EnemyMove : MonoBehaviour
     private string enemyType;
     private string enemySpecType;
     private SpriteRenderer spriteRenderer;
+    public Sprite burgerMan;
+    public Sprite pizzaGirl;
+    public Sprite drinkMan;
 
 
     public bool isLastEnemy = false;
@@ -24,15 +27,15 @@ public class EnemyMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (enemyType == "pizza")
         {
-            spriteRenderer.color = Color.yellow;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
         }
         if (enemyType == "burger")
         {
-            spriteRenderer.color = Color.blue;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
         }
         if (enemyType == "drink")
         {
-            spriteRenderer.color = Color.black;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
         }
         // rotate to face the next waypoint
         Vector3 waypoint = path.Waypoint(1);
