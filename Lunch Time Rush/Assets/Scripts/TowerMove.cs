@@ -12,10 +12,12 @@ public class TowerMove : MonoBehaviour
     private GameManager gameManager;
     private PlayerInput input;
     private Tower tower;
+    private Canvas towerAmmoCanvas;
     private int towerAmmo;
     private bool tooClose;
     private bool canPickUp;
-
+    private Vector3 lastPos;
+    private Vector3 deltaPos;
 
 
     enum TowerState
@@ -36,6 +38,7 @@ public class TowerMove : MonoBehaviour
         tower = this.gameObject.GetComponent<Tower>();
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        towerAmmoCanvas = this.gameObject.GetComponentInChildren<Canvas>();
         //spriteRenderer.color = Color.yellow;
         tooClose = false;
         canPickUp = false;
@@ -145,7 +148,57 @@ public class TowerMove : MonoBehaviour
             case TowerState.Held:
 
                 //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-                transform.position = player.position;
+
+                transform.position = player.position + new Vector3(.25f, .25f, 0f);
+                deltaPos = player.position - lastPos;
+                //towerPos = player.position + new Vector3(.5f, 0, 0);
+                //moving left to right
+                if (deltaPos.x > 0.001)
+                {
+                    spriteRenderer.sortingOrder = 2;
+                    towerAmmoCanvas.sortingOrder = 2;
+                    transform.position = player.position + new Vector3(.5f, .25f, 0);
+                    //transform.position = player.position + new Vector3(.1f, .25f, 0);
+                    //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -5;
+                    //maybe offset tower position here
+                }
+
+                //moving right to left
+                if (deltaPos.x < -0.001)
+                {
+                    spriteRenderer.sortingOrder = 2;
+                    towerAmmoCanvas.sortingOrder = 2;
+                    transform.position = player.position + new Vector3(-.2f, .25f, 0);
+                    //transform.position = player.position - new Vector3(.1f, -.25f, 0);
+                    //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                    //maybe offset tower position here
+                }
+
+                //moving bottom to top
+                if (deltaPos.y > 0.001)
+                {
+                    //transform.position = player.position + new Vector3(.5f, .25f, 0);
+                    spriteRenderer.sortingOrder = 1;    //draw player over tower
+                    towerAmmoCanvas.sortingOrder = 0;
+                }
+
+                //moving top to bottom
+                if (deltaPos.y < -0.001)
+                {
+                    spriteRenderer.sortingOrder = 2;    //draw tower over player
+                    towerAmmoCanvas.sortingOrder = 4;
+                }
+
+                if (deltaPos == new Vector3(0, 0, 0))
+                {
+                    spriteRenderer.sortingOrder = 1;    //default
+                    towerAmmoCanvas.sortingOrder = 2;
+                }
+
+                //Debug.Log(deltaPos);
+
+                //transform.position = player.position;
+
                 if (input.actions["drop"].triggered)
                 {
                     
@@ -170,6 +223,8 @@ public class TowerMove : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
         }
+
+        lastPos = player.position;
     }
 
 
