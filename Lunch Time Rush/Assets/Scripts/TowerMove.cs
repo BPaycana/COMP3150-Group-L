@@ -12,10 +12,9 @@ public class TowerMove : MonoBehaviour
     private GameManager gameManager;
     private PlayerInput input;
     private Tower tower;
-    private Transform towerTrans;
     private int towerAmmo;
-    private Vector3 lastPos;
-    private Vector3 deltaPos;
+    private bool tooClose;
+    private bool canPickUp;
 
 
 
@@ -38,6 +37,8 @@ public class TowerMove : MonoBehaviour
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
         //spriteRenderer.color = Color.yellow;
+        tooClose = false;
+        canPickUp = false;
 
         towerAmmo = maxTowerAmmo;
     }
@@ -52,7 +53,14 @@ public class TowerMove : MonoBehaviour
         {
             case TowerState.Close:
 
+                /*
                 if (Mathf.Abs(dist) > interactRange)
+                {
+                    spriteRenderer.color = tower.getColor();
+                    towerState = TowerState.Far;
+                }
+                */
+                if (canPickUp == false)
                 {
                     spriteRenderer.color = tower.getColor();
                     towerState = TowerState.Far;
@@ -73,7 +81,7 @@ public class TowerMove : MonoBehaviour
                             spriteRenderer.color = Color.red;
                         }
                     }
-                    else
+                    else if(!gameManager.GetComponent<GameManager>().getTowerHeld())
                     {
                         /*
                         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -94,6 +102,7 @@ public class TowerMove : MonoBehaviour
                         gameManager.towerHoldBool();
                         spriteRenderer.color = Color.blue;
                         //Debug.Log(gameManager.getTowerHeld());
+                        //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
                         towerState = TowerState.Held;
                         tower.held = true;
                     }
@@ -118,71 +127,40 @@ public class TowerMove : MonoBehaviour
                 break;
 
             case TowerState.Far:
-
+                /*
                 if (Mathf.Abs(dist) <= interactRange)
                 {
                     spriteRenderer.color = Color.green;
                     towerState = TowerState.Close;
                 }
-
+                */
+                if (canPickUp == true)
+                {
+                    spriteRenderer.color = Color.green;
+                    towerState = TowerState.Close;
+                }
 
                 break;
 
             case TowerState.Held:
 
                 //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-                transform.position = player.position + new Vector3(.25f, .25f, 0f);
-                deltaPos = player.position - lastPos;
-                //towerPos = player.position + new Vector3(.5f, 0, 0);
-                //moving left to right
-                if (deltaPos.x > 0.001)
-                {
-                    spriteRenderer.sortingOrder = 2;
-                    transform.position = player.position + new Vector3(.5f, .25f, 0);
-                    //transform.position = player.position + new Vector3(.1f, .25f, 0);
-                    //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -5;
-                    //maybe offset tower position here
-                }
-
-                //moving right to left
-                if (deltaPos.x < -0.001)
-                {
-                    spriteRenderer.sortingOrder = 2;
-                    transform.position = player.position + new Vector3(-.2f, .25f, 0);
-                    //transform.position = player.position - new Vector3(.1f, -.25f, 0);
-                    //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
-                    //maybe offset tower position here
-                }
-
-                //moving bottom to top
-                if(deltaPos.y > 0.001)
-                {
-                    //transform.position = player.position + new Vector3(.5f, .25f, 0);
-                    spriteRenderer.sortingOrder = 1;    //draw player over tower
-                }
-
-                //moving top to bottom
-                if (deltaPos.y < -0.001)
-                {
-                    spriteRenderer.sortingOrder = 2;    //draw tower over player
-                }
-
-                if(deltaPos == new Vector3(0, 0, 0))
-                {
-                    spriteRenderer.sortingOrder = 1;    //default
-                }
-
-                //Debug.Log(deltaPos);
-
+                transform.position = player.position;
                 if (input.actions["drop"].triggered)
                 {
-                    gameManager.towerHoldBool();
-                    spriteRenderer.color = Color.green;
-                    //transform.position = player.position;
-                    towerState = TowerState.Close;
-                    tower.held = false;
+                    
+                    if(tooClose == false)
+                    {
+                        gameManager.towerHoldBool();
+                        spriteRenderer.color = Color.green;
+                        //transform.position = player.position;
+                        //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                        towerState = TowerState.Close;
+                        tower.held = false;
+                    }
+                    
                 }
-                //Debug.Log(gameManager.getTowerHeld());
+                Debug.Log(gameManager.getTowerHeld());
                 break;
         }
 
@@ -192,9 +170,31 @@ public class TowerMove : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
         }
+    }
 
-        lastPos = player.position;
-        
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer == 6)
+        {
+            tooClose = true;
+        }
+        if(other.gameObject.layer == 7)
+        {
+            canPickUp = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            tooClose = false;
+        }
+        if (other.gameObject.layer == 7)
+        {
+            canPickUp = false;
+        }
     }
 
 }
