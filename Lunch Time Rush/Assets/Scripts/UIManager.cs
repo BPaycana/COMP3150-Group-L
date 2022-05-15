@@ -110,12 +110,18 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.Start();
     }
 
-    public void NextLevel()
+    public void LevelIntermediate()
     {
         gameWonPanel.SetActive(false);
-        levelCount++;
-        SceneManager.LoadScene(levelCount);
+        SceneManager.LoadScene(1);
         
+    }
+
+    public void LevelAdvanced()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(2);
+
     }
 
     public void Won()

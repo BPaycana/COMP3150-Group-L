@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 1
-  player: {fileID: 4213458263141513883, guid: 94c4528bf104bef41a2dbc5810fffdf8, type: 3}
+  player: {fileID: 0}
   maxTowerAmmo: 5
 --- !u!50 &4798505899318866510
 Rigidbody2D:
