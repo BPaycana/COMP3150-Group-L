@@ -27,11 +27,11 @@ public class EnemyMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (enemyType == "pizza")
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
         }
         if (enemyType == "burger")
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
         }
         if (enemyType == "drink")
         {
