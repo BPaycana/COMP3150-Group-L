@@ -10,6 +10,16 @@ public class EnemyHealth : MonoBehaviour
     private float health = 0f;
     private float specHealth = 0f;
 
+    private bool isSpecial = false;
+
+    public bool IsSpecial
+    {
+        get
+        {
+            return isSpecial;
+        }
+    }
+
     public float Health
     {
         get
@@ -45,12 +55,12 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TakeDamage(float amount, string type)
     {
-        
+
         health += amount;
 
         healthBar.fillAmount = health / targetHealth;
@@ -63,5 +73,10 @@ public class EnemyHealth : MonoBehaviour
 
         specHealthBar.fillAmount = specHealth / targetHealth;
 
+    }
+
+    public void EnemyIsSpecial()
+    {
+        isSpecial = true;
     }
 }

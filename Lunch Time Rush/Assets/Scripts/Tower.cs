@@ -9,10 +9,19 @@ public class Tower : MonoBehaviour
 
     public Transform target; // transform of the customers
 
+    private string enemyType;
+
+    private float targetHealth;
+    private float health;
+    private float specHealth;
+
+    private EnemyHealth enemyHealth;
+    private EnemyMove enemyMove;
+
     public float range = 15f; //tuneable parameter for the range of the tower
     public float ammoCapacity = 15;
     private float ammo;
-    
+
     public string enemyTag = "Enemy";
 
     public float bulletDamage = 5f;
@@ -27,11 +36,12 @@ public class Tower : MonoBehaviour
     private GameManager gameManager;
 
     private Color towerColor;
-    
+
     public Transform firePoint;
 
     public Image ammoBar;
 
+    public string towerType;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +59,9 @@ public class Tower : MonoBehaviour
 
     void UpdateTarget()
     {
-        
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
 
         //store shortest distance to an enemy found so far
         float shortestDistance = Mathf.Infinity;
@@ -58,50 +69,70 @@ public class Tower : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
-            
-            if(distanceToEnemy < shortestDistance)
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
 
-            }        
+            }
         }
-
-        if (nearestEnemy != null && shortestDistance <= range) // check if nearest enemy is found and if the shorest distance is within tower range
+        // check if nearest enemy is found and if the shorest distance is within tower range
+        if (nearestEnemy != null && shortestDistance <= range)
         {
+
+            enemyHealth = nearestEnemy.GetComponent<EnemyHealth>();
+            enemyMove = nearestEnemy.GetComponent<EnemyMove>();
+            enemyType = enemyMove.getType();
+
+
             // found enemy and within tower range
             target = nearestEnemy.transform; // set target to that enemy
-        }  
+        }
         else
         {
             target = null;
+            enemyType = null;
         }
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             return;
+        }
+        else // theres a target, get the target's health
+        {
+            targetHealth = enemyHealth.TargetHealth;
+            health = enemyHealth.Health;
+            if (enemyHealth.IsSpecial == false)
+            {
+                specHealth = targetHealth;
+
+            }
+            else
+            {
+                specHealth = enemyHealth.SpecHealth;
+            }
+            // check if the enemy is special, if it's not, set spechealth = target health
+
         }
 
         if (fireCountDown <= 0f)
         {
             Shoot();
-            fireCountDown = 1f/fireRate;
+            fireCountDown = 1f / fireRate;
         }
 
-        fireCountDown -=Time.deltaTime;
+        fireCountDown -= Time.deltaTime;
     }
 
     public bool refillAmmo(int refillAmount)
     {
-        if(ammo <= 0)
+        if (ammo <= 0)
         {
             ammo = refillAmount;
             ammoBar.fillAmount = ammo / ammoCapacity;
@@ -115,12 +146,19 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-             if(ammo > 0 && held == false)
+
+        Debug.Log("Custome target health is " + targetHealth);
+        Debug.Log("Custome health is " + health);
+        Debug.Log("Custome drink health is " + specHealth);
+        if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType))
+        {
+
+            if (ammo > 0 && held == false)
             {
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Bullet bullet = bulletGO.GetComponent<Bullet>();
                 bullet.bulletStrength = bulletDamage;
-                if(bullet != null)
+                if (bullet != null)
                 {
                     bullet.Seek(target);
                     ammo--;
@@ -128,13 +166,21 @@ public class Tower : MonoBehaviour
                 }
                 Debug.Log("Shot at the customer, ammo left: " + ammo);
             }
-            else if( held == true)
+            else if (held == true)
             {
                 Debug.Log("Holding tower, not shooting");
-            } else
+            }
+            else
             {
                 Debug.Log("Out Of Ammo");
             }
+
+        }
+        else
+        {
+            Debug.Log("Not correct customer type to the tower");
+        }
+
     }
 
     public float getAmmo()

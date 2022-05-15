@@ -13,6 +13,8 @@ public class TowerMove : MonoBehaviour
     private PlayerInput input;
     private Tower tower;
     private int towerAmmo;
+    private bool tooClose;
+    private bool canPickUp;
 
 
 
@@ -35,6 +37,8 @@ public class TowerMove : MonoBehaviour
         towerState = TowerState.Far;
         spriteRenderer = GetComponent<SpriteRenderer>();
         //spriteRenderer.color = Color.yellow;
+        tooClose = false;
+        canPickUp = false;
 
         towerAmmo = maxTowerAmmo;
     }
@@ -49,7 +53,14 @@ public class TowerMove : MonoBehaviour
         {
             case TowerState.Close:
 
+                /*
                 if (Mathf.Abs(dist) > interactRange)
+                {
+                    spriteRenderer.color = tower.getColor();
+                    towerState = TowerState.Far;
+                }
+                */
+                if (canPickUp == false)
                 {
                     spriteRenderer.color = tower.getColor();
                     towerState = TowerState.Far;
@@ -70,7 +81,7 @@ public class TowerMove : MonoBehaviour
                             spriteRenderer.color = Color.red;
                         }
                     }
-                    else
+                    else if(!gameManager.GetComponent<GameManager>().getTowerHeld())
                     {
                         /*
                         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -91,6 +102,7 @@ public class TowerMove : MonoBehaviour
                         gameManager.towerHoldBool();
                         spriteRenderer.color = Color.blue;
                         //Debug.Log(gameManager.getTowerHeld());
+                        //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
                         towerState = TowerState.Held;
                         tower.held = true;
                     }
@@ -115,28 +127,38 @@ public class TowerMove : MonoBehaviour
                 break;
 
             case TowerState.Far:
-
+                /*
                 if (Mathf.Abs(dist) <= interactRange)
                 {
                     spriteRenderer.color = Color.green;
                     towerState = TowerState.Close;
                 }
-
+                */
+                if (canPickUp == true)
+                {
+                    spriteRenderer.color = Color.green;
+                    towerState = TowerState.Close;
+                }
 
                 break;
 
             case TowerState.Held:
 
-
                 //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
                 transform.position = new Vector3(player.position.x - 0.1f, player.position.y);
                 if (input.actions["drop"].triggered)
                 {
-                    gameManager.towerHoldBool();
-                    spriteRenderer.color = Color.green;
-                    //transform.position = player.position;
-                    towerState = TowerState.Close;
-                    tower.held = false;
+                    
+                    if(tooClose == false)
+                    {
+                        gameManager.towerHoldBool();
+                        spriteRenderer.color = Color.green;
+                        //transform.position = player.position;
+                        //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                        towerState = TowerState.Close;
+                        tower.held = false;
+                    }
+                    
                 }
                 Debug.Log(gameManager.getTowerHeld());
                 break;
@@ -149,4 +171,30 @@ public class TowerMove : MonoBehaviour
             spriteRenderer.color = Color.white;
         }
     }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer == 6)
+        {
+            tooClose = true;
+        }
+        if(other.gameObject.layer == 7)
+        {
+            canPickUp = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            tooClose = false;
+        }
+        if (other.gameObject.layer == 7)
+        {
+            canPickUp = false;
+        }
+    }
+
 }
