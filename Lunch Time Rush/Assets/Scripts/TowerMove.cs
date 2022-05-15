@@ -12,7 +12,10 @@ public class TowerMove : MonoBehaviour
     private GameManager gameManager;
     private PlayerInput input;
     private Tower tower;
+    private Transform towerTrans;
     private int towerAmmo;
+    private Vector3 lastPos;
+    private Vector3 deltaPos;
 
 
 
@@ -127,9 +130,50 @@ public class TowerMove : MonoBehaviour
 
             case TowerState.Held:
 
-
                 //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-                transform.position = player.position;
+                transform.position = player.position + new Vector3(.25f, .25f, 0f);
+                deltaPos = player.position - lastPos;
+                //towerPos = player.position + new Vector3(.5f, 0, 0);
+                //moving left to right
+                if (deltaPos.x > 0.001)
+                {
+                    spriteRenderer.sortingOrder = 2;
+                    transform.position = player.position + new Vector3(.5f, .25f, 0);
+                    //transform.position = player.position + new Vector3(.1f, .25f, 0);
+                    //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -5;
+                    //maybe offset tower position here
+                }
+
+                //moving right to left
+                if (deltaPos.x < -0.001)
+                {
+                    spriteRenderer.sortingOrder = 2;
+                    transform.position = player.position + new Vector3(-.2f, .25f, 0);
+                    //transform.position = player.position - new Vector3(.1f, -.25f, 0);
+                    //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                    //maybe offset tower position here
+                }
+
+                //moving bottom to top
+                if(deltaPos.y > 0.001)
+                {
+                    //transform.position = player.position + new Vector3(.5f, .25f, 0);
+                    spriteRenderer.sortingOrder = 1;    //draw player over tower
+                }
+
+                //moving top to bottom
+                if (deltaPos.y < -0.001)
+                {
+                    spriteRenderer.sortingOrder = 2;    //draw tower over player
+                }
+
+                if(deltaPos == new Vector3(0, 0, 0))
+                {
+                    spriteRenderer.sortingOrder = 1;    //default
+                }
+
+                //Debug.Log(deltaPos);
+
                 if (input.actions["drop"].triggered)
                 {
                     gameManager.towerHoldBool();
@@ -138,7 +182,7 @@ public class TowerMove : MonoBehaviour
                     towerState = TowerState.Close;
                     tower.held = false;
                 }
-                Debug.Log(gameManager.getTowerHeld());
+                //Debug.Log(gameManager.getTowerHeld());
                 break;
         }
 
@@ -148,5 +192,9 @@ public class TowerMove : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
         }
+
+        lastPos = player.position;
+        
     }
+
 }
