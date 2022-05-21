@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sprint4/GameWon.unity
     guid: c675ba37ce9eb3241ac020dd8d245167
+  - enabled: 0
+    path: Assets/Scenes/Sprint4/MenuMap.unity
+    guid: bce255f1bc196b54087d8ccb9cf5f8a2
+  - enabled: 1
+    path: Assets/Scenes/Sprint4/Menu.unity
+    guid: 1a274585846f45f43989d93eb88ce747
   m_configObjects: {}
