@@ -121,21 +121,21 @@ public class UIManager : MonoBehaviour
     public void LevelBeginner()
     {
         //gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
     }
 
     public void LevelIntermediate()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         
     }
 
     public void LevelAdvanced()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
 
     }
 
