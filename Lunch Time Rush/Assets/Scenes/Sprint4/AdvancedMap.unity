@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1216,6 +1216,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 238556965}
+    - target: {fileID: 5788306603326359133, guid: bfdd8b8fe24301f4097e48d58895d771, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 476861554}
+    - target: {fileID: 5788306603326359133, guid: bfdd8b8fe24301f4097e48d58895d771, type: 3}
+      propertyPath: cantPlaceCross
+      value: 
+      objectReference: {fileID: 476861553}
     - target: {fileID: 5788306603326359134, guid: bfdd8b8fe24301f4097e48d58895d771, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1274,6 +1282,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfdd8b8fe24301f4097e48d58895d771, type: 3}
+--- !u!212 &476861553 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4418584896292367025, guid: bfdd8b8fe24301f4097e48d58895d771, type: 3}
+  m_PrefabInstance: {fileID: 476861552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &476861554 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4889199788327442410, guid: bfdd8b8fe24301f4097e48d58895d771, type: 3}
+  m_PrefabInstance: {fileID: 476861552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &491677624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12272,6 +12290,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 238556965}
+    - target: {fileID: 1104276683009897158, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 630666124}
+    - target: {fileID: 1104276683009897158, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: cantPlaceCross
+      value: 
+      objectReference: {fileID: 630666123}
     - target: {fileID: 1104276683009897178, guid: 382e045859317e54686743441acf9195, type: 3}
       propertyPath: m_Name
       value: TowerBurger
@@ -12282,6 +12308,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382e045859317e54686743441acf9195, type: 3}
+--- !u!212 &630666123 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3198599710438058387, guid: 382e045859317e54686743441acf9195, type: 3}
+  m_PrefabInstance: {fileID: 630666122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &630666124 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3913742882867341744, guid: 382e045859317e54686743441acf9195, type: 3}
+  m_PrefabInstance: {fileID: 630666122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651646791
 GameObject:
   m_ObjectHideFlags: 0
@@ -12369,6 +12405,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 238556965}
+    - target: {fileID: 5515274419942380800, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 679010496}
+    - target: {fileID: 5515274419942380800, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: cantPlaceCross
+      value: 
+      objectReference: {fileID: 679010495}
     - target: {fileID: 5515274419942380803, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -12435,6 +12479,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 963842208826ec444847057e171dbf38, type: 3}
+--- !u!212 &679010495 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7661588999503571152, guid: 963842208826ec444847057e171dbf38, type: 3}
+  m_PrefabInstance: {fileID: 679010494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &679010496 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3114648471939853750, guid: 963842208826ec444847057e171dbf38, type: 3}
+  m_PrefabInstance: {fileID: 679010494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &802312458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7965728726113765348, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
