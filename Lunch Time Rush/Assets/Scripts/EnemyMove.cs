@@ -15,6 +15,7 @@ public class EnemyMove : MonoBehaviour
     public Sprite burgerMan;
     public Sprite pizzaGirl;
     public Sprite drinkMan;
+    public Animator animator;
 
 
     public bool isLastEnemy = false;
@@ -28,14 +29,19 @@ public class EnemyMove : MonoBehaviour
         if (enemyType == "pizza")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
+            animator.SetBool("isPizza", true);
         }
         if (enemyType == "burger")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
+            animator.SetBool("isBurger", true);
         }
         if (enemySpecType == "drink")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
+            animator.SetBool("isBurger", false);
+            animator.SetBool("isPizza", false);
+            animator.SetBool("isDrink", true);
         }
         // rotate to face the next waypoint
         Vector3 waypoint = path.Waypoint(1);
@@ -63,9 +69,14 @@ public class EnemyMove : MonoBehaviour
             direction = direction.normalized;
             transform.Translate(direction * distanceTravelled, Space.World);
 
+            animator.SetFloat("Horizontal", direction.x);
+            animator.SetFloat("Vertical", direction.y);
+            animator.SetFloat("Speed", direction.sqrMagnitude);
+
             // rotate to face waypoint
             //transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
         }
+        
     }
 
     private void NextWaypoint()
