@@ -33,7 +33,7 @@ public class EnemyMove : MonoBehaviour
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
             GameObject bubble = Instantiate(pizzaBubble, this.gameObject.transform);
-            bubble.transform.position = new Vector3(3.33f, .5f, 0);   
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         if (enemyType == "burger" && enemySpecType != "drink")
@@ -41,21 +41,21 @@ public class EnemyMove : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
             GameObject bubble = Instantiate(burgerBubble, this.gameObject.transform);
             //bubble.transform.position = new Vector3(-2, 6, 0);
-            bubble.transform.position = new Vector3(3.33f, .5f, 0);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         if (enemySpecType == "drink" && enemyType == "burger")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
             GameObject bubble = Instantiate(burgerDrinkBubble, this.gameObject.transform);
-            bubble.transform.position = new Vector3(3.33f, .5f, 0);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         if (enemySpecType == "drink" && enemyType == "pizza")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
             GameObject bubble = Instantiate(pizzaDrinkBubble, this.gameObject.transform);
-            bubble.transform.position = new Vector3(3.33f, .5f, 0);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         // rotate to face the next waypoint

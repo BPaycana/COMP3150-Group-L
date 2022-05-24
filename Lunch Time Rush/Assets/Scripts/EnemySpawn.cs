@@ -76,8 +76,8 @@ public class EnemySpawn : MonoBehaviour
                     //Debug.Log(enemy.getSpecType());
 
                     enemy.GetComponent<EnemyHealth>().targetSpecHealth = specHealth;
-                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
-                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
+                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
@@ -104,8 +104,8 @@ public class EnemySpawn : MonoBehaviour
                     //Debug.Log(enemy.getSpecType());
 
                     enemy.GetComponent<EnemyHealth>().targetSpecHealth = specHealth;
-                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
-                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
+                    enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
+                    enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;

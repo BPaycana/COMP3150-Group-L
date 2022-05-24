@@ -126,50 +126,8 @@ public class EnemyHealth : MonoBehaviour
                     }
                 }
             }
-
-/*            if (child.name == "BurgerText")
-            {
-                Debug.Log("Got BurgerText");
-                healthNum = child.GetComponentInChildren<TextMeshPro>();
-                healthNum.text = "11";
-                Debug.Log("Got BurgerText" + healthNum.name);
-            }
-            if (child.name == "PizzaText")
-            {
-                Debug.Log("Got PizzaText");
-                healthNum = child.GetComponentInChildren<TextMeshPro>();
-                healthNum.text = "11";
-                Debug.Log("Got PizzaText" + healthNum.name);
-            }
-            if (child.name == "DrinkText")
-            {
-                Debug.Log("Got DrinkText");
-                specHealthNum = child.GetComponentInChildren<TextMeshPro>();
-                healthNum.text = "11";
-                Debug.Log("Got DrinkText" + specHealthNum.name);
-            }*/
         }
-        /*for (int i = 0; i < gameObject.transform.childCount;)
-        {
-            if (gameObject.transform.GetChild(i).name == "BurgerText")
-            {
-                Debug.Log("Got BurgerText");
-                healthNum = gameObject.transform.GetChild(i).GetComponentInChildren<Text>();
-                Debug.Log("Got BurgerText" + healthNum.name);
-            }
-            if (gameObject.transform.GetChild(i).name == "PizzaText")
-            {
-                Debug.Log("Got PizzaText");
-                healthNum = gameObject.transform.GetChild(i).GetComponentInChildren<Text>();
-                Debug.Log("Got PizzaText" + healthNum.name);
-            }
-            if (gameObject.transform.GetChild(i).name == "DrinkText")
-            {
-                Debug.Log("Got DrinkText");
-                specHealthNum = gameObject.transform.GetChild(i).GetComponentInChildren<Text>();
-                Debug.Log("Got DrinkText" + specHealthNum.name);
-            }
-        }*/
+
     }
 
     // Update is called once per frame
@@ -186,7 +144,7 @@ public class EnemyHealth : MonoBehaviour
 
         healthNum.SetText((health).ToString());
 
-        healthBar.fillAmount = health / targetHealth;
+        //healthBar.fillAmount = health / targetHealth;
     }
 
     public void SpecTakeDamage(float amount, string type)
@@ -196,7 +154,7 @@ public class EnemyHealth : MonoBehaviour
 
         specHealthNum.SetText((specHealth).ToString());
 
-        specHealthBar.fillAmount = specHealth / targetHealth;
+        //specHealthBar.fillAmount = specHealth / targetHealth;
 
     }
 
