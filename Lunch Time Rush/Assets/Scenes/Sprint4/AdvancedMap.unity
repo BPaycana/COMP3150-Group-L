@@ -493,6 +493,7 @@ MonoBehaviour:
   gameWonPanel: {fileID: 1692601008}
   gameOverText: {fileID: 194975130}
   gameWonText: {fileID: 1767668958}
+  menuPanel: {fileID: 0}
   playerHealth: 1
   stars:
   - {fileID: 1427627434}
@@ -866,7 +867,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!1001 &476861552
 PrefabInstance:
