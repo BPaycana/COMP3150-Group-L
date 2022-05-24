@@ -157,7 +157,7 @@ public class Tower : MonoBehaviour
         Debug.Log("Custome health is " + health);
         Debug.Log("Custome drink health is " + specHealth);
         //if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType) || string.Equals(towerType, "drink"))
-        if (health < targetHealth && string.Equals(towerType, enemyType) || (specHealth < targetHealth) && string.Equals(towerType, "drink"))
+        if (health > 0 && string.Equals(towerType, enemyType) || specHealth > 0 && string.Equals(towerType, "drink"))
         {
 
             if (ammo > 0 && held == false)
@@ -175,7 +175,7 @@ public class Tower : MonoBehaviour
             }
             else if (held == true)
             {
-                Debug.Log("Holding tower, not shooting");
+                //Debug.Log("Holding tower, not shooting");
             }
             else
             {

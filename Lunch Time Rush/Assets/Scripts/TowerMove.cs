@@ -226,7 +226,7 @@ public class TowerMove : MonoBehaviour
                     }
                     
                 }
-                Debug.Log(gameManager.getTowerHeld());
+                //Debug.Log(gameManager.getTowerHeld());
                 break;
         }
 

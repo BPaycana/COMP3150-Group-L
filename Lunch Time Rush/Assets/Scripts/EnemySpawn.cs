@@ -28,10 +28,12 @@ public class EnemySpawn : MonoBehaviour
     private float speed;
     private State state;
     private float health;
+    private float specHealth;
     public float enemiesLeft;
     public int specialEnemyChance = 25;  //between 1-100, percentage. default to 25%
     private int isSpecial;
     private bool specialState;
+    private string curFoodType;
 
     void SpawnEnemy(GameObject setParent)
     {
@@ -40,6 +42,7 @@ public class EnemySpawn : MonoBehaviour
         if (spawnTime <= 0 && enemiesLeft > 0)
         {
             health = (int) Random.Range(setMinHealth, setMaxHealth);
+            specHealth = (int)Random.Range(setMinHealth, setMaxHealth);
             speed = Random.Range(setMinSpeed, setMaxSpeed);
             isSpecial = (int)Random.Range(1, 100);
             if (isSpecial < specialEnemyChance)
@@ -60,7 +63,8 @@ public class EnemySpawn : MonoBehaviour
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
                 enemy.isLastEnemy = true;
-                enemy.setType(foodType[randType]);
+                curFoodType = foodType[randType];
+                enemy.setType(curFoodType);
                 //enemy.GetComponent<EnemyHealth>().specHealthBarBack.enabled = false;
                 enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
                 enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
@@ -69,7 +73,9 @@ public class EnemySpawn : MonoBehaviour
                     enemy.setSpecType("drink");
                     //enemy.isSpecialEnemy = true;
                     enemy.GetComponent<EnemyHealth>().EnemyIsSpecial();
+                    //Debug.Log(enemy.getSpecType());
 
+                    enemy.GetComponent<EnemyHealth>().targetSpecHealth = specHealth;
                     enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
                 }
@@ -86,7 +92,8 @@ public class EnemySpawn : MonoBehaviour
                 enemy.path = pathArray[randPath];
                 enemy.speed = speed;
                 enemy.GetComponent<EnemyHealth>().targetHealth = health;
-                enemy.setType(foodType[randType]);
+                curFoodType = foodType[randType];
+                enemy.setType(curFoodType);
                 enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
                 enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 if (specialState)
@@ -94,7 +101,9 @@ public class EnemySpawn : MonoBehaviour
                     enemy.setSpecType("drink");
                     //enemy.isSpecialEnemy = true;
                     enemy.GetComponent<EnemyHealth>().EnemyIsSpecial();
+                    //Debug.Log(enemy.getSpecType());
 
+                    enemy.GetComponent<EnemyHealth>().targetSpecHealth = specHealth;
                     enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = true;
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = true;
                 }

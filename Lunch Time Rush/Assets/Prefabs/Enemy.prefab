@@ -437,6 +437,10 @@ MonoBehaviour:
   burgerMan: {fileID: 21300000, guid: b2b37c7d0902e0b4cb80b4237b6755d4, type: 3}
   pizzaGirl: {fileID: 21300000, guid: a58da9841dc43ec4097993ad264ad8c8, type: 3}
   drinkMan: {fileID: 21300000, guid: d9b6ffba21051f949bde061ae6903d0a, type: 3}
+  pizzaBubble: {fileID: 4360477029213327691, guid: 5e084c281a63d454691499287bfcdfb1, type: 3}
+  burgerBubble: {fileID: 4360477029213327691, guid: 1aebfabab559a104bbb8ba9e87064856, type: 3}
+  pizzaDrinkBubble: {fileID: 4360477029213327691, guid: 6c12ab1b06c38fe4495691fba84a5f82, type: 3}
+  burgerDrinkBubble: {fileID: 4360477029213327691, guid: 3da68fb6a388e2742a5d67a9f244b0e7, type: 3}
   isLastEnemy: 0
 --- !u!58 &8294792517501040263
 CircleCollider2D:

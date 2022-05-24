@@ -139,7 +139,7 @@ MonoBehaviour:
   range: 3
   ammoCapacity: 5
   enemyTag: Enemy
-  bulletDamage: 5
+  bulletDamage: 1
   fireRate: 1
   held: 0
   bulletPrefab: {fileID: 2018159026554746807, guid: 92efb4a265aa03c4d8d8e34b110e5da7, type: 3}
