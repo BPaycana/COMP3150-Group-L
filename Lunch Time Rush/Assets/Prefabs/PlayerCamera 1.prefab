@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1779444227581336655}
   - component: {fileID: 8563697504901265708}
   - component: {fileID: 8563697504901265709}
+  - component: {fileID: 1739436543356293862}
   m_Layer: 7
   m_Name: PlayerCamera 1
   m_TagString: Untagged
@@ -160,6 +161,7 @@ MonoBehaviour:
   changeReq: 5
   joystick: {fileID: 0}
   joystickRing: {fileID: 0}
+  animator: {fileID: 1739436543356293862}
 --- !u!50 &8563697504901265708
 Rigidbody2D:
   serializedVersion: 4
@@ -207,6 +209,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1739436543356293862
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188051491832205157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ecc4022c88beaa43a2aa6218b8f06a0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8563697504856480042
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
 
     private bool towerHeld;
-    private bool canRestock;
+    public bool canRestock;
     private bool getRestock;
 
 
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
             return RestaurantIsAlive;
         }
     }
+
+    public Animator animator;
 
     void Awake()
     {

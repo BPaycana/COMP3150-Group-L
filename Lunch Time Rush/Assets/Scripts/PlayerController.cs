@@ -90,6 +90,16 @@ public class PlayerController : MonoBehaviour
             joystickRing.enabled = false;
         }
 
+        if (gameManager.canRestock == true)
+        {
+            animator.SetBool("HoldingBox", true);
+        }
+
+        if (gameManager.canRestock == false)
+        {
+            animator.SetBool("HoldingBox", false);
+        }
+
 
         //transform.Translate(movement * moveSpeed * Time.deltaTime);
 
