@@ -60,4 +60,13 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("Hit something for damage: " + bulletStrength);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 11)
+        {
+            Destroy(gameObject);
+
+        }
+    }
 }
