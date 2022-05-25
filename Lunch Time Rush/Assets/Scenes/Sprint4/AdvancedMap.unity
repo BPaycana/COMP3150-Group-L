@@ -1069,7 +1069,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!213 &423042166
 Sprite:
@@ -1453,11 +1453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setMaxHealth
-      value: 13
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setMinHealth
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: setSpawnTime
