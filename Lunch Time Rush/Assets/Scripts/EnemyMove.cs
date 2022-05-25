@@ -17,6 +17,10 @@ public class EnemyMove : MonoBehaviour
     public Sprite drinkMan;
     public Animator animator;
 
+    public GameObject pizzaBubble;
+    public GameObject burgerBubble;
+    public GameObject pizzaDrinkBubble;
+    public GameObject burgerDrinkBubble;
 
     public bool isLastEnemy = false;
 
@@ -26,22 +30,39 @@ public class EnemyMove : MonoBehaviour
         // start at waypoint 0
         transform.position = path.Waypoint(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (enemyType == "pizza")
+        if (enemyType == "pizza" && enemySpecType != "drink")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
             animator.SetBool("isPizza", true);
+            GameObject bubble = Instantiate(pizzaBubble, this.gameObject.transform);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            //bubble.transform.Translate(new Vector3(25, -4));
         }
-        if (enemyType == "burger")
+        if (enemyType == "burger" && enemySpecType != "drink")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
             animator.SetBool("isBurger", true);
+            GameObject bubble = Instantiate(burgerBubble, this.gameObject.transform);
+            //bubble.transform.position = new Vector3(-2, 6, 0);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            //bubble.transform.Translate(new Vector3(25, -4));
         }
-        if (enemySpecType == "drink")
+        if (enemySpecType == "drink" && enemyType == "burger")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
             animator.SetBool("isBurger", false);
             animator.SetBool("isPizza", false);
             animator.SetBool("isDrink", true);
+            GameObject bubble = Instantiate(burgerDrinkBubble, this.gameObject.transform);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            //bubble.transform.Translate(new Vector3(25, -4));
+        }
+        if (enemySpecType == "drink" && enemyType == "pizza")
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
+            GameObject bubble = Instantiate(pizzaDrinkBubble, this.gameObject.transform);
+            bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            //bubble.transform.Translate(new Vector3(25, -4));
         }
         // rotate to face the next waypoint
         Vector3 waypoint = path.Waypoint(1);

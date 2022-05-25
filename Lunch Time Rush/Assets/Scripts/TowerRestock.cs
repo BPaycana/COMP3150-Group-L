@@ -11,6 +11,9 @@ public class TowerRestock : MonoBehaviour
     private PlayerInput input;
     private SpriteRenderer spriteRenderer;
     private int _restockAmt;
+
+    public SpriteRenderer outline;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,15 @@ public class TowerRestock : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(player.position, transform.position);
+        
+        if(Mathf.Abs(dist) < 1)
+        {
+            outline.enabled = true;
+        }
+        else
+        {
+            outline.enabled = false;
+        }
 
         if (input.actions["Interact"].triggered &&
                 Mathf.Abs(dist) < 1 && 

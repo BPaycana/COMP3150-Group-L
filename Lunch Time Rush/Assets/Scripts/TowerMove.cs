@@ -8,6 +8,8 @@ public class TowerMove : MonoBehaviour
     public float interactRange = 1;
     public Transform player;
     public int maxTowerAmmo = 5;
+    public SpriteRenderer outline;
+    public SpriteRenderer cantPlaceCross;
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private PlayerInput input;
@@ -42,7 +44,8 @@ public class TowerMove : MonoBehaviour
         //spriteRenderer.color = Color.yellow;
         tooClose = false;
         canPickUp = false;
-
+        outline.enabled = false;
+        cantPlaceCross.enabled = false;
         towerAmmo = maxTowerAmmo;
     }
 
@@ -65,24 +68,20 @@ public class TowerMove : MonoBehaviour
                 */
                 if (canPickUp == false)
                 {
-                    spriteRenderer.color = tower.getColor();
+                    outline.enabled = false;
                     towerState = TowerState.Far;
                 }
 
                 if (input.actions["Interact"].triggered)
                 {
-                    if (tower.getAmmo() == 0)
+                    if (gameManager.GetComponent<GameManager>().restockState()
+                        && tower.getAmmo() < maxTowerAmmo)
                     {
-                        if (gameManager.GetComponent<GameManager>().restockState())
+                        Debug.Log("player restocking tower");
+                        if (tower.refillAmmo(maxTowerAmmo))
                         {
-                            Debug.Log("player restocking tower");
-                            if (tower.refillAmmo(maxTowerAmmo))
-                            {
-                                gameManager.restock();
-                            }
-
-                            spriteRenderer.color = Color.red;
-                        }
+                            gameManager.restock();
+                        }                                                  
                     }
                     else if(!gameManager.GetComponent<GameManager>().getTowerHeld())
                     {
@@ -103,7 +102,8 @@ public class TowerMove : MonoBehaviour
                         }
                         */
                         gameManager.towerHoldBool();
-                        spriteRenderer.color = Color.blue;
+                        //spriteRenderer.color = Color.blue;
+                        outline.enabled = false;
                         //Debug.Log(gameManager.getTowerHeld());
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
                         towerState = TowerState.Held;
@@ -139,7 +139,8 @@ public class TowerMove : MonoBehaviour
                 */
                 if (canPickUp == true)
                 {
-                    spriteRenderer.color = Color.green;
+                    //spriteRenderer.color = Color.green;
+                    outline.enabled = true;
                     towerState = TowerState.Close;
                 }
 
@@ -199,13 +200,25 @@ public class TowerMove : MonoBehaviour
 
                 //transform.position = player.position;
 
-                if (input.actions["drop"].triggered)
+                if (tooClose == true)
+                {
+                    //cantPlaceCross.enabled = true;
+                    spriteRenderer.color = Color.grey;
+                }
+                else if(tooClose == false)
+                {
+                    spriteRenderer.color = Color.white;
+                    //cantPlaceCross.enabled = false;
+                }
+
+                if (input.actions["interact"].triggered)
                 {
                     
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
-                        spriteRenderer.color = Color.green;
+                        //spriteRenderer.color = Color.green;
+                        outline.enabled = true;
                         //transform.position = player.position;
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                         towerState = TowerState.Close;
@@ -213,7 +226,7 @@ public class TowerMove : MonoBehaviour
                     }
                     
                 }
-                Debug.Log(gameManager.getTowerHeld());
+                //Debug.Log(gameManager.getTowerHeld());
                 break;
         }
 
@@ -221,7 +234,7 @@ public class TowerMove : MonoBehaviour
 
         if (towerAmmo == 0)
         {
-            spriteRenderer.color = Color.white;
+            //spriteRenderer.color = Color.white;
         }
 
         lastPos = player.position;
@@ -230,9 +243,10 @@ public class TowerMove : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.layer == 6)
+        if(other.gameObject.layer == 6 || other.gameObject.layer == 10)
         {
             tooClose = true;
+            
         }
         if(other.gameObject.layer == 7)
         {
@@ -242,7 +256,7 @@ public class TowerMove : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == 6 || other.gameObject.layer == 10)
         {
             tooClose = false;
         }

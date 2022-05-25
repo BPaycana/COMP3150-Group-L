@@ -132,6 +132,7 @@ public class Tower : MonoBehaviour
 
     public bool refillAmmo(int refillAmount)
     {
+        /*
         if (ammo <= 0)
         {
             ammo = refillAmount;
@@ -141,6 +142,11 @@ public class Tower : MonoBehaviour
         }
         Debug.Log("Tower still has ammo!");
         return false;
+        */
+        ammo = refillAmount;
+        ammoBar.fillAmount = ammo / ammoCapacity;
+        Debug.Log("refilled tower with ammo amount: " + refillAmount);
+        return true;
 
     }
 
@@ -151,7 +157,7 @@ public class Tower : MonoBehaviour
         Debug.Log("Custome health is " + health);
         Debug.Log("Custome drink health is " + specHealth);
         //if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType) || string.Equals(towerType, "drink"))
-        if (health < targetHealth && string.Equals(towerType, enemyType) || (specHealth < targetHealth) && string.Equals(towerType, "drink"))
+        if (health > 0 && string.Equals(towerType, enemyType) || specHealth > 0 && string.Equals(towerType, "drink"))
         {
 
             if (ammo > 0 && held == false)
@@ -169,7 +175,7 @@ public class Tower : MonoBehaviour
             }
             else if (held == true)
             {
-                Debug.Log("Holding tower, not shooting");
+                //Debug.Log("Holding tower, not shooting");
             }
             else
             {

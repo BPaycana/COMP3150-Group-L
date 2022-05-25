@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     public bool getTowerHeld()
     {
-        Debug.Log("isTowerHeld: " + towerHeld);
+        //Debug.Log("isTowerHeld: " + towerHeld);
         return towerHeld;
     }
 

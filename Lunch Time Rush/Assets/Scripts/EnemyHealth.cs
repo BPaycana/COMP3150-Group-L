@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyHealth : MonoBehaviour
 {
 
-    public float targetHealth;
+    public float targetHealth;  //current health
+    public float targetSpecHealth;
     private float health = 0f;
     private float specHealth = 0f;
 
@@ -46,9 +48,85 @@ public class EnemyHealth : MonoBehaviour
     public Image specHealthBar;
     public Image specHealthBarBackground;
 
+    public TextMeshPro healthNum;
+    public TextMeshPro specHealthNum;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        health = targetHealth;
+        specHealth = targetSpecHealth;
+        foreach (Transform child in transform)
+        {
+            Debug.Log("tryna find some shit");
+            if(child.name == "BurgerBubble(Clone)")
+            {
+                foreach (Transform c in child.transform)
+                {
+                    if (c.name == "BurgerText")
+                    {
+                        Debug.Log("Got BurgerText");
+                        healthNum = c.GetComponentInChildren<TextMeshPro>();
+                        healthNum.SetText(health.ToString());
+                        Debug.Log("Got BurgerText: " + healthNum.name);
+                    }
+                }
+            }
+            if (child.name == "PizzaBubble(Clone)")
+            {
+                foreach (Transform c in child.transform)
+                {
+                    if (c.name == "PizzaText")
+                    {
+                        Debug.Log("Got PizzaText");
+                        healthNum = c.GetComponentInChildren<TextMeshPro>();
+                        healthNum.SetText(health.ToString());
+                        Debug.Log("Got PizzaText: " + healthNum.name);
+                    }
+                }
+            }
+            if (child.name == "BurgerDrinkBubble(Clone)")
+            {
+                foreach (Transform c in child.transform)
+                {
+                    if (c.name == "BurgerText")
+                    {
+                        Debug.Log("Got BurgerText");
+                        healthNum = c.GetComponentInChildren<TextMeshPro>();
+                        healthNum.SetText(health.ToString());
+                        Debug.Log("Got BurgerText: " + healthNum.name);
+                    }
+                    if (c.name == "DrinkText")
+                    {
+                        Debug.Log("Got DrinkText");
+                        specHealthNum = c.GetComponentInChildren<TextMeshPro>();
+                        specHealthNum.SetText(specHealth.ToString());
+                        Debug.Log("Got DrinkText: " + specHealthNum.name);
+                    }
+                }
+            }
+            if (child.name == "PizzaDrinkBubble(Clone)")
+            {
+                foreach (Transform c in child.transform)
+                {
+                    if (c.name == "PizzaText")
+                    {
+                        Debug.Log("Got PizzaText");
+                        healthNum = c.GetComponentInChildren<TextMeshPro>();
+                        healthNum.SetText(health.ToString());
+                        Debug.Log("Got PizzaText: " + healthNum.name);
+                    }
+                    if (c.name == "DrinkText")
+                    {
+                        Debug.Log("Got DrinkText");
+                        specHealthNum = c.GetComponentInChildren<TextMeshPro>();
+                        specHealthNum.SetText(specHealth.ToString());
+                        Debug.Log("Got DrinkText: " + specHealthNum.name);
+                    }
+                }
+            }
+        }
 
     }
 
@@ -60,18 +138,23 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float amount, string type)
     {
+        //whne take damage, bullet damage "amount" makes 'health' go up to damage the player.
+        //eg health start 0, targethealth 3,  bullet damages health to +3 satisfying the player
+        health -= amount;
 
-        health += amount;
+        healthNum.SetText((health).ToString());
 
-        healthBar.fillAmount = health / targetHealth;
+        //healthBar.fillAmount = health / targetHealth;
     }
 
     public void SpecTakeDamage(float amount, string type)
     {
 
-        specHealth += amount;
+        specHealth -= amount;
 
-        specHealthBar.fillAmount = specHealth / targetHealth;
+        specHealthNum.SetText((specHealth).ToString());
+
+        //specHealthBar.fillAmount = specHealth / targetHealth;
 
     }
 

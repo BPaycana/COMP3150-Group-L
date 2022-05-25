@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameWonPanel;
     public Text gameOverText;
     public Text gameWonText;
+    public GameObject menuPanel;
 
 
     private string winText = "You Survived the Lunch Time Rush!";
@@ -53,6 +54,13 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
+
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Menu")
+        {
+            menuPanel.SetActive(true);
+        }
+
         UpdateHealth();
     }
 
@@ -110,17 +118,24 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.Start();
     }
 
+    public void LevelBeginner()
+    {
+        //gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(1);
+
+    }
+
     public void LevelIntermediate()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         
     }
 
     public void LevelAdvanced()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
 
     }
 

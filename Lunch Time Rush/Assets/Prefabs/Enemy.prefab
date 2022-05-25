@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &251140980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1074062248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 2921329691417250303}
   - component: {fileID: 8294792517501040263}
   - component: {fileID: 8086974316658371929}
-  - component: {fileID: 657126241839103737}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -438,7 +437,10 @@ MonoBehaviour:
   burgerMan: {fileID: 21300000, guid: b2b37c7d0902e0b4cb80b4237b6755d4, type: 3}
   pizzaGirl: {fileID: 21300000, guid: a58da9841dc43ec4097993ad264ad8c8, type: 3}
   drinkMan: {fileID: 21300000, guid: d9b6ffba21051f949bde061ae6903d0a, type: 3}
-  animator: {fileID: 657126241839103737}
+  pizzaBubble: {fileID: 4006357705948055927, guid: ae3b291f0bb8df8499dde5efb0724f51, type: 3}
+  burgerBubble: {fileID: 4006357705948055927, guid: 1b82f71852a59cb4f80ba824ed7dc643, type: 3}
+  pizzaDrinkBubble: {fileID: 4006357705948055927, guid: 656c9b506462a8946aea3e55e441bb86, type: 3}
+  burgerDrinkBubble: {fileID: 4006357705948055927, guid: 0c950d69c33ff5745ab5f87a6253740c, type: 3}
   isLastEnemy: 0
 --- !u!58 &8294792517501040263
 CircleCollider2D:
@@ -469,29 +471,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetHealth: 100
+  targetSpecHealth: 0
   healthBar: {fileID: 33234131}
   specHealthBar: {fileID: 2153879540299105557}
   specHealthBarBackground: {fileID: 3554152728162493381}
---- !u!95 &657126241839103737
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4831935887103763232}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 25c52c8a583a4b44fb2c1694a07948b1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  healthNum: {fileID: 0}
+  specHealthNum: {fileID: 0}
 --- !u!1 &5034937989873143646
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1669879357262184146
 RectTransform:
   m_ObjectHideFlags: 0
