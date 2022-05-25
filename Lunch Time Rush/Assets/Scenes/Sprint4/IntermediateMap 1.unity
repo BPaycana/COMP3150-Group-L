@@ -8810,7 +8810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1104276683009897179, guid: 382e045859317e54686743441acf9195, type: 3}
       propertyPath: range
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382e045859317e54686743441acf9195, type: 3}
@@ -12090,6 +12090,11 @@ RectTransform:
   m_AnchoredPosition: {x: -214, y: -200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!212 &1212190146 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8234990197350033450, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+  m_PrefabInstance: {fileID: 3028102847287717185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1400969225
 GameObject:
   m_ObjectHideFlags: 0
@@ -12721,7 +12726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380829, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: range
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 963842208826ec444847057e171dbf38, type: 3}
@@ -12834,6 +12839,7 @@ GameObject:
   - component: {fileID: 2052520931}
   - component: {fileID: 2052520930}
   - component: {fileID: 2052520933}
+  - component: {fileID: 2052520934}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12921,6 +12927,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScreenSizeHelper: {fileID: 65797919}
+--- !u!114 &2052520934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052520929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ef3d3a90250f940860f4733f93ce6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  showDifference: 0
 --- !u!1 &2065502024
 GameObject:
   m_ObjectHideFlags: 0
@@ -13083,6 +13103,10 @@ PrefabInstance:
       value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: isHold
+      value: 
+      objectReference: {fileID: 1212190146}
+    - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 846449164}
@@ -13098,6 +13122,10 @@ PrefabInstance:
       propertyPath: joystickRing
       value: 
       objectReference: {fileID: 846449165}
+    - target: {fileID: 8234990197350033450, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8563697504856480040, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Enabled
       value: 1

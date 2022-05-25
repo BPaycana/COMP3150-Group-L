@@ -243,7 +243,7 @@ public class TowerMove : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.layer == 6)
+        if(other.gameObject.layer == 6 || other.gameObject.layer == 10)
         {
             tooClose = true;
             
@@ -256,7 +256,7 @@ public class TowerMove : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == 6 || other.gameObject.layer == 10)
         {
             tooClose = false;
         }

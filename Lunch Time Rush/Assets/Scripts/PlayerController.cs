@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public Image joystickRing;
 
     private Rigidbody2D rb;
+    private SpriteRenderer notHold;
+    public SpriteRenderer isHold;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,10 @@ public class PlayerController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         input = gameManager.gameObject.GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        
+
+        notHold = GetComponent<SpriteRenderer>();
+        isHold.enabled = false;
+
         direction = new Vector3(0, 0, 0);
         touching = false;
     }
@@ -87,6 +92,18 @@ public class PlayerController : MonoBehaviour
             touching = false;
             joystick.enabled = false;
             joystickRing.enabled = false;
+        }
+
+
+        if (gameManager.restockState())
+        {
+            notHold.enabled = false;
+            isHold.enabled = true;
+        }
+        else if (gameManager.restockState() == false)
+        {
+            notHold.enabled = true;
+            isHold.enabled = false;
         }
 
 
