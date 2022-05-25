@@ -67,6 +67,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
 
+            Debug.Log("Bullet hit a wall, destroying bullet." + other.gameObject.name);
         }
     }
 }
