@@ -95,26 +95,28 @@ public class PlayerController : MonoBehaviour
             joystickRing.enabled = false;
         }
 
-        if (gameManager.canRestock == true)
-        {
-            animator.SetBool("HoldingBox", true);
-        }
+        // if (gameManager.canRestock == true)
+        // {
+        //     animator.SetBool("HoldingBox", true);
+        // }
 
-        if (gameManager.canRestock == false)
-        {
-            animator.SetBool("HoldingBox", false);
-        }
+        // if (gameManager.canRestock == false)
+        // {
+        //     animator.SetBool("HoldingBox", false);
+        // }
 
 
         if (gameManager.restockState())
         {
-            notHold.enabled = false;
-            isHold.enabled = true;
+            animator.SetBool("HoldingBox", true);
+            // notHold.enabled = false;
+            // isHold.enabled = true;
         }
         else if (gameManager.restockState() == false)
         {
-            notHold.enabled = true;
-            isHold.enabled = false;
+            animator.SetBool("HoldingBox", false);
+            // notHold.enabled = true;
+            // isHold.enabled = false;
         }
 
 

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
 
     private bool towerHeld;
-    public bool canRestock;
+    private bool canRestock;
     private bool getRestock;
 
 
