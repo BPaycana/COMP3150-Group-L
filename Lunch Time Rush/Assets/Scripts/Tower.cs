@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     public Transform target; // transform of the customers
 
     private string enemyType;
+    private string enemySpecType;
 
     private float targetHealth;
     private float health;
@@ -85,6 +86,7 @@ public class Tower : MonoBehaviour
             enemyHealth = nearestEnemy.GetComponent<EnemyHealth>();
             enemyMove = nearestEnemy.GetComponent<EnemyMove>();
             enemyType = enemyMove.getType();
+            enemySpecType = enemyMove.getSpecType();
 
 
             // found enemy and within tower range
@@ -157,9 +159,8 @@ public class Tower : MonoBehaviour
         Debug.Log("Custome health is " + health);
         Debug.Log("Custome drink health is " + specHealth);
         //if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType) || string.Equals(towerType, "drink"))
-        if (health > 0 && string.Equals(towerType, enemyType) || specHealth > 0 && string.Equals(towerType, "drink"))
+        if (health > 0 && string.Equals(towerType, enemyType) || specHealth > 0 && string.Equals(towerType, enemySpecType))
         {
-
             if (ammo > 0 && held == false)
             {
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
