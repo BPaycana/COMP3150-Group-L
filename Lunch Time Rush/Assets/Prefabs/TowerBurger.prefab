@@ -165,7 +165,7 @@ MonoBehaviour:
   maxTowerAmmo: 5
   outline: {fileID: 0}
   cantPlaceCross: {fileID: 0}
-  areaOfEffect: {fileID: 2696528980505169891}
+  areaOfEffect: {fileID: 6994461641880064644}
 --- !u!50 &2130387667636553429
 Rigidbody2D:
   serializedVersion: 4
@@ -539,7 +539,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eb86129ac8ccb7f4fbfeb95746c4d08c, type: 3}
-  m_Color: {r: 0.24705882, g: 0.77254903, b: 0.09019608, a: 0.19607843}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
