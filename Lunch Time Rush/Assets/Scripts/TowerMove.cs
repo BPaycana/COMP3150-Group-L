@@ -21,7 +21,7 @@ public class TowerMove : MonoBehaviour
     private Vector3 lastPos;
     private Vector3 deltaPos;
 
-
+    public LayerMask IgnoreMe;
     enum TowerState
     {
         Close,
@@ -81,9 +81,9 @@ public class TowerMove : MonoBehaviour
                         if (tower.refillAmmo(maxTowerAmmo))
                         {
                             gameManager.restock();
-                        }                                                  
+                        }
                     }
-                    else if(!gameManager.GetComponent<GameManager>().getTowerHeld())
+                    else if (!gameManager.GetComponent<GameManager>().getTowerHeld())
                     {
                         /*
                         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -101,13 +101,37 @@ public class TowerMove : MonoBehaviour
                             }
                         }
                         */
-                        gameManager.towerHoldBool();
+
+                        // IMPORTANT STUFF HERE
+                        /*
+                        Ray ray = Camera.main.ScreenPointToRay(input.actions["PrimaryPosition"].ReadValue<Vector2>());                     
+                        RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, ~IgnoreMe);
+                        if (hit2D.collider != null)
+                        {
+                            if (hit2D.transform.gameObject == gameObject &&
+                                !gameManager.GetComponent<GameManager>().getTowerHeld())
+                            {
+                                gameManager.towerHoldBool();
+                                //spriteRenderer.color = Color.blue;
+                                outline.enabled = false;
+                                //Debug.Log(gameManager.getTowerHeld());
+                                towerState = TowerState.Held;
+                                tower.held = true;
+                            }
+                        }
+                        */
+
                         //spriteRenderer.color = Color.blue;
-                        outline.enabled = false;
                         //Debug.Log(gameManager.getTowerHeld());
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+
+                        // IMPORTANT STUFF HERE
+                        
+                        outline.enabled = false;
+                        gameManager.towerHoldBool();
                         towerState = TowerState.Held;
                         tower.held = true;
+                        
                     }
                 }
 

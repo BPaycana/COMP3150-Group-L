@@ -14,6 +14,9 @@ public class PlayerFollowCursor : MonoBehaviour
     private Rigidbody2D rb;
     //private float direction;
 
+    private SpriteRenderer notHold;
+    public SpriteRenderer isHold;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,9 @@ public class PlayerFollowCursor : MonoBehaviour
         input = gameManager.gameObject.GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         touching = false;
+
+        notHold = GetComponent<SpriteRenderer>();
+        isHold.enabled = false;
     }
 
     // Update is called once per frame
@@ -59,6 +65,18 @@ public class PlayerFollowCursor : MonoBehaviour
         {
             touching = false;
             direction = new Vector3(0,0,0);
+        }
+
+
+        if (gameManager.restockState())
+        {
+            notHold.enabled = false;
+            isHold.enabled = true;
+        }
+        else if (gameManager.restockState() == false)
+        {
+            notHold.enabled = true;
+            isHold.enabled = false;
         }
     }
 

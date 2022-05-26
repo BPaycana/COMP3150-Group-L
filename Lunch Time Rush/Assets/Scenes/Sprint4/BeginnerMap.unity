@@ -7594,6 +7594,10 @@ PrefabInstance:
       propertyPath: outline
       value: 
       objectReference: {fileID: 1971154787}
+    - target: {fileID: 607178933490888995, guid: 395d279386ac1d0469d591939787b555, type: 3}
+      propertyPath: IgnoreMe.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 607178933490888997, guid: 395d279386ac1d0469d591939787b555, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9352,6 +9356,10 @@ PrefabInstance:
       propertyPath: cantPlaceCross
       value: 
       objectReference: {fileID: 2100802587}
+    - target: {fileID: 1104276683009897158, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: IgnoreMe.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 1104276683009897178, guid: 382e045859317e54686743441acf9195, type: 3}
       propertyPath: m_Name
       value: TowerBurger
@@ -9407,6 +9415,10 @@ PrefabInstance:
       propertyPath: cantPlaceCross
       value: 
       objectReference: {fileID: 2115559883}
+    - target: {fileID: 5515274419942380800, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: IgnoreMe.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5515274419942380803, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -9566,6 +9578,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: isHold
+      value: 
+      objectReference: {fileID: 309294072}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Enabled
       value: 0
