@@ -141,7 +141,7 @@ public class EnemyHealth : MonoBehaviour
         //whne take damage, bullet damage "amount" makes 'health' go up to damage the player.
         //eg health start 0, targethealth 3,  bullet damages health to +3 satisfying the player
         health -= amount;
-
+        Debug.Log(health);
         healthNum.SetText((health).ToString());
 
         //healthBar.fillAmount = health / targetHealth;

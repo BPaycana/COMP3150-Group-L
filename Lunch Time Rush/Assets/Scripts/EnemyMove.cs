@@ -98,7 +98,13 @@ public class EnemyMove : MonoBehaviour
         {
             EnemyHealth enemyHealth = gameObject.GetComponent<EnemyHealth>();
 
+            /*
             if (enemyHealth.Health < enemyHealth.TargetHealth)
+            {
+                GameManager.Instance.DamageRestaurant(reviewDamage);
+            }
+            */
+            if (enemyHealth.Health > 0)
             {
                 GameManager.Instance.DamageRestaurant(reviewDamage);
             }
