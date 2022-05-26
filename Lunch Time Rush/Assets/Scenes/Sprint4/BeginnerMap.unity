@@ -9594,6 +9594,10 @@ PrefabInstance:
       propertyPath: joystickRing
       value: 
       objectReference: {fileID: 778649472}
+    - target: {fileID: 4372606543247619554, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_Radius
+      value: 1.85
+      objectReference: {fileID: 0}
     - target: {fileID: 6749364085318544837, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_RootOrder
       value: 1
