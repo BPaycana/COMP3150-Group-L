@@ -143,7 +143,7 @@ public class EnemyHealth : MonoBehaviour
         health -= amount;
 
         healthNum.SetText((health).ToString());
-
+        //Debug.Log(health);
         //healthBar.fillAmount = health / targetHealth;
     }
 
