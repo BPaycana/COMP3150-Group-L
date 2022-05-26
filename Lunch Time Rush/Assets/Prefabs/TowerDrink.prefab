@@ -132,6 +132,7 @@ MonoBehaviour:
   maxTowerAmmo: 5
   outline: {fileID: 0}
   cantPlaceCross: {fileID: 0}
+  areaOfEffect: {fileID: 8491201201761710047}
 --- !u!50 &4798505899318866510
 Rigidbody2D:
   serializedVersion: 4
