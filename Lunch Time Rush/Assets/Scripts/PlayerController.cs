@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer notHold;
-    public SpriteRenderer isHold;
+    // public SpriteRenderer isHold;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
 
         notHold = GetComponent<SpriteRenderer>();
-        isHold.enabled = false;
+        // isHold.enabled = false;
 
         direction = new Vector3(0, 0, 0);
         touching = false;
