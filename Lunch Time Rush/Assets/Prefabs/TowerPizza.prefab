@@ -219,6 +219,9 @@ MonoBehaviour:
   outline: {fileID: 0}
   cantPlaceCross: {fileID: 0}
   areaOfEffect: {fileID: 202303489333469712}
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6794160920087126291
 Rigidbody2D:
   serializedVersion: 4
@@ -369,7 +372,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: eb86129ac8ccb7f4fbfeb95746c4d08c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
