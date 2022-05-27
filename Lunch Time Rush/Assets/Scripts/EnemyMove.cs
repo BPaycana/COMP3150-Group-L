@@ -20,6 +20,9 @@ public class EnemyMove : MonoBehaviour
     public GameObject burgerBubble;
     public GameObject pizzaDrinkBubble;
     public GameObject burgerDrinkBubble;
+    public GameObject smileBubble;
+
+    private string bubbleType;
 
     public bool isLastEnemy = false;
 
@@ -34,6 +37,7 @@ public class EnemyMove : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
             GameObject bubble = Instantiate(pizzaBubble, this.gameObject.transform);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            bubbleType = "pizza";
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         if (enemyType == "burger" && enemySpecType != "drink")
@@ -42,6 +46,7 @@ public class EnemyMove : MonoBehaviour
             GameObject bubble = Instantiate(burgerBubble, this.gameObject.transform);
             //bubble.transform.position = new Vector3(-2, 6, 0);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            bubbleType = "burger";
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         if (enemySpecType == "drink" && enemyType == "burger")
@@ -49,6 +54,7 @@ public class EnemyMove : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
             GameObject bubble = Instantiate(burgerDrinkBubble, this.gameObject.transform);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            bubbleType = "burgerdrink";
             //bubble.transform.Translate(new Vector3(25, -4));
         }
         if (enemySpecType == "drink" && enemyType == "pizza")
@@ -56,8 +62,12 @@ public class EnemyMove : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
             GameObject bubble = Instantiate(pizzaDrinkBubble, this.gameObject.transform);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
+            bubbleType = "pizzadrink";
             //bubble.transform.Translate(new Vector3(25, -4));
         }
+        GameObject bubble2 = Instantiate(smileBubble, this.gameObject.transform);
+        bubble2.transform.Translate(new Vector3(-.22f, .6f, 0));
+        bubble2.SetActive(false);
         // rotate to face the next waypoint
         Vector3 waypoint = path.Waypoint(1);
         Vector3 direction = waypoint - transform.position;
@@ -98,12 +108,6 @@ public class EnemyMove : MonoBehaviour
         {
             EnemyHealth enemyHealth = gameObject.GetComponent<EnemyHealth>();
 
-            /*
-            if (enemyHealth.Health < enemyHealth.TargetHealth)
-            {
-                GameManager.Instance.DamageRestaurant(reviewDamage);
-            }
-            */
             if (enemyHealth.Health > 0)
             {
                 GameManager.Instance.DamageRestaurant(reviewDamage);

@@ -49,10 +49,6 @@ public class EnemySpawn : MonoBehaviour
             {
                 specialState = true;
             }
-            else
-            {
-                specialState = false;
-            }
             if (enemiesLeft == 1)
             {
                 int randPath = Random.Range(0, pathArray.Length);
@@ -107,11 +103,11 @@ public class EnemySpawn : MonoBehaviour
                     enemy.GetComponent<EnemyHealth>().specHealthBar.enabled = false;
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 }
-                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
+                Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy + "|||| spechealth" + specHealth);
                 spawnTime = setSpawnTime;
                 enemiesLeft--;
             }
-
+            specialState = false;
         }
 
     }

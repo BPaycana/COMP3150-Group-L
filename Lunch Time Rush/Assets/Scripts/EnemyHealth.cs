@@ -60,7 +60,7 @@ public class EnemyHealth : MonoBehaviour
         foreach (Transform child in transform)
         {
             Debug.Log("tryna find some shit");
-            if(child.name == "BurgerBubble(Clone)")
+            if (child.name == "BurgerBubble(Clone)")
             {
                 foreach (Transform c in child.transform)
                 {
@@ -133,7 +133,33 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(health <= 0)
+        {
+            foreach (Transform child in transform)
+            {
+                Debug.Log("tryna find some shit");
+                if (child.name == "BurgerBubble(Clone)")
+                {
+                    child.gameObject.SetActive(false);
+                }
+                if (child.name == "PizzaBubble(Clone)")
+                {
+                    child.gameObject.SetActive(false);
+                }
+                if (child.name == "BurgerDrinkBubble(Clone)")
+                {
+                    child.gameObject.SetActive(false);
+                }
+                if (child.name == "PizzaDrinkBubble(Clone)")
+                {
+                    child.gameObject.SetActive(false);
+                }
+                if (child.name == "SmileBubble(Clone)")
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 
     public void TakeDamage(float amount, string type)
@@ -143,7 +169,7 @@ public class EnemyHealth : MonoBehaviour
         health -= amount;
         Debug.Log(health);
         healthNum.SetText((health).ToString());
-
+        //Debug.Log(health);
         //healthBar.fillAmount = health / targetHealth;
     }
 
