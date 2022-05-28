@@ -104,7 +104,7 @@ public class Tower : MonoBehaviour
         {
             target = null;
             enemyType = null;
-            //animator.SetBool("IsShooting", false);
+            animator.SetBool("IsShooting", false);
         }
     }
 
