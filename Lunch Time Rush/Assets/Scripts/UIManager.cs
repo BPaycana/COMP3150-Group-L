@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,6 +29,10 @@ public class UIManager : MonoBehaviour
     public Text gameWonText;
     public GameObject menuPanel;
 
+    public EnemySpawn spawner;
+
+    private float enemyCount;
+    public TextMeshPro enemyCountText;
 
     private string winText = "You Survived the Lunch Time Rush!";
     private string loseText = "Nice job running your restaurant to 0 star review!";
@@ -52,6 +58,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        enemyCount = spawner.maxEnemies;
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
 
@@ -145,5 +152,13 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("GameWon");
     }
 
+    public void UpdateEnemyCounterText()
+    {
+        enemyCountText.SetText("Enemies left: " + enemyCount);
+    }
 
+    public void UpdateEnemyCounter()
+    {
+        enemyCount--;
+    }
 }

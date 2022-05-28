@@ -26,9 +26,11 @@ public class EnemyMove : MonoBehaviour
 
     public bool isLastEnemy = false;
 
+    private UIManager uiManager;
 
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
         // start at waypoint 0
         transform.position = path.Waypoint(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -114,6 +116,7 @@ public class EnemyMove : MonoBehaviour
             }
 
             Destroy(gameObject);
+            uiManager.UpdateEnemyCounter();
 
             if (isLastEnemy && GameManager.Instance.CurrentRestaurantHealth > 0)
             {
