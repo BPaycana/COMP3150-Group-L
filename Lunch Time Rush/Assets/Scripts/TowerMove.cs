@@ -22,6 +22,9 @@ public class TowerMove : MonoBehaviour
     private Vector3 lastPos;
     private Vector3 deltaPos;
 
+    public AudioClip DropTower;
+    public AudioClip CantPlaceSound;
+
     public LayerMask IgnoreMe;
     enum TowerState
     {
@@ -46,7 +49,7 @@ public class TowerMove : MonoBehaviour
         tooClose = false;
         canPickUp = false;
         outline.enabled = false;
-        areaOfEffect.enabled = false;
+        areaOfEffect.enabled = true;
         cantPlaceCross.enabled = false;
         towerAmmo = maxTowerAmmo;
     }
@@ -54,7 +57,7 @@ public class TowerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        areaOfEffect.enabled = false;
+        //areaOfEffect.enabled = false;
         float dist = Vector3.Distance(player.position, transform.position);
         //Debug.Log(dist);
         switch (towerState)
@@ -131,6 +134,7 @@ public class TowerMove : MonoBehaviour
                         
                         outline.enabled = false;
                         gameManager.towerHoldBool();
+                        //GetComponent<AudioSource>().Play(0);
                         towerState = TowerState.Held;
                         tower.held = true;
                         
@@ -178,7 +182,7 @@ public class TowerMove : MonoBehaviour
 
                 transform.position = player.position + new Vector3(.25f, .25f, 0f);
                 deltaPos = player.position - lastPos;
-                areaOfEffect.enabled = true;
+                //areaOfEffect.enabled = true;
                 //towerPos = player.position + new Vector3(.5f, 0, 0);
                 //moving left to right
                 if (deltaPos.x > 0.001)
@@ -229,18 +233,22 @@ public class TowerMove : MonoBehaviour
 
                 if (tooClose == true)
                 {
-                    //cantPlaceCross.enabled = true;
+                    cantPlaceCross.enabled = true;
                     spriteRenderer.color = Color.grey;
                 }
                 else if(tooClose == false)
                 {
                     spriteRenderer.color = Color.white;
-                    //cantPlaceCross.enabled = false;
+                    cantPlaceCross.enabled = false;
                 }
 
                 if (input.actions["interact"].triggered)
                 {
-                    
+                    if(tooClose == true)
+                    {
+                        GetComponent<AudioSource>().clip = CantPlaceSound;
+                        GetComponent<AudioSource>().Play(0);
+                    }
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
@@ -248,8 +256,8 @@ public class TowerMove : MonoBehaviour
                         outline.enabled = true;
                         //transform.position = player.position;
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-                        spriteRenderer.sortingOrder = 1;    //make layerorder default
-                        towerAmmoCanvas.sortingOrder = 2;
+                        GetComponent<AudioSource>().clip = DropTower;
+                        GetComponent<AudioSource>().Play(0);
                         towerState = TowerState.Close;
                         tower.held = false;
                     }

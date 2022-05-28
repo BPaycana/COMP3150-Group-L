@@ -12,6 +12,9 @@ public class EnemyHealth : MonoBehaviour
     private float health = 0f;
     private float specHealth = 0f;
 
+    public AudioClip Eating;
+    public AudioClip Full;
+
     private bool isSpecial = false;
 
     public bool IsSpecial
@@ -56,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        uiManager = FindObjectOfType<UIManager>();
+        GetComponent<AudioSource>().clip = Eating;
         health = targetHealth;
         specHealth = targetSpecHealth;
         foreach (Transform child in transform)
@@ -136,6 +139,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0 && targetSpecHealth <= 0)
         {
+            
             foreach (Transform child in transform)
             {
                 Debug.Log("tryna find some shit");
@@ -164,6 +168,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (health <= 0 && specHealth <= 0)
         {
+            
             foreach (Transform child in transform)
             {
                 Debug.Log("tryna find some shit");
@@ -201,6 +206,13 @@ public class EnemyHealth : MonoBehaviour
         healthNum.SetText((health).ToString());
         //Debug.Log(health);
         //healthBar.fillAmount = health / targetHealth;
+        if(health <= 0 && specHealth <= 0)
+        {
+            GetComponent<AudioSource>().clip = Full;   
+        }
+        GetComponent<AudioSource>().Play(0);
+
+
     }
 
     public void SpecTakeDamage(float amount, string type)
@@ -209,7 +221,11 @@ public class EnemyHealth : MonoBehaviour
         specHealth -= amount;
 
         specHealthNum.SetText((specHealth).ToString());
-
+        if (health <= 0 && specHealth <= 0)
+        {
+            GetComponent<AudioSource>().clip = Full;
+        }
+        GetComponent<AudioSource>().Play(0);
         //specHealthBar.fillAmount = specHealth / targetHealth;
 
     }
