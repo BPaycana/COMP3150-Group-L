@@ -223,7 +223,7 @@ MonoBehaviour:
   outline: {fileID: 0}
   cantPlaceCross: {fileID: 4418584896292367025}
   areaOfEffect: {fileID: 2484820065153767410}
-  DropTower: {fileID: 8300000, guid: 0c17a62c8a30ec74fb2e3050c8f000f9, type: 3}
+  DropTower: {fileID: 8300000, guid: 26e8285749aec3a43aae5dfc01645e28, type: 3}
   CantPlaceSound: {fileID: 8300000, guid: 6edd3dd74017dda4c986fc0f54063e27, type: 3}
 --- !u!50 &4798505899318866510
 Rigidbody2D:
