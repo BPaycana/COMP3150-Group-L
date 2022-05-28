@@ -68,6 +68,9 @@ public class EnemyMove : MonoBehaviour
         if (enemySpecType == "drink" && enemyType == "pizza")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
+            animator.SetBool("isBurger", false);
+            animator.SetBool("isPizza", false);
+            animator.SetBool("isDrink", true);
             GameObject bubble = Instantiate(pizzaDrinkBubble, this.gameObject.transform);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             bubbleType = "pizzadrink";
