@@ -26,7 +26,10 @@ public class UIManager : MonoBehaviour
     public Text gameOverText;
     public Text gameWonText;
     public GameObject menuPanel;
+    public EnemySpawn spawner;
+    public GameObject enemyHolder;
 
+    private string gameState;
 
     private string winText = "You Survived the Lunch Time Rush!";
     private string loseText = "Nice job running your restaurant to 0 star review!";
@@ -97,11 +100,17 @@ public class UIManager : MonoBehaviour
         if (win)
         {
             //gameWonText.text = winText;
+            enemyHolder.SetActive(false);
+            spawner.enabled = false;
+            gameState = "won";
             gameWonPanel.SetActive(true);
         }
         else
         {
             //gameOverText.text = loseText;
+            spawner.enabled = false;
+            enemyHolder.SetActive(false);
+            gameState = "lost";
             gameOverPanel.SetActive(true);
         }
 
@@ -145,5 +154,8 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("GameWon");
     }
 
-
+    public string GetGameState()
+    {
+        return gameState;
+    }
 }

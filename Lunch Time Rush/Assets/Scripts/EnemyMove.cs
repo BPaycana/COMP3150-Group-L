@@ -23,6 +23,7 @@ public class EnemyMove : MonoBehaviour
     public GameObject burgerDrinkBubble;
     public GameObject smileBubble;
 
+    private UIManager uiManager;
     private string bubbleType;
 
     public bool isLastEnemy = false;
@@ -30,6 +31,7 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
         // start at waypoint 0
         transform.position = path.Waypoint(0);
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -108,6 +110,10 @@ public class EnemyMove : MonoBehaviour
             //transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
         }
         
+        if(uiManager.GetGameState() == "won" || uiManager.GetGameState() == "lost")
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private void NextWaypoint()
