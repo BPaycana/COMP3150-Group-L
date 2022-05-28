@@ -225,7 +225,7 @@ public class EnemyHealth : MonoBehaviour
         {
             GetComponent<AudioSource>().clip = Full;
         }
-        GetComponent<AudioSource>().Play(0);
+        GetComponent<AudioSource>().Play(0);    //different audio here
         //specHealthBar.fillAmount = specHealth / targetHealth;
 
     }
