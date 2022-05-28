@@ -248,6 +248,8 @@ public class TowerMove : MonoBehaviour
                         outline.enabled = true;
                         //transform.position = player.position;
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                        spriteRenderer.sortingOrder = 1;    //make layerorder default
+                        towerAmmoCanvas.sortingOrder = 2;
                         towerState = TowerState.Close;
                         tower.held = false;
                     }
