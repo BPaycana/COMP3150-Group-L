@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     void Update() 
     {
         UIManager.Instance.UpdateHealth();
+        UIManager.Instance.UpdateEnemyCounterText();
     }
 
 

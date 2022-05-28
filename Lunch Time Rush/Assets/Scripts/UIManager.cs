@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image[] stars;
     private int levelCount = 0;
 
+    private float enemyCount;
+    public TextMeshPro enemyCountText;
 
     public GameObject pausePanel;
 
@@ -58,6 +62,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        enemyCount = spawner.maxEnemies;
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
         pausePanel.SetActive(false);
@@ -132,7 +137,8 @@ public class UIManager : MonoBehaviour
 
     public void LevelBeginner()
     {
-        //gameWonPanel.SetActive(false);
+        gameWonPanel.SetActive(false);
+        Debug.Log("Clicked beginner");
         SceneManager.LoadScene(1);
 
     }
@@ -181,4 +187,13 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneID);
     }
 
+    public void UpdateEnemyCounterText()
+    {
+        enemyCountText.SetText("Enemies left: " + enemyCount);
+    }
+
+    public void UpdateEnemyCounter()
+    {
+        enemyCount--;
+    }
 }

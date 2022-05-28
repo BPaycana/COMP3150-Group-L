@@ -131,6 +131,7 @@ public class EnemyMove : MonoBehaviour
             }
 
             Destroy(gameObject);
+            uiManager.UpdateEnemyCounter();
 
             if (isLastEnemy && GameManager.Instance.CurrentRestaurantHealth > 0)
             {
