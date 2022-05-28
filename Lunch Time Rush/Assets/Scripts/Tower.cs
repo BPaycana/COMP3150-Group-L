@@ -104,7 +104,7 @@ public class Tower : MonoBehaviour
         {
             target = null;
             enemyType = null;
-            animator.SetBool("IsShooting", false);
+            //animator.SetBool("IsShooting", false);
         }
     }
 
@@ -179,7 +179,7 @@ public class Tower : MonoBehaviour
             }
             if (ammo > 0 && held == false && !Physics2D.Linecast(transform.position, target.position, ~IgnoreMe))
             {
-                animator.SetBool("IsShooting", true);
+                //animator.SetBool("IsShooting", true);
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Bullet bullet = bulletGO.GetComponent<Bullet>();
                 bullet.bulletStrength = bulletDamage;
@@ -194,7 +194,7 @@ public class Tower : MonoBehaviour
             }
             else if (held == true)
             {
-                animator.SetBool("IsShooting", false);
+                //animator.SetBool("IsShooting", false);
                 //Debug.Log("Holding tower, not shooting");
             }
             else
