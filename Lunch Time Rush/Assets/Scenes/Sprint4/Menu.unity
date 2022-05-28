@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &34200161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
+  m_PrefabInstance: {fileID: 1670029146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6a306789922884abbff676cc4a4609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &137027934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,6 +224,22 @@ PrefabInstance:
     - target: {fileID: 7965728726113765353, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360521246561805, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360521602540742, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360521876337055, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360522735222419, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
@@ -3660,6 +3687,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5131459707877289610, guid: e9f13c8af640ca640aff847a60bbb5b4, type: 3}
   m_PrefabInstance: {fileID: 187836712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &340239772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 340239773}
+  m_Layer: 0
+  m_Name: EnemyHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &340239773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340239772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3370345, y: 2.0105844, z: -16.11762}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383396277
 GameObject:
   m_ObjectHideFlags: 0
@@ -6084,6 +6142,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8282360521246561805, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360521602540742, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360521876337055, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282360522735222419, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6896af26941030d40b077142c0c1a4e9, type: 3}
 --- !u!1 &906116956
@@ -6456,6 +6530,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4213458263274349091}
+    - target: {fileID: 607178933490888995, guid: 395d279386ac1d0469d591939787b555, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 2100802587}
     - target: {fileID: 607178933490888997, guid: 395d279386ac1d0469d591939787b555, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7027,6 +7105,8 @@ MonoBehaviour:
   gameOverText: {fileID: 1568914378}
   gameWonText: {fileID: 1955407938}
   menuPanel: {fileID: 2059551290}
+  spawner: {fileID: 34200161}
+  enemyHolder: {fileID: 340239772}
   playerHealth: 99999
   stars:
   - {fileID: 1873265574}
@@ -7485,6 +7565,10 @@ PrefabInstance:
       propertyPath: setSpawnTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
+      propertyPath: enemyContainer
+      value: 
+      objectReference: {fileID: 340239772}
     - target: {fileID: 4927673652359962611, guid: f585edf7ac4d9ef42b5490f6eb6b2acd, type: 3}
       propertyPath: specialEnemyChance
       value: 0
@@ -8202,7 +8286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.54901963}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8716,6 +8800,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4213458263274349091}
+    - target: {fileID: 1104276683009897158, guid: 382e045859317e54686743441acf9195, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 2100802587}
     - target: {fileID: 1104276683009897178, guid: 382e045859317e54686743441acf9195, type: 3}
       propertyPath: m_Name
       value: TowerBurger
@@ -8726,6 +8814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382e045859317e54686743441acf9195, type: 3}
+--- !u!212 &2100802587 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7902043523198173733, guid: 382e045859317e54686743441acf9195, type: 3}
+  m_PrefabInstance: {fileID: 2100802586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2115559882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8737,6 +8830,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4213458263274349091}
+    - target: {fileID: 5515274419942380800, guid: 963842208826ec444847057e171dbf38, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 2100802587}
     - target: {fileID: 5515274419942380803, guid: 963842208826ec444847057e171dbf38, type: 3}
       propertyPath: m_RootOrder
       value: 4

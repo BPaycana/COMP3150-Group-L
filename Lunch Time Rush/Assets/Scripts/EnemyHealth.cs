@@ -59,7 +59,6 @@ public class EnemyHealth : MonoBehaviour
         specHealth = targetSpecHealth;
         foreach (Transform child in transform)
         {
-            Debug.Log("tryna find some shit");
             if (child.name == "BurgerBubble(Clone)")
             {
                 foreach (Transform c in child.transform)
