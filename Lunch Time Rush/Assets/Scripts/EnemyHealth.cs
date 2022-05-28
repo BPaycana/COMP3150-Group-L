@@ -54,10 +54,12 @@ public class EnemyHealth : MonoBehaviour
     public TextMeshPro healthNum;
     public TextMeshPro specHealthNum;
 
+    private UIManager uiManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
         GetComponent<AudioSource>().clip = Eating;
         health = targetHealth;
         specHealth = targetSpecHealth;
@@ -158,9 +160,10 @@ public class EnemyHealth : MonoBehaviour
                 {
                     child.gameObject.SetActive(false);
                 }
-                if (child.name == "SmileBubble(Clone)")
+                if (child.name == "SmileBubble(Clone)" && !child.gameObject.activeSelf)
                 {
                     child.gameObject.SetActive(true);
+                    uiManager.UpdateEnemyCounter();
                 }
             }
         }
@@ -185,9 +188,10 @@ public class EnemyHealth : MonoBehaviour
                 {
                     child.gameObject.SetActive(false);
                 }
-                if (child.name == "SmileBubble(Clone)")
+                if (child.name == "SmileBubble(Clone)" && !child.gameObject.activeSelf)
                 {
                     child.gameObject.SetActive(true);
+                    uiManager.UpdateEnemyCounter();
                 }
             }
         }
