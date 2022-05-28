@@ -42,8 +42,6 @@ public class Tower : MonoBehaviour
 
     public Image ammoBar;
 
-    public AudioClip RestockTowerSound;
-
     public string towerType;
     // Start is called before the first frame update
     void Start()
@@ -147,8 +145,6 @@ public class Tower : MonoBehaviour
         Debug.Log("Tower still has ammo!");
         return false;
         */
-        GetComponent<AudioSource>().clip = RestockTowerSound;
-        GetComponent<AudioSource>().Play(0);
         ammo = refillAmount;
         ammoBar.fillAmount = ammo / ammoCapacity;
         Debug.Log("refilled tower with ammo amount: " + refillAmount);
