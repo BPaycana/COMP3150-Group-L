@@ -42,6 +42,10 @@ public class Tower : MonoBehaviour
 
     public Image ammoBar;
 
+    public AudioClip RestockTowerSound;
+
+    public LayerMask IgnoreMe;
+
     public string towerType;
     // Start is called before the first frame update
     void Start()
@@ -78,7 +82,8 @@ public class Tower : MonoBehaviour
                 nearestEnemy = enemy;
 
             }
-        }
+        }        
+
         // check if nearest enemy is found and if the shorest distance is within tower range
         if (nearestEnemy != null && shortestDistance <= range)
         {
@@ -145,6 +150,8 @@ public class Tower : MonoBehaviour
         Debug.Log("Tower still has ammo!");
         return false;
         */
+        GetComponent<AudioSource>().clip = RestockTowerSound;
+        GetComponent<AudioSource>().Play(0);
         ammo = refillAmount;
         ammoBar.fillAmount = ammo / ammoCapacity;
         Debug.Log("refilled tower with ammo amount: " + refillAmount);
@@ -161,7 +168,11 @@ public class Tower : MonoBehaviour
         //if ((health < targetHealth || specHealth < targetHealth) && string.Equals(towerType, enemyType) || string.Equals(towerType, "drink"))
         if (health > 0 && string.Equals(towerType, enemyType) || specHealth > 0 && string.Equals(towerType, enemySpecType))
         {
-            if (ammo > 0 && held == false)
+            if(Physics2D.Linecast(transform.position, target.position, ~IgnoreMe))
+            {
+                Debug.Log("BAZINGA");
+            }
+            if (ammo > 0 && held == false && !Physics2D.Linecast(transform.position, target.position, ~IgnoreMe))
             {
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Bullet bullet = bulletGO.GetComponent<Bullet>();

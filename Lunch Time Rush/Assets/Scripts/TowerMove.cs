@@ -22,7 +22,9 @@ public class TowerMove : MonoBehaviour
     private Vector3 lastPos;
     private Vector3 deltaPos;
 
-    public LayerMask IgnoreMe;
+    public AudioClip DropTower;
+    public AudioClip CantPlaceSound;
+
     enum TowerState
     {
         Close,
@@ -131,6 +133,7 @@ public class TowerMove : MonoBehaviour
                         
                         outline.enabled = false;
                         gameManager.towerHoldBool();
+                        //GetComponent<AudioSource>().Play(0);
                         towerState = TowerState.Held;
                         tower.held = true;
                         
@@ -240,7 +243,11 @@ public class TowerMove : MonoBehaviour
 
                 if (input.actions["interact"].triggered)
                 {
-                    
+                    if(tooClose == true)
+                    {
+                        GetComponent<AudioSource>().clip = CantPlaceSound;
+                        GetComponent<AudioSource>().Play(0);
+                    }
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
