@@ -64,6 +64,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("Hit something for damage: " + bulletStrength);
     }
 
+    /*
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 11)
@@ -73,4 +74,5 @@ public class Bullet : MonoBehaviour
             Debug.Log("Bullet hit a wall, destroying bullet." + other.gameObject.name);
         }
     }
+    */
 }
