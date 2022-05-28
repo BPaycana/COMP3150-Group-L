@@ -103,12 +103,12 @@ public class UIManager : MonoBehaviour
 
         if (win)
         {
-            gameWonText.text = winText;
+            //gameWonText.text = winText;
             gameWonPanel.SetActive(true);
         }
         else
         {
-            gameOverText.text = loseText;
+            //gameOverText.text = loseText;
             gameOverPanel.SetActive(true);
         }
 

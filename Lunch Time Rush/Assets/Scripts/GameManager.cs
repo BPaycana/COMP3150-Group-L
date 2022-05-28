@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             return RestaurantIsAlive;
         }
     }
-
+    
     void Awake()
     {
         if (instance != null) 

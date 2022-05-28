@@ -15,6 +15,7 @@ public class EnemyMove : MonoBehaviour
     public Sprite burgerMan;
     public Sprite pizzaGirl;
     public Sprite drinkMan;
+    public Animator animator;
 
     public GameObject pizzaBubble;
     public GameObject burgerBubble;
@@ -37,6 +38,7 @@ public class EnemyMove : MonoBehaviour
         if (enemyType == "pizza" && enemySpecType != "drink")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = pizzaGirl;
+            animator.SetBool("isPizza", true);
             GameObject bubble = Instantiate(pizzaBubble, this.gameObject.transform);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             bubbleType = "pizza";
@@ -45,6 +47,7 @@ public class EnemyMove : MonoBehaviour
         if (enemyType == "burger" && enemySpecType != "drink")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = burgerMan;
+            animator.SetBool("isBurger", true);
             GameObject bubble = Instantiate(burgerBubble, this.gameObject.transform);
             //bubble.transform.position = new Vector3(-2, 6, 0);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
@@ -54,6 +57,9 @@ public class EnemyMove : MonoBehaviour
         if (enemySpecType == "drink" && enemyType == "burger")
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = drinkMan;
+            animator.SetBool("isBurger", false);
+            animator.SetBool("isPizza", false);
+            animator.SetBool("isDrink", true);
             GameObject bubble = Instantiate(burgerDrinkBubble, this.gameObject.transform);
             bubble.transform.Translate(new Vector3(-.22f, .6f, 0));
             bubbleType = "burgerdrink";
@@ -96,9 +102,14 @@ public class EnemyMove : MonoBehaviour
             direction = direction.normalized;
             transform.Translate(direction * distanceTravelled, Space.World);
 
+            animator.SetFloat("Horizontal", direction.x);
+            animator.SetFloat("Vertical", direction.y);
+            animator.SetFloat("Speed", direction.sqrMagnitude);
+
             // rotate to face waypoint
             //transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
         }
+        
     }
 
     private void NextWaypoint()
