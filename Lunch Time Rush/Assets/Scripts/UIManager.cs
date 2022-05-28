@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image[] stars;
     private int levelCount = 0;
 
+
+    public GameObject pausePanel;
+
     void Awake()
     {
         if (instance != null)
@@ -57,7 +60,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
-
+        pausePanel.SetActive(false);
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Menu")
         {
@@ -158,4 +161,24 @@ public class UIManager : MonoBehaviour
     {
         return gameState;
     }
+
+    public void Pause()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        
+    }
+     
+    public void Home(int sceneID)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneID);
+    }
+
 }
