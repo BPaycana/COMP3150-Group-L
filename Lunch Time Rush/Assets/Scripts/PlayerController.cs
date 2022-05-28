@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
     private bool touching;
     public Image joystick;
     public Image joystickRing;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private SpriteRenderer notHold;
-    public SpriteRenderer isHold;
+    // public SpriteRenderer isHold;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
 
         notHold = GetComponent<SpriteRenderer>();
-        isHold.enabled = false;
+        // isHold.enabled = false;
 
         direction = new Vector3(0, 0, 0);
         touching = false;
@@ -94,16 +95,28 @@ public class PlayerController : MonoBehaviour
             joystickRing.enabled = false;
         }
 
+        // if (gameManager.canRestock == true)
+        // {
+        //     animator.SetBool("HoldingBox", true);
+        // }
+
+        // if (gameManager.canRestock == false)
+        // {
+        //     animator.SetBool("HoldingBox", false);
+        // }
+
 
         if (gameManager.restockState())
         {
-            notHold.enabled = false;
-            isHold.enabled = true;
+            animator.SetBool("HoldingBox", true);
+            // notHold.enabled = false;
+            // isHold.enabled = true;
         }
         else if (gameManager.restockState() == false)
         {
-            notHold.enabled = true;
-            isHold.enabled = false;
+            animator.SetBool("HoldingBox", false);
+            // notHold.enabled = true;
+            // isHold.enabled = false;
         }
 
 
@@ -152,6 +165,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.sqrMagnitude);
 
     }
 }

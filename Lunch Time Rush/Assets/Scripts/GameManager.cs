@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             return RestaurantIsAlive;
         }
     }
-
+    
     void Awake()
     {
         if (instance != null) 
@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     void Update() 
     {
         UIManager.Instance.UpdateHealth();
+        UIManager.Instance.UpdateEnemyCounterText();
     }
 
 

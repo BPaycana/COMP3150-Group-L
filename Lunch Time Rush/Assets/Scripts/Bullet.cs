@@ -40,7 +40,6 @@ public class Bullet : MonoBehaviour
 
     void HitTarget(Transform target){
 
-
         EnemyHealth enemy = target.GetComponent<EnemyHealth>();
 
         // get the enemy type, if it matches the bullet type then deal damage, if not dont deal damage
@@ -57,8 +56,6 @@ public class Bullet : MonoBehaviour
         {
             enemy.SpecTakeDamage(bulletStrength, bulletType);
         }
-
-        
 
         Destroy(gameObject);
         Debug.Log("Hit something for damage: " + bulletStrength);

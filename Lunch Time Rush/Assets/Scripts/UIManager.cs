@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,7 +28,10 @@ public class UIManager : MonoBehaviour
     public Text gameOverText;
     public Text gameWonText;
     public GameObject menuPanel;
+    public EnemySpawn spawner;
+    public GameObject enemyHolder;
 
+    private string gameState;
 
     private string winText = "You Survived the Lunch Time Rush!";
     private string loseText = "Nice job running your restaurant to 0 star review!";
@@ -35,6 +40,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image[] stars;
     private int levelCount = 0;
+
+    private float enemyCount;
+    public TextMeshPro enemyCountText;
+
+    public GameObject pausePanel;
 
     void Awake()
     {
@@ -52,9 +62,10 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        enemyCount = spawner.maxEnemies;
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
-
+        pausePanel.SetActive(false);
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Menu")
         {
@@ -96,12 +107,18 @@ public class UIManager : MonoBehaviour
 
         if (win)
         {
-            gameWonText.text = winText;
+            //gameWonText.text = winText;
+            enemyHolder.SetActive(false);
+            spawner.enabled = false;
+            gameState = "won";
             gameWonPanel.SetActive(true);
         }
         else
         {
-            gameOverText.text = loseText;
+            //gameOverText.text = loseText;
+            spawner.enabled = false;
+            enemyHolder.SetActive(false);
+            gameState = "lost";
             gameOverPanel.SetActive(true);
         }
 
@@ -120,7 +137,8 @@ public class UIManager : MonoBehaviour
 
     public void LevelBeginner()
     {
-        //gameWonPanel.SetActive(false);
+        gameWonPanel.SetActive(false);
+        Debug.Log("Clicked beginner");
         SceneManager.LoadScene(1);
 
     }
@@ -145,5 +163,37 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("GameWon");
     }
 
+    public string GetGameState()
+    {
+        return gameState;
+    }
 
+    public void Pause()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        
+    }
+     
+    public void Home(int sceneID)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneID);
+    }
+
+    public void UpdateEnemyCounterText()
+    {
+        enemyCountText.SetText("Enemies left: " + enemyCount);
+    }
+
+    public void UpdateEnemyCounter()
+    {
+        enemyCount--;
+    }
 }
