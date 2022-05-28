@@ -49,7 +49,7 @@ public class TowerMove : MonoBehaviour
         tooClose = false;
         canPickUp = false;
         outline.enabled = false;
-        areaOfEffect.enabled = false;
+        areaOfEffect.enabled = true;
         cantPlaceCross.enabled = false;
         towerAmmo = maxTowerAmmo;
     }
@@ -57,7 +57,7 @@ public class TowerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        areaOfEffect.enabled = false;
+        //areaOfEffect.enabled = false;
         float dist = Vector3.Distance(player.position, transform.position);
         //Debug.Log(dist);
         switch (towerState)
@@ -182,7 +182,7 @@ public class TowerMove : MonoBehaviour
 
                 transform.position = player.position + new Vector3(.25f, .25f, 0f);
                 deltaPos = player.position - lastPos;
-                areaOfEffect.enabled = true;
+                //areaOfEffect.enabled = true;
                 //towerPos = player.position + new Vector3(.5f, 0, 0);
                 //moving left to right
                 if (deltaPos.x > 0.001)
