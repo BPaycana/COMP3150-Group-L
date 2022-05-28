@@ -25,7 +25,6 @@ public class TowerMove : MonoBehaviour
     public AudioClip DropTower;
     public AudioClip CantPlaceSound;
 
-    public LayerMask IgnoreMe;
     enum TowerState
     {
         Close,

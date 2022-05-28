@@ -201,6 +201,9 @@ MonoBehaviour:
   firePoint: {fileID: 5515274420644853709}
   ammoBar: {fileID: 4447159341581191267}
   RestockTowerSound: {fileID: 8300000, guid: fa6ddfa97a6725c429b3cae30f0a5d01, type: 3}
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 1473
   towerType: pizza
 --- !u!114 &5515274419942380800
 MonoBehaviour:
@@ -222,9 +225,6 @@ MonoBehaviour:
   areaOfEffect: {fileID: 202303489333469712}
   DropTower: {fileID: 8300000, guid: 0c17a62c8a30ec74fb2e3050c8f000f9, type: 3}
   CantPlaceSound: {fileID: 8300000, guid: 6edd3dd74017dda4c986fc0f54063e27, type: 3}
-  IgnoreMe:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!50 &6794160920087126291
 Rigidbody2D:
   serializedVersion: 4
