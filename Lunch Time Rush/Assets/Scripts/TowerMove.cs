@@ -22,6 +22,9 @@ public class TowerMove : MonoBehaviour
     private Vector3 lastPos;
     private Vector3 deltaPos;
 
+    public AudioClip DropTower;
+    public AudioClip CantPlaceSound;
+
     public LayerMask IgnoreMe;
     enum TowerState
     {
@@ -131,6 +134,7 @@ public class TowerMove : MonoBehaviour
                         
                         outline.enabled = false;
                         gameManager.towerHoldBool();
+                        //GetComponent<AudioSource>().Play(0);
                         towerState = TowerState.Held;
                         tower.held = true;
                         
@@ -229,18 +233,22 @@ public class TowerMove : MonoBehaviour
 
                 if (tooClose == true)
                 {
-                    //cantPlaceCross.enabled = true;
+                    cantPlaceCross.enabled = true;
                     spriteRenderer.color = Color.grey;
                 }
                 else if(tooClose == false)
                 {
                     spriteRenderer.color = Color.white;
-                    //cantPlaceCross.enabled = false;
+                    cantPlaceCross.enabled = false;
                 }
 
                 if (input.actions["interact"].triggered)
                 {
-                    
+                    if(tooClose == true)
+                    {
+                        GetComponent<AudioSource>().clip = CantPlaceSound;
+                        GetComponent<AudioSource>().Play(0);
+                    }
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
@@ -248,6 +256,8 @@ public class TowerMove : MonoBehaviour
                         outline.enabled = true;
                         //transform.position = player.position;
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                        GetComponent<AudioSource>().clip = DropTower;
+                        GetComponent<AudioSource>().Play(0);
                         towerState = TowerState.Close;
                         tower.held = false;
                     }
