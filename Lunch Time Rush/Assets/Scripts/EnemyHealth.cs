@@ -138,7 +138,6 @@ public class EnemyHealth : MonoBehaviour
         {
             foreach (Transform child in transform)
             {
-                Debug.Log("tryna find some shit");
                 if (child.name == "BurgerBubble(Clone)")
                 {
                     child.gameObject.SetActive(false);
@@ -166,7 +165,6 @@ public class EnemyHealth : MonoBehaviour
         {
             foreach (Transform child in transform)
             {
-                Debug.Log("tryna find some shit");
                 if (child.name == "BurgerBubble(Clone)")
                 {
                     child.gameObject.SetActive(false);
