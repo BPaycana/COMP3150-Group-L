@@ -134,7 +134,14 @@ public class EnemyMove : MonoBehaviour
             }
 
             Destroy(gameObject);
-            uiManager.UpdateEnemyCounter();
+            foreach (Transform child in transform)
+            {
+                //only decrease enemies left if the enemy has not been satisfied
+                if (child.name == "SmileBubble(Clone)" && child.gameObject.activeSelf == false)
+                {
+                    uiManager.UpdateEnemyCounter();
+                }
+            }
 
             if (isLastEnemy && GameManager.Instance.CurrentRestaurantHealth > 0)
             {
