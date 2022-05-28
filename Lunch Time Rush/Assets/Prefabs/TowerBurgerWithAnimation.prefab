@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   range: 1.5
-  ammoCapacity: 100
+  ammoCapacity: 6
   enemyTag: Enemy
   bulletDamage: 1
   fireRate: 1
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 1
   player: {fileID: 0}
-  maxTowerAmmo: 5
+  maxTowerAmmo: 6
   outline: {fileID: 613587380632923363}
   cantPlaceCross: {fileID: 5281000193594820437}
   areaOfEffect: {fileID: 304842903744003138}
