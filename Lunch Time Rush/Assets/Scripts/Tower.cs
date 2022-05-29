@@ -199,12 +199,14 @@ public class Tower : MonoBehaviour
             }
             else
             {
+                animator.SetBool("IsShooting", false);
                 Debug.Log("Out Of Ammo");
             }
 
         }
         else
         {
+            animator.SetBool("IsShooting", false);
             Debug.Log("Not correct customer type to the tower");
         }
 
