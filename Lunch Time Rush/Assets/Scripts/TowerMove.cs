@@ -247,6 +247,7 @@ public class TowerMove : MonoBehaviour
                     {
                         GetComponent<AudioSource>().clip = CantPlaceSound;
                         GetComponent<AudioSource>().Play(0);
+                        cantPlaceCross.enabled = true;
                     }
                     if(tooClose == false)
                     {
@@ -295,6 +296,7 @@ public class TowerMove : MonoBehaviour
         if (other.gameObject.layer == 6 || other.gameObject.layer == 10)
         {
             tooClose = false;
+            cantPlaceCross.enabled = false;
         }
         if (other.gameObject.layer == 7)
         {
