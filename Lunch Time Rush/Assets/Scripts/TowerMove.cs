@@ -232,13 +232,13 @@ public class TowerMove : MonoBehaviour
 
                 if (tooClose == true)
                 {
-                    //cantPlaceCross.enabled = true;
+                    cantPlaceCross.enabled = true;
                     spriteRenderer.color = Color.grey;
                 }
                 else if(tooClose == false)
                 {
                     spriteRenderer.color = Color.white;
-                    //cantPlaceCross.enabled = false;
+                    cantPlaceCross.enabled = false;
                 }
 
                 if (input.actions["interact"].triggered)
@@ -247,11 +247,12 @@ public class TowerMove : MonoBehaviour
                     {
                         GetComponent<AudioSource>().clip = CantPlaceSound;
                         GetComponent<AudioSource>().Play(0);
-                        cantPlaceCross.enabled = true;
                     }
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
+                        GetComponent<AudioSource>().clip = DropTower;
+                        GetComponent<AudioSource>().Play(0);
                         //spriteRenderer.color = Color.green;
                         outline.enabled = true;
                         //transform.position = player.position;
@@ -296,7 +297,6 @@ public class TowerMove : MonoBehaviour
         if (other.gameObject.layer == 6 || other.gameObject.layer == 10)
         {
             tooClose = false;
-            cantPlaceCross.enabled = false;
         }
         if (other.gameObject.layer == 7)
         {
