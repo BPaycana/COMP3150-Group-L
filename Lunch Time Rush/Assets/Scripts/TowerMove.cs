@@ -48,7 +48,7 @@ public class TowerMove : MonoBehaviour
         tooClose = false;
         canPickUp = false;
         outline.enabled = false;
-        areaOfEffect.enabled = true;
+        areaOfEffect.enabled = false;
         cantPlaceCross.enabled = false;
         towerAmmo = maxTowerAmmo;
     }
@@ -56,7 +56,7 @@ public class TowerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // areaOfEffect.enabled = false;
+        areaOfEffect.enabled = false;
         float dist = Vector3.Distance(player.position, transform.position);
         //Debug.Log(dist);
         switch (towerState)
@@ -181,14 +181,14 @@ public class TowerMove : MonoBehaviour
 
                 transform.position = player.position + new Vector3(.25f, .25f, 0f);
                 deltaPos = player.position - lastPos;
-                //areaOfEffect.enabled = true;
+                areaOfEffect.enabled = true;
                 //towerPos = player.position + new Vector3(.5f, 0, 0);
                 //moving left to right
                 if (deltaPos.x > 0.001)
                 {
                     spriteRenderer.sortingOrder = 2;
-                    towerAmmoCanvas.sortingOrder = 2;
-                    transform.position = player.position + new Vector3(.5f, .25f, 0);
+                    //towerAmmoCanvas.sortingOrder = 2;
+                    transform.position = player.position + new Vector3(.2f, .25f, 0);
                     //transform.position = player.position + new Vector3(.1f, .25f, 0);
                     //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -5;
                     //maybe offset tower position here
@@ -198,8 +198,8 @@ public class TowerMove : MonoBehaviour
                 if (deltaPos.x < -0.001)
                 {
                     spriteRenderer.sortingOrder = 2;
-                    towerAmmoCanvas.sortingOrder = 2;
-                    transform.position = player.position + new Vector3(-.2f, .25f, 0);
+                    //towerAmmoCanvas.sortingOrder = 2;
+                    transform.position = player.position + new Vector3(-.18f, .25f, 0);
                     //transform.position = player.position - new Vector3(.1f, -.25f, 0);
                     //player.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
                     //maybe offset tower position here
@@ -210,20 +210,20 @@ public class TowerMove : MonoBehaviour
                 {
                     //transform.position = player.position + new Vector3(.5f, .25f, 0);
                     spriteRenderer.sortingOrder = 1;    //draw player over tower
-                    towerAmmoCanvas.sortingOrder = 0;
+                    //towerAmmoCanvas.sortingOrder = 0;
                 }
 
                 //moving top to bottom
                 if (deltaPos.y < -0.001)
                 {
                     spriteRenderer.sortingOrder = 2;    //draw tower over player
-                    towerAmmoCanvas.sortingOrder = 4;
+                    //towerAmmoCanvas.sortingOrder = 4;
                 }
 
                 if (deltaPos == new Vector3(0, 0, 0))
                 {
-                    spriteRenderer.sortingOrder = 1;    //default
-                    towerAmmoCanvas.sortingOrder = 2;
+                    spriteRenderer.sortingOrder = 2;    //default
+                    //towerAmmoCanvas.sortingOrder = 2;
                 }
 
                 //Debug.Log(deltaPos);
@@ -232,13 +232,13 @@ public class TowerMove : MonoBehaviour
 
                 if (tooClose == true)
                 {
-                    cantPlaceCross.enabled = true;
+                    //cantPlaceCross.enabled = true;
                     spriteRenderer.color = Color.grey;
                 }
                 else if(tooClose == false)
                 {
                     spriteRenderer.color = Color.white;
-                    cantPlaceCross.enabled = false;
+                    //cantPlaceCross.enabled = false;
                 }
 
                 if (input.actions["interact"].triggered)
@@ -257,8 +257,6 @@ public class TowerMove : MonoBehaviour
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                         spriteRenderer.sortingOrder = 1;    //make layerorder default
                         towerAmmoCanvas.sortingOrder = 2;
-                        GetComponent<AudioSource>().clip = DropTower;
-                        GetComponent<AudioSource>().Play(0);
                         towerState = TowerState.Close;
                         tower.held = false;
                     }
