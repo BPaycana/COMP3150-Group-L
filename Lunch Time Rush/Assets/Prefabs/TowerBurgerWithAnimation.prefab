@@ -324,7 +324,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e18c51b2a02103f41a09c510b92ada1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -481,6 +481,7 @@ MonoBehaviour:
   areaOfEffect: {fileID: 304842903744003138}
   DropTower: {fileID: 8300000, guid: 0c17a62c8a30ec74fb2e3050c8f000f9, type: 3}
   CantPlaceSound: {fileID: 8300000, guid: 6edd3dd74017dda4c986fc0f54063e27, type: 3}
+  FoodIcon: {fileID: 7289732196080504305}
 --- !u!50 &8699543276400109587
 Rigidbody2D:
   serializedVersion: 4

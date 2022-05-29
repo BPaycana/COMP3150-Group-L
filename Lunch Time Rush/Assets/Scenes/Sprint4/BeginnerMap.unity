@@ -10516,6 +10516,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7289732196080504305, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
       propertyPath: player
       value: 
@@ -11092,6 +11096,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1371675370706083635, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6882375055785632578, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
       propertyPath: m_Name
       value: TowerPizzaWithAnimation
@@ -12251,7 +12259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205154, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_RootOrder

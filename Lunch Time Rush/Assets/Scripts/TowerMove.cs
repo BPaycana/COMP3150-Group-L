@@ -24,6 +24,7 @@ public class TowerMove : MonoBehaviour
 
     public AudioClip DropTower;
     public AudioClip CantPlaceSound;
+    public SpriteRenderer FoodIcon;
 
     enum TowerState
     {
@@ -48,7 +49,7 @@ public class TowerMove : MonoBehaviour
         tooClose = false;
         canPickUp = false;
         outline.enabled = false;
-        areaOfEffect.enabled = false;
+        areaOfEffect.enabled = true;
         cantPlaceCross.enabled = false;
         towerAmmo = maxTowerAmmo;
     }
@@ -56,7 +57,7 @@ public class TowerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        areaOfEffect.enabled = false;
+        //areaOfEffect.enabled = false;
         float dist = Vector3.Distance(player.position, transform.position);
         //Debug.Log(dist);
         switch (towerState)
@@ -181,12 +182,12 @@ public class TowerMove : MonoBehaviour
 
                 transform.position = player.position + new Vector3(.25f, .25f, 0f);
                 deltaPos = player.position - lastPos;
-                areaOfEffect.enabled = true;
+                //areaOfEffect.enabled = true;
                 //towerPos = player.position + new Vector3(.5f, 0, 0);
                 //moving left to right
                 if (deltaPos.x > 0.001)
                 {
-                    spriteRenderer.sortingOrder = 2;
+                    //spriteRenderer.sortingOrder = 2;
                     //towerAmmoCanvas.sortingOrder = 2;
                     transform.position = player.position + new Vector3(.2f, .25f, 0);
                     //transform.position = player.position + new Vector3(.1f, .25f, 0);
@@ -197,7 +198,7 @@ public class TowerMove : MonoBehaviour
                 //moving right to left
                 if (deltaPos.x < -0.001)
                 {
-                    spriteRenderer.sortingOrder = 2;
+                    //spriteRenderer.sortingOrder = 2;
                     //towerAmmoCanvas.sortingOrder = 2;
                     transform.position = player.position + new Vector3(-.18f, .25f, 0);
                     //transform.position = player.position - new Vector3(.1f, -.25f, 0);
@@ -209,20 +210,20 @@ public class TowerMove : MonoBehaviour
                 if (deltaPos.y > 0.001)
                 {
                     //transform.position = player.position + new Vector3(.5f, .25f, 0);
-                    spriteRenderer.sortingOrder = 1;    //draw player over tower
+                    //spriteRenderer.sortingOrder = 1;    //draw player over tower
                     //towerAmmoCanvas.sortingOrder = 0;
                 }
 
                 //moving top to bottom
                 if (deltaPos.y < -0.001)
                 {
-                    spriteRenderer.sortingOrder = 2;    //draw tower over player
+                    //spriteRenderer.sortingOrder = 2;    //draw tower over player
                     //towerAmmoCanvas.sortingOrder = 4;
                 }
 
                 if (deltaPos == new Vector3(0, 0, 0))
                 {
-                    spriteRenderer.sortingOrder = 2;    //default
+                    //spriteRenderer.sortingOrder = 2;    //default
                     //towerAmmoCanvas.sortingOrder = 2;
                 }
 
@@ -234,10 +235,12 @@ public class TowerMove : MonoBehaviour
                 {
                     cantPlaceCross.enabled = true;
                     spriteRenderer.color = Color.grey;
+                    FoodIcon.color = Color.grey;
                 }
                 else if(tooClose == false)
                 {
                     spriteRenderer.color = Color.white;
+                    FoodIcon.color = Color.white;
                     cantPlaceCross.enabled = false;
                 }
 
