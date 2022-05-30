@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     private String timer;
     private bool gameMode;
 
+    public GameObject survivePanel;
+    public TextMeshPro surviveTime;
+
     private string gameState;
 
     private string winText = "You Survived the Lunch Time Rush!";
@@ -70,6 +73,7 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
         pausePanel.SetActive(false);
+        survivePanel.SetActive(false);
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Menu")
         {
@@ -81,7 +85,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if(gameMode == false)
+        if(gameMode == false && gameState == null)
         {
             timer = endlessTimer.getTimer();
             enemyCountText.SetText(timer);
@@ -126,13 +130,21 @@ public class UIManager : MonoBehaviour
             gameState = "won";
             gameWonPanel.SetActive(true);
         }
-        else
+        else if(gameMode == true)
         {
             //gameOverText.text = loseText;
             spawner.enabled = false;
             enemyHolder.SetActive(false);
             gameState = "lost";
             gameOverPanel.SetActive(true);
+        }
+        else
+        {
+            //spawner.enabled = false;
+            enemyHolder.SetActive(false);
+            gameState = "survived";
+            survivePanel.SetActive(true);
+            surviveTime.text = "You survived for: " + timer;
         }
 
     }
