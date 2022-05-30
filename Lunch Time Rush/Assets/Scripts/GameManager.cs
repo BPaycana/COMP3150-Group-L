@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private bool canRestock;
     private bool getRestock;
 
+    public bool classicEndless;
 
     private float maxRestaurantHealth;
     public float MaxRestaurantHealth 
@@ -80,6 +82,8 @@ public class GameManager : MonoBehaviour
         towerHeld = false;
         canRestock = false;
         getRestock = true;
+        classicEndless = bool.Parse(File.ReadAllText("Assets/Scripts/Endless/GameMode.txt"));
+        
     }
 
     void Update() 
@@ -151,4 +155,19 @@ public class GameManager : MonoBehaviour
         return canRestock;
     }
 
+    public void setGameMode(bool gameMode)
+    {
+        // true == Classic
+        // false == Endless
+        classicEndless = gameMode;
+        //GameModeTextFile. = gameMode.ToString();
+        File.WriteAllText("Assets/Scripts/Endless/GameMode.txt", classicEndless.ToString());
+    }
+
+    public bool getGameMode()
+    {
+        // true == Classic
+        // false == Endless
+        return classicEndless;
+    }
 }

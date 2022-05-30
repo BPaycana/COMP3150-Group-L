@@ -79,6 +79,8 @@ public class EnemySpawn : MonoBehaviour
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
+
+                // if gameMode == true
                 enemiesLeft--;
             }
             else
@@ -107,6 +109,7 @@ public class EnemySpawn : MonoBehaviour
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy + "|||| spechealth" + specHealth);
                 spawnTime = setSpawnTime;
+                // if gameMode == true
                 enemiesLeft--;
             }
             specialState = false;
