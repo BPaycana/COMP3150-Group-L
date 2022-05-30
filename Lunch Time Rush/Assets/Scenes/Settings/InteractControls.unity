@@ -6151,6 +6151,17 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: e3b72370ba8ee264eb0f11f583efc981, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18d222bc25b8e374e80f8cb8400ab6ec, type: 3}
+--- !u!114 &608701673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9200437180010532395, guid: 18d222bc25b8e374e80f8cb8400ab6ec, type: 3}
+  m_PrefabInstance: {fileID: 608701672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12bf1085ad4941d4ba8928ea883c0f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &737363748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6573,7 +6584,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 906116959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 608701673}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: setInteractControls
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &906116959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9174,7 +9197,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119903470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 608701673}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: setInteractControls
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2119903470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9298,7 +9333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystick
@@ -9310,7 +9345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystickRing

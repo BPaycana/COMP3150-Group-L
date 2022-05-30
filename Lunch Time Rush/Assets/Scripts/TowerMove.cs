@@ -26,6 +26,8 @@ public class TowerMove : MonoBehaviour
     public AudioClip CantPlaceSound;
     public SpriteRenderer FoodIcon;
 
+    public LayerMask IgnoreMe;
+
     enum TowerState
     {
         Close,
@@ -107,24 +109,34 @@ public class TowerMove : MonoBehaviour
                         }
                         */
 
-                        // IMPORTANT STUFF HERE
-                        /*
-                        Ray ray = Camera.main.ScreenPointToRay(input.actions["PrimaryPosition"].ReadValue<Vector2>());                     
-                        RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, ~IgnoreMe);
-                        if (hit2D.collider != null)
+                        // true == tap screen, false == tap object
+                        if (gameManager.getInteractControls())
                         {
-                            if (hit2D.transform.gameObject == gameObject &&
-                                !gameManager.GetComponent<GameManager>().getTowerHeld())
+                            outline.enabled = false;
+                            gameManager.towerHoldBool();
+                            towerState = TowerState.Held;
+                            tower.held = true;
+                        }
+                        else
+                        {
+                            Ray ray = Camera.main.ScreenPointToRay(input.actions["PrimaryPosition"].ReadValue<Vector2>());
+                            RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, ~IgnoreMe);
+                            if (hit2D.collider != null)
                             {
-                                gameManager.towerHoldBool();
-                                //spriteRenderer.color = Color.blue;
-                                outline.enabled = false;
-                                //Debug.Log(gameManager.getTowerHeld());
-                                towerState = TowerState.Held;
-                                tower.held = true;
+                                if (hit2D.transform.gameObject == gameObject &&
+                                    !gameManager.GetComponent<GameManager>().getTowerHeld())
+                                {
+                                    gameManager.towerHoldBool();
+                                    //spriteRenderer.color = Color.blue;
+                                    outline.enabled = false;
+                                    //Debug.Log(gameManager.getTowerHeld());
+                                    towerState = TowerState.Held;
+                                    tower.held = true;
+                                }
                             }
                         }
-                        */
+                        
+                        
 
                         //spriteRenderer.color = Color.blue;
                         //Debug.Log(gameManager.getTowerHeld());
@@ -132,11 +144,7 @@ public class TowerMove : MonoBehaviour
 
                         // IMPORTANT STUFF HERE
                         
-                        outline.enabled = false;
-                        gameManager.towerHoldBool();
-                        //GetComponent<AudioSource>().Play(0);
-                        towerState = TowerState.Held;
-                        tower.held = true;
+                        
                         
                     }
                 }

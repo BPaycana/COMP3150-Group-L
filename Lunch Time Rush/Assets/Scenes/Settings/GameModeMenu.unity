@@ -7164,6 +7164,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1188051491832205157, guid: b27e32b763484e04d858dccabd657f00, type: 3}
   m_PrefabInstance: {fileID: 3028102847287717185}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1160968127 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 566706894099075640, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+  m_PrefabInstance: {fileID: 3028102847287717185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!213 &1248208794
 Sprite:
   m_ObjectHideFlags: 0
@@ -9357,12 +9362,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1160968127}
+    - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystick
@@ -9374,7 +9383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystickRing

@@ -10937,6 +10937,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4213458263274349091}
+    - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: IgnoreMe.m_Bits
+      value: 4001
+      objectReference: {fileID: 0}
     - target: {fileID: 7672296504901753859, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -15593,6 +15597,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1212190146}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 3028102847287717187}
+    - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -15661,6 +15669,11 @@ PrefabInstance:
 --- !u!1 &3028102847287717186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1188051491832205157, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+  m_PrefabInstance: {fileID: 3028102847287717185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3028102847287717187 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 566706894099075640, guid: b27e32b763484e04d858dccabd657f00, type: 3}
   m_PrefabInstance: {fileID: 3028102847287717185}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4213458263274349091 stripped

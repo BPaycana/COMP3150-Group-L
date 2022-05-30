@@ -44,26 +44,26 @@ public class TowerRestock : MonoBehaviour
                 Mathf.Abs(dist) < 1 && 
                 !gameManager.GetComponent<GameManager>().restockState())
         {
-            Debug.Log("ONE");
-
-            /*
-            Ray ray = Camera.main.ScreenPointToRay(input.actions["PrimaryPosition"].ReadValue<Vector2>());
-            RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, ~IgnoreMe);
-            if (hit2D.collider != null)
+            
+            // true == tap on screen, false == tap on object
+            if (gameManager.getInteractControls())
             {
-                Debug.Log("TWO");
-                if (hit2D.transform.gameObject == gameObject)
-                {
-                    Debug.Log("THREE");
-                    Debug.Log("towerRestock restocking player");
-                    gameManager.GetComponent<GameManager>().restock();
-                }
+                Debug.Log("towerRestock restocking player");
+                gameManager.GetComponent<GameManager>().restock();
             }
-            */
-
-            Debug.Log("towerRestock restocking player");
-            gameManager.GetComponent<GameManager>().restock();
+            else
+            {
+                Ray ray = Camera.main.ScreenPointToRay(input.actions["PrimaryPosition"].ReadValue<Vector2>());
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, ~IgnoreMe);
+                if (hit2D.collider != null)
+                {
+                    if (hit2D.transform.gameObject == gameObject)
+                    {
+                        Debug.Log("towerRestock restocking player");
+                        gameManager.GetComponent<GameManager>().restock();
+                    }
+                }
+            }        
         }
-        
     }
 }

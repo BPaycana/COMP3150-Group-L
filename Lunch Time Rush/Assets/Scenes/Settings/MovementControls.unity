@@ -6592,7 +6592,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 403766348}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: setControls
+        m_MethodName: setMoveControls
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7816,8 +7816,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1428500893}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Home
-        m_Mode: 3
+        m_MethodName: LoadSettingsMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9205,7 +9205,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 403766348}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: setControls
+        m_MethodName: setMoveControls
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9338,7 +9338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205164, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystick
@@ -9350,7 +9350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: moveSpeed
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779444227581336655, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: joystickRing
