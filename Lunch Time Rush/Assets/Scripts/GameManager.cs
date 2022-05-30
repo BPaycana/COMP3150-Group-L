@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     public bool classicEndless;
 
+    public bool gameControls;
+    public GameObject Player;
+
     private float maxRestaurantHealth;
     public float MaxRestaurantHealth 
     {
@@ -82,7 +85,22 @@ public class GameManager : MonoBehaviour
         towerHeld = false;
         canRestock = false;
         getRestock = true;
-        classicEndless = bool.Parse(File.ReadAllText("Assets/Scripts/Endless/GameMode.txt"));
+        
+        // true == classic, false == endless
+        classicEndless = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/GameMode.txt"));
+        // true == joystick, false == move towards finger
+        gameControls = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/MovementControls.txt"));
+
+        if (gameControls)
+        {
+            Player.GetComponent<PlayerController>().enabled = true;
+            Player.GetComponent<PlayerFollowCursor>().enabled = false;
+        }
+        else
+        {
+            Player.GetComponent<PlayerController>().enabled = false;
+            Player.GetComponent<PlayerFollowCursor>().enabled = true;
+        }
         
     }
 
@@ -160,7 +178,6 @@ public class GameManager : MonoBehaviour
         // true == Classic
         // false == Endless
         classicEndless = gameMode;
-        //GameModeTextFile. = gameMode.ToString();
         File.WriteAllText("Assets/Scripts/Endless/GameMode.txt", classicEndless.ToString());
     }
 
@@ -169,5 +186,20 @@ public class GameManager : MonoBehaviour
         // true == Classic
         // false == Endless
         return classicEndless;
+    }
+
+    public void setControls(bool controls)
+    {
+        // true == Joystick
+        // false == Move Towards Finger
+        gameControls = controls;
+        File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", gameControls.ToString());
+    }
+
+    public bool getControls()
+    {
+        // true == Joystick
+        // false == Move Towards Finger
+        return gameControls;
     }
 }
