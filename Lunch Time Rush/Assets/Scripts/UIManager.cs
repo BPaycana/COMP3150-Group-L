@@ -176,6 +176,24 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void LoadSettingsMenu()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(6);
+    }
+
+    public void LoadMovementSettings()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(7);
+    }
+
+    public void LoadInteractSettings()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(8);
+    }
+
     public void Won()
     {
         gameWonPanel.SetActive(false);
@@ -210,7 +228,7 @@ public class UIManager : MonoBehaviour
     {
         if(gameMode == true)
         {
-            enemyCountText.SetText("Enemies left: " + enemyCount);
+            enemyCountText.SetText("Customers left: " + enemyCount);
         }    
     }
 

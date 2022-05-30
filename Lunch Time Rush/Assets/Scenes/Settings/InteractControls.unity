@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 143044752}
   - component: {fileID: 143044751}
   m_Layer: 5
-  m_Name: EndlessText
+  m_Name: BackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Endless
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 150078564}
   - component: {fileID: 150078563}
   m_Layer: 5
-  m_Name: SettingsText
+  m_Name: TapScreenButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 44.62}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150078563
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Tap anywhere on screen to interact
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6499,7 +6499,7 @@ GameObject:
   - component: {fileID: 906116959}
   - component: {fileID: 906116958}
   m_Layer: 5
-  m_Name: ClassicButton
+  m_Name: TapObjectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6569,31 +6569,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 906116959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1284843693}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: setGameMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: UIManager.Restart
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1428500893}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadLevelMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &906116959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6846,7 +6822,7 @@ GameObject:
   - component: {fileID: 1061054842}
   - component: {fileID: 1061054841}
   m_Layer: 5
-  m_Name: ClassicText
+  m_Name: TapObjectButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6870,7 +6846,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 200, y: 124.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061054841
 MonoBehaviour:
@@ -6892,7 +6868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Classic
+  m_text: Tap on object to interact
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7365,17 +7341,6 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
---- !u!114 &1284843693 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9200437180010532395, guid: 18d222bc25b8e374e80f8cb8400ab6ec, type: 3}
-  m_PrefabInstance: {fileID: 608701672}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12bf1085ad4941d4ba8928ea883c0f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1367306487
 GameObject:
   m_ObjectHideFlags: 0
@@ -7746,7 +7711,7 @@ GameObject:
   - component: {fileID: 1666370552}
   - component: {fileID: 1666370551}
   m_Layer: 5
-  m_Name: EndlessButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7817,21 +7782,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1284843693}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: setGameMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: UIManager.Restart
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1428500893}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadLevelMenu
+        m_MethodName: LoadSettingsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9147,7 +9100,7 @@ GameObject:
   - component: {fileID: 2119903470}
   - component: {fileID: 2119903469}
   m_Layer: 5
-  m_Name: SettingsButton
+  m_Name: TapScreenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9217,19 +9170,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119903470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1428500893}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadSettingsMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2119903470
 MonoBehaviour:
   m_ObjectHideFlags: 0
