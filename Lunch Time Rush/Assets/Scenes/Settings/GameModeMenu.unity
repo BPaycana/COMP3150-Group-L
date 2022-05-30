@@ -7507,6 +7507,8 @@ MonoBehaviour:
   spawner: {fileID: 34200161}
   enemyHolder: {fileID: 340239772}
   endlessTimer: {fileID: 0}
+  survivePanel: {fileID: 0}
+  surviveTime: {fileID: 0}
   playerHealth: 99999
   stars:
   - {fileID: 1873265574}
@@ -7845,7 +7847,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1428500893}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadLevelMenu
+        m_MethodName: EndlessMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

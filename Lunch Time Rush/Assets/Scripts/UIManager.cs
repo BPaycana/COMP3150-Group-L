@@ -50,6 +50,10 @@ public class UIManager : MonoBehaviour
     private float enemyCount;
     public TextMeshPro enemyCountText;
 
+    public TextMeshProUGUI Level1BestTimes;
+    public TextMeshProUGUI Level2BestTimes;
+    public TextMeshProUGUI Level3BestTimes;
+
     public GameObject pausePanel;
 
     void Awake()
@@ -80,6 +84,10 @@ public class UIManager : MonoBehaviour
             menuPanel.SetActive(true);
         }
 
+
+        
+        
+
         UpdateHealth();
     }
 
@@ -89,7 +97,10 @@ public class UIManager : MonoBehaviour
         {
             timer = endlessTimer.getTimer();
             enemyCountText.SetText(timer);
-        }   
+        }
+        Level1BestTimes.SetText("Level 1 Best Time: ");
+        Level2BestTimes.SetText("Level 2 Best Time: ");
+        Level3BestTimes.SetText("Level 3 Best Time: ");
     }
 
     public void UpdateHealth()
@@ -120,7 +131,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameOver(bool win)
     {
-
 
         if (win)
         {
@@ -204,6 +214,18 @@ public class UIManager : MonoBehaviour
     {
         gameWonPanel.SetActive(false);
         SceneManager.LoadScene(8);
+    }
+
+    public void LoadBestTimes()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(10);
+    }
+
+    public void EndlessMenu()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(9);
     }
 
     public void Won()
