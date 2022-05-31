@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -50,9 +51,9 @@ public class UIManager : MonoBehaviour
     private float enemyCount;
     public TextMeshPro enemyCountText;
 
-    public TextMeshProUGUI Level1BestTimes;
-    public TextMeshProUGUI Level2BestTimes;
-    public TextMeshProUGUI Level3BestTimes;
+    public TextMeshPro Level1BestTimes;
+    public TextMeshPro Level2BestTimes;
+    public TextMeshPro Level3BestTimes;
 
     public GameObject pausePanel;
 
@@ -74,20 +75,37 @@ public class UIManager : MonoBehaviour
     {
         gameMode = FindObjectOfType<GameManager>().getGameMode();
         enemyCount = spawner.maxEnemies;
-        gameOverPanel.SetActive(false);
-        gameWonPanel.SetActive(false);
-        pausePanel.SetActive(false);
-        survivePanel.SetActive(false);
+
+        if(gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
+        if(gameWonPanel != null)
+        {
+            gameWonPanel.SetActive(false);
+        }
+        if(pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+        if(survivePanel != null)
+        {
+            survivePanel.SetActive(false);
+        }
+                
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Menu")
         {
             menuPanel.SetActive(true);
         }
 
-
+        if(Level1BestTimes != null)
+        {
+            Level1BestTimes.SetText("Level 1 Best Time: " + File.ReadAllText("Assets/Scenes/Endless/BestTimes/Level1Times.txt"));
+            Level2BestTimes.SetText("Level 2 Best Time: " + File.ReadAllText("Assets/Scenes/Endless/BestTimes/Level2Times.txt"));
+            Level3BestTimes.SetText("Level 3 Best Time: " + File.ReadAllText("Assets/Scenes/Endless/BestTimes/Level3Times.txt"));
+        }
         
-        
-
         UpdateHealth();
     }
 
@@ -98,9 +116,7 @@ public class UIManager : MonoBehaviour
             timer = endlessTimer.getTimer();
             enemyCountText.SetText(timer);
         }
-        Level1BestTimes.SetText("Level 1 Best Time: ");
-        Level2BestTimes.SetText("Level 2 Best Time: ");
-        Level3BestTimes.SetText("Level 3 Best Time: ");
+
     }
 
     public void UpdateHealth()
@@ -155,6 +171,55 @@ public class UIManager : MonoBehaviour
             gameState = "survived";
             survivePanel.SetActive(true);
             surviveTime.text = "You survived for: " + timer;
+            string bestTimes;
+
+            // if level 1
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                bestTimes = "Assets/Scenes/Endless/BestTimes/Level1Times.txt";  
+            }
+            // if level 2
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                bestTimes = "Assets/Scenes/Endless/BestTimes/Level2Times.txt";
+            }
+            // if level 3
+            else
+            {
+                bestTimes = "Assets/Scenes/Endless/BestTimes/Level3Times.txt";
+            }
+
+            // splits the timers into numbers
+            string textTimer = File.ReadAllText(bestTimes);
+            string[] textTimerSplit = textTimer.Split(':');
+            string[] timerSplit = timer.Split(':');
+
+            // if minutes are equal
+            if (textTimerSplit[0] == timerSplit[0])
+            {
+                // if seconds are equal
+                if (textTimerSplit[1] == timerSplit[1])
+                {
+                    // if miliseconds are greater than previous best time
+                    if (int.Parse(timerSplit[2]) > int.Parse(textTimerSplit[2]))
+                    {
+                        // overwrite best time with new time
+                        File.WriteAllText(bestTimes, timer);
+                    }
+                }
+                // if seconds are greater than previous best time
+                else if (int.Parse(timerSplit[1]) > int.Parse(textTimerSplit[1]))
+                {
+                    // overwrite best time with new time
+                    File.WriteAllText(bestTimes, timer);
+                }
+            }
+            // if minutes are greater than previous best time
+            else if (int.Parse(timerSplit[0]) > int.Parse(textTimerSplit[0]))
+            {
+                // overwrite best time with new time
+                File.WriteAllText(bestTimes, timer);
+            }
         }
 
     }

@@ -260,7 +260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &143044750
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7494,6 +7494,9 @@ MonoBehaviour:
   - {fileID: 1685489508}
   - {fileID: 1145448481}
   enemyCountText: {fileID: 812644024}
+  Level1BestTimes: {fileID: 0}
+  Level2BestTimes: {fileID: 0}
+  Level3BestTimes: {fileID: 0}
   pausePanel: {fileID: 0}
 --- !u!4 &1428500894
 Transform:
@@ -7842,7 +7845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 049b3f607e581e34c851d6b422490dfd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

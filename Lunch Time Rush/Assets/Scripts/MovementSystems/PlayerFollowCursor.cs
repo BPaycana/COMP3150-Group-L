@@ -28,7 +28,7 @@ public class PlayerFollowCursor : MonoBehaviour
         touching = false;
 
         notHold = GetComponent<SpriteRenderer>();
-        isHold.enabled = false;
+        //isHold.enabled = false;
     }
 
     // Update is called once per frame
