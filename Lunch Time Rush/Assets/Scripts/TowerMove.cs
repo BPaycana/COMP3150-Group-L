@@ -8,7 +8,8 @@ public class TowerMove : MonoBehaviour
     public float interactRange = 1;
     public Transform player;
     public int maxTowerAmmo = 5;
-    public SpriteRenderer outline;
+    public SpriteRenderer towerOutline;
+    public SpriteRenderer foodOutline;
     public SpriteRenderer cantPlaceCross;
     public SpriteRenderer areaOfEffect;
     private SpriteRenderer spriteRenderer;
@@ -50,7 +51,8 @@ public class TowerMove : MonoBehaviour
         //spriteRenderer.color = Color.yellow;
         tooClose = false;
         canPickUp = false;
-        outline.enabled = false;
+        towerOutline.enabled = false;
+        foodOutline.enabled = false;
         areaOfEffect.enabled = true;
         cantPlaceCross.enabled = false;
         towerAmmo = maxTowerAmmo;
@@ -75,7 +77,8 @@ public class TowerMove : MonoBehaviour
                 */
                 if (canPickUp == false)
                 {
-                    outline.enabled = false;
+                    towerOutline.enabled = false;
+                    foodOutline.enabled = false;
                     towerState = TowerState.Far;
                 }
 
@@ -112,7 +115,8 @@ public class TowerMove : MonoBehaviour
                         // true == tap screen, false == tap object
                         if (gameManager.getInteractControls())
                         {
-                            outline.enabled = false;
+                            towerOutline.enabled = false;
+                            foodOutline.enabled = false;
                             gameManager.towerHoldBool();
                             towerState = TowerState.Held;
                             tower.held = true;
@@ -128,7 +132,8 @@ public class TowerMove : MonoBehaviour
                                 {
                                     gameManager.towerHoldBool();
                                     //spriteRenderer.color = Color.blue;
-                                    outline.enabled = false;
+                                    towerOutline.enabled = false;
+                                    foodOutline.enabled = false;
                                     //Debug.Log(gameManager.getTowerHeld());
                                     towerState = TowerState.Held;
                                     tower.held = true;
@@ -178,7 +183,8 @@ public class TowerMove : MonoBehaviour
                 if (canPickUp == true)
                 {
                     //spriteRenderer.color = Color.green;
-                    outline.enabled = true;
+                    towerOutline.enabled = true;
+                    foodOutline.enabled = true;
                     towerState = TowerState.Close;
                 }
 
@@ -265,7 +271,8 @@ public class TowerMove : MonoBehaviour
                         GetComponent<AudioSource>().clip = DropTower;
                         GetComponent<AudioSource>().Play(0);
                         //spriteRenderer.color = Color.green;
-                        outline.enabled = true;
+                        towerOutline.enabled = true;
+                        foodOutline.enabled = true;
                         //transform.position = player.position;
                         //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                         spriteRenderer.sortingOrder = 1;    //make layerorder default
