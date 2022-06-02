@@ -25,6 +25,7 @@ public class TowerMove : MonoBehaviour
     public AudioClip DropTower;
     public AudioClip CantPlaceSound;
     public SpriteRenderer FoodIcon;
+    public Animator animator;
 
     public LayerMask IgnoreMe;
 
@@ -132,6 +133,7 @@ public class TowerMove : MonoBehaviour
                                     //Debug.Log(gameManager.getTowerHeld());
                                     towerState = TowerState.Held;
                                     tower.held = true;
+                                    animator.SetBool("HoldingTower", true);
                                 }
                             }
                         }
@@ -272,6 +274,7 @@ public class TowerMove : MonoBehaviour
                         towerAmmoCanvas.sortingOrder = 2;
                         towerState = TowerState.Close;
                         tower.held = false;
+                        animator.SetBool("HoldingTower", false);
                     }
                     
                 }
