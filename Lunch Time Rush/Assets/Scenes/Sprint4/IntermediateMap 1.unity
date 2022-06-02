@@ -11656,6 +11656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerBurgerWithAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 7672296504901753885, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: ammoCapacity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
 --- !u!1001 &608701672
@@ -15322,6 +15326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerPizzaWithAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 6882375055785632579, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
+      propertyPath: ammoCapacity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6882375055785632605, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -16146,7 +16154,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.01
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
