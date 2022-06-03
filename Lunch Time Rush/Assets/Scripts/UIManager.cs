@@ -30,6 +30,9 @@ public class UIManager : MonoBehaviour
     public GameObject menuPanel;
     public EnemySpawn spawner;
     public GameObject enemyHolder;
+    public EndlessTimer endlessTimer;
+    private String timer;
+    private bool gameMode;
 
     private string gameState;
 
@@ -62,6 +65,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        gameMode = FindObjectOfType<GameManager>().getGameMode();
         enemyCount = spawner.maxEnemies;
         gameOverPanel.SetActive(false);
         gameWonPanel.SetActive(false);
@@ -73,6 +77,15 @@ public class UIManager : MonoBehaviour
         }
 
         UpdateHealth();
+    }
+
+    void Update()
+    {
+        if(gameMode == false)
+        {
+            timer = endlessTimer.getTimer();
+            enemyCountText.SetText(timer);
+        }   
     }
 
     public void UpdateHealth()
@@ -139,22 +152,28 @@ public class UIManager : MonoBehaviour
     {
         gameWonPanel.SetActive(false);
         Debug.Log("Clicked beginner");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
 
     }
 
     public void LevelIntermediate()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
         
     }
 
     public void LevelAdvanced()
     {
         gameWonPanel.SetActive(false);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
 
+    }
+
+    public void LoadLevelMenu()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(1);
     }
 
     public void Won()
@@ -187,16 +206,12 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneID);
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Game is exiting");
-        //Just to make sure its working
-    }
-
     public void UpdateEnemyCounterText()
     {
-        enemyCountText.SetText("Customers left: " + enemyCount);
+        if(gameMode == true)
+        {
+            enemyCountText.SetText("Enemies left: " + enemyCount);
+        }    
     }
 
     public void UpdateEnemyCounter()
