@@ -568,6 +568,7 @@ MonoBehaviour:
   DropTower: {fileID: 8300000, guid: 0c17a62c8a30ec74fb2e3050c8f000f9, type: 3}
   CantPlaceSound: {fileID: 8300000, guid: 6edd3dd74017dda4c986fc0f54063e27, type: 3}
   FoodIcon: {fileID: 7289732196080504305}
+  animator: {fileID: 7289732195984904003}
   IgnoreMe:
     serializedVersion: 2
     m_Bits: 4001

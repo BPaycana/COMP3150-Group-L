@@ -10719,6 +10719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerBurgerWithAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 7672296504901753885, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: ammoCapacity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
 --- !u!1001 &1670029146
@@ -11293,6 +11297,10 @@ PrefabInstance:
     - target: {fileID: 6882375055785632578, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
       propertyPath: m_Name
       value: TowerPizzaWithAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882375055785632579, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
+      propertyPath: ammoCapacity
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6882375055785632605, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
       propertyPath: m_RootOrder
@@ -12799,6 +12807,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_Size.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4f73f7818d3e97d4185d4c294b1789ea, type: 3}
@@ -12809,6 +12825,10 @@ PrefabInstance:
     - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205154, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_RootOrder
