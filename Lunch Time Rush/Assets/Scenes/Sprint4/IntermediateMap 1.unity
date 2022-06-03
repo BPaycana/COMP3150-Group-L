@@ -11605,6 +11605,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4213458263274349091}
     - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
       propertyPath: IgnoreMe.m_Bits
       value: 4001
       objectReference: {fileID: 0}
@@ -15378,6 +15382,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4213458263274349091}
+    - target: {fileID: 6882375055785632606, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
 --- !u!1 &1785533727
@@ -15416,7 +15424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 36, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785533729
@@ -15485,7 +15493,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
