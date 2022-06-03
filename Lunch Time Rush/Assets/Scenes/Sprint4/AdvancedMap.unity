@@ -814,6 +814,8 @@ MonoBehaviour:
   spawner: {fileID: 913371377}
   enemyHolder: {fileID: 1558534462}
   endlessTimer: {fileID: 1687886645}
+  survivePanel: {fileID: 0}
+  surviveTime: {fileID: 0}
   playerHealth: 1
   stars:
   - {fileID: 1427627434}
@@ -822,6 +824,9 @@ MonoBehaviour:
   - {fileID: 1337955685}
   - {fileID: 1187359611}
   enemyCountText: {fileID: 1552047517}
+  Level1BestTimes: {fileID: 0}
+  Level2BestTimes: {fileID: 0}
+  Level3BestTimes: {fileID: 0}
   pausePanel: {fileID: 984738747}
 --- !u!4 &230362128
 Transform:
@@ -13559,6 +13564,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 238556965}
+    - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7672296504901753859, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -17012,6 +17021,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 238556965}
+    - target: {fileID: 5269969650881100914, guid: cc329db6ce9005f41b382c28d9d88a5d, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc329db6ce9005f41b382c28d9d88a5d, type: 3}
 --- !u!1 &984738747
@@ -17995,6 +18008,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 238556965}
+    - target: {fileID: 6882375055785632606, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
 --- !u!1001 &1519610034

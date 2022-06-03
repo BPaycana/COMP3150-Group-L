@@ -10668,6 +10668,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4213458263274349091}
     - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672296504901753856, guid: 5af82883835dcd84b9208db5c34e79f4, type: 3}
       propertyPath: IgnoreMe.m_Bits
       value: 4003
       objectReference: {fileID: 0}
@@ -11350,6 +11354,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4213458263274349091}
+    - target: {fileID: 6882375055785632606, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
+      propertyPath: maxTowerAmmo
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6882375055785632606, guid: 7ee040c6e6d4c674d85c192655abce7b, type: 3}
       propertyPath: IgnoreMe.m_Bits
       value: 4001
