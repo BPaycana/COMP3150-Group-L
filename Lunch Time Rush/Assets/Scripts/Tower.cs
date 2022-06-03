@@ -177,7 +177,7 @@ public class Tower : MonoBehaviour
             {
                 Debug.Log("BAZINGA");
             }
-            if (ammo > 0 && held == false && !Physics2D.Linecast(transform.position, target.position, ~IgnoreMe))
+            if (ammo > 0 && held == false && !Physics2D.Linecast(firePoint.position, target.position, ~IgnoreMe))
             {
                 animator.SetBool("IsShooting", true);
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
