@@ -187,9 +187,16 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneID);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
+        //Just to make sure its working
+    }
+
     public void UpdateEnemyCounterText()
     {
-        enemyCountText.SetText("Enemies left: " + enemyCount);
+        enemyCountText.SetText("Customers left: " + enemyCount);
     }
 
     public void UpdateEnemyCounter()

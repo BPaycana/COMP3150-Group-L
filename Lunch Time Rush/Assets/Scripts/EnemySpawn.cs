@@ -49,6 +49,7 @@ public class EnemySpawn : MonoBehaviour
             specHealth = (int)Random.Range(setMinHealth, setMaxHealth);
             speed = Random.Range(setMinSpeed, setMaxSpeed);
             randSpawnTime = Random.Range(setSpawnTimeMin, setSpawnTimeMax);
+            Debug.Log(randSpawnTime);
             isSpecial = (int)Random.Range(1, 100);
             if (isSpecial < specialEnemyChance)
             {
