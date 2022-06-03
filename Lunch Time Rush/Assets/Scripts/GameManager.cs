@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
 
     public bool classicEndless;
 
+    public bool moveControls;
+    public bool interactControls;
+    public GameObject Player;
+
     private float maxRestaurantHealth;
     public float MaxRestaurantHealth 
     {
@@ -82,8 +86,25 @@ public class GameManager : MonoBehaviour
         towerHeld = false;
         canRestock = false;
         getRestock = true;
-        classicEndless = bool.Parse(File.ReadAllText("Assets/Scripts/Endless/GameMode.txt"));
+
+        // true == classic, false == endless
+        classicEndless = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/GameMode.txt"));
+        // true == joystick, false == move towards finger
+        moveControls = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/MovementControls.txt"));
+        // true == tap screen, false == tap object
+        interactControls = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/InteractControls.txt"));
         
+        if (moveControls)
+        {
+            Player.GetComponent<PlayerController>().enabled = true;
+            Player.GetComponent<PlayerFollowCursor>().enabled = false;
+        }
+        else
+        {
+            Player.GetComponent<PlayerController>().enabled = false;
+            Player.GetComponent<PlayerFollowCursor>().enabled = true;
+        }
+
     }
 
     void Update() 
@@ -160,8 +181,7 @@ public class GameManager : MonoBehaviour
         // true == Classic
         // false == Endless
         classicEndless = gameMode;
-        //GameModeTextFile. = gameMode.ToString();
-        File.WriteAllText("Assets/Scripts/Endless/GameMode.txt", classicEndless.ToString());
+        File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
     }
 
     public bool getGameMode()
@@ -169,5 +189,35 @@ public class GameManager : MonoBehaviour
         // true == Classic
         // false == Endless
         return classicEndless;
+    }
+
+    public void setMoveControls(bool controls)
+    {
+        // true == Joystick
+        // false == Move Towards Finger
+        moveControls = controls;
+        File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
+    }
+
+    public bool getMoveControls()
+    {
+        // true == Joystick
+        // false == Move Towards Finger
+        return moveControls;
+    }
+
+    public void setInteractControls(bool controls)
+    {
+        // true == Joystick
+        // false == Move Towards Finger
+        interactControls = controls;
+        File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
+    }
+
+    public bool getInteractControls()
+    {
+        // true == Joystick
+        // false == Move Towards Finger
+        return interactControls;
     }
 }

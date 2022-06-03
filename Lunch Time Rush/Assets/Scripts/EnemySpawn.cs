@@ -37,6 +37,9 @@ public class EnemySpawn : MonoBehaviour
 
     public GameObject enemyContainer;
 
+    // true == classic, false == endless
+    private bool gameMode;
+
     void SpawnEnemy(GameObject setParent)
     {
         spawnTime -= Time.deltaTime;
@@ -80,8 +83,12 @@ public class EnemySpawn : MonoBehaviour
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
                 spawnTime = setSpawnTime;
 
-                // if gameMode == true
-                enemiesLeft--;
+                // if Classic game mode
+                if (gameMode)
+                {
+                    enemiesLeft--;
+                }
+                
             }
             else
             {
@@ -109,8 +116,12 @@ public class EnemySpawn : MonoBehaviour
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy + "|||| spechealth" + specHealth);
                 spawnTime = setSpawnTime;
-                // if gameMode == true
-                enemiesLeft--;
+
+                // if Classic game mode
+                if (gameMode)
+                {
+                    enemiesLeft--;
+                }
             }
             specialState = false;
         }
@@ -127,8 +138,11 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         enemiesLeft = maxEnemies;
         spawnTime = setSpawnTime;
+        gameMode = FindObjectOfType<GameManager>().getGameMode();
+        Debug.Log("Enemy Spawn Gamemode: " + gameMode);
         //speed = setSpeed;
     }
 

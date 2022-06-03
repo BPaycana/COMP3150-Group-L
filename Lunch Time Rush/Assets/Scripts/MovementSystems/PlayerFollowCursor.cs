@@ -14,6 +14,8 @@ public class PlayerFollowCursor : MonoBehaviour
     private Rigidbody2D rb;
     //private float direction;
 
+    public Animator animator;
+
     private SpriteRenderer notHold;
     public SpriteRenderer isHold;
 
@@ -26,7 +28,7 @@ public class PlayerFollowCursor : MonoBehaviour
         touching = false;
 
         notHold = GetComponent<SpriteRenderer>();
-        isHold.enabled = false;
+        //isHold.enabled = false;
     }
 
     // Update is called once per frame
@@ -70,15 +72,19 @@ public class PlayerFollowCursor : MonoBehaviour
 
         if (gameManager.restockState())
         {
-            notHold.enabled = false;
-            isHold.enabled = true;
+            animator.SetBool("HoldingBox", true);
+            // notHold.enabled = false;
+            // isHold.enabled = true;
         }
         else if (gameManager.restockState() == false)
         {
-            notHold.enabled = true;
-            isHold.enabled = false;
+            animator.SetBool("HoldingBox", false);
+            // notHold.enabled = true;
+            // isHold.enabled = false;
         }
     }
+
+
 
     private void FixedUpdate()
     {
@@ -90,7 +96,10 @@ public class PlayerFollowCursor : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
-        
+
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.sqrMagnitude);
     }
 
     private void OnCollisionEnter(Collision collision)
