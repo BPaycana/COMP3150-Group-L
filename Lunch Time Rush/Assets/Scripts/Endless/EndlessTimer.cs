@@ -25,23 +25,23 @@ public class EndlessTimer : MonoBehaviour
     void Update()
     {
         countingTime += Time.deltaTime;
-        
-        if(countingTime / 0.01 >= 1)
+
+        if (countingTime / 0.01 >= 1)
         {
-            hund += 1;
-            countingTime = 0;
+            hund += Mathf.FloorToInt((float)(countingTime / 0.01));
+            countingTime = (float)(countingTime % 0.01);
         }
 
         if(hund >= 100)
         {
-            sec += 1;
-            hund = 0;
+            sec += hund / 100;
+            hund = hund % 100;
         }
 
         if(sec >= 60)
         {
-            min += 1;
-            sec = 0;
+            min += sec / 60;
+            sec = sec % 60;
         }
 
         if(sec < 10)

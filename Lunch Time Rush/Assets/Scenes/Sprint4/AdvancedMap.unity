@@ -14093,6 +14093,10 @@ PrefabInstance:
       propertyPath: outline
       value: 
       objectReference: {fileID: 68009313}
+    - target: {fileID: 607178933490888995, guid: 395d279386ac1d0469d591939787b555, type: 3}
+      propertyPath: IgnoreMe.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 607178933490888997, guid: 395d279386ac1d0469d591939787b555, type: 3}
       propertyPath: m_RootOrder
       value: 11

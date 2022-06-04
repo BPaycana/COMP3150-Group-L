@@ -24,11 +24,13 @@ public class GameManager : MonoBehaviour
     private bool canRestock;
     private bool getRestock;
 
-    public bool classicEndless;
-
+    public bool gameMode;
     public bool moveControls;
     public bool interactControls;
+
     public GameObject Player;
+
+    private TextAsset GameModeText;
 
     private float maxRestaurantHealth;
     public float MaxRestaurantHealth 
@@ -87,13 +89,13 @@ public class GameManager : MonoBehaviour
         canRestock = false;
         getRestock = true;
 
-        // true == classic, false == endless
-        classicEndless = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/GameMode.txt"));
-        // true == joystick, false == move towards finger
-        moveControls = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/MovementControls.txt"));
-        // true == tap screen, false == tap object
-        interactControls = bool.Parse(File.ReadAllText("Assets/Scenes/Settings/InteractControls.txt"));
-        
+        //new
+        GameData data = SaveSystem.LoadData();
+
+        gameMode = data.gameMode;
+        moveControls = data.movement;
+        interactControls = data.interact;
+
         if (moveControls)
         {
             Player.GetComponent<PlayerController>().enabled = true;
@@ -176,19 +178,21 @@ public class GameManager : MonoBehaviour
         return canRestock;
     }
 
-    public void setGameMode(bool gameMode)
+    public void setGameMode(bool classicEndless)
     {
         // true == Classic
         // false == Endless
-        classicEndless = gameMode;
-        File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
+        gameMode = classicEndless;
+        //GameModeText = classicEndless.ToString();
+        //File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
+        SaveSystem.SaveInfo(gameMode, moveControls, interactControls);
     }
 
     public bool getGameMode()
     {
         // true == Classic
         // false == Endless
-        return classicEndless;
+        return gameMode;
     }
 
     public void setMoveControls(bool controls)
@@ -196,7 +200,8 @@ public class GameManager : MonoBehaviour
         // true == Joystick
         // false == Move Towards Finger
         moveControls = controls;
-        File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
+        //File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
+        SaveSystem.SaveInfo(gameMode, moveControls, interactControls);
     }
 
     public bool getMoveControls()
@@ -211,7 +216,8 @@ public class GameManager : MonoBehaviour
         // true == Joystick
         // false == Move Towards Finger
         interactControls = controls;
-        File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
+        //File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
+        SaveSystem.SaveInfo(gameMode, moveControls, interactControls);
     }
 
     public bool getInteractControls()

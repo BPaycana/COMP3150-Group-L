@@ -73,7 +73,9 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        
         gameMode = FindObjectOfType<GameManager>().getGameMode();
+        Debug.Log("game mode = " + gameMode);
         enemyCount = spawner.maxEnemies;
 
         if(gameOverPanel != null)
@@ -111,11 +113,13 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        
         if(gameMode == false && gameState == null)
         {
             timer = endlessTimer.getTimer();
             enemyCountText.SetText(timer);
         }
+        
 
     }
 
