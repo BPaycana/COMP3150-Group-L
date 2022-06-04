@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         
-        gameMode = FindObjectOfType<GameManager>().getGameMode();
+        gameMode = FindObjectOfType<GameManager>().getMode();
         Debug.Log("game mode = " + gameMode);
         enemyCount = spawner.maxEnemies;
 

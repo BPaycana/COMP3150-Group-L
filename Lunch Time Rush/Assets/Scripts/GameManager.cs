@@ -24,13 +24,11 @@ public class GameManager : MonoBehaviour
     private bool canRestock;
     private bool getRestock;
 
-    public bool gameMode;
+    public bool mode;
     public bool moveControls;
     public bool interactControls;
 
     public GameObject Player;
-
-    private TextAsset GameModeText;
 
     private float maxRestaurantHealth;
     public float MaxRestaurantHealth 
@@ -71,7 +69,25 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             //DontDestroyOnLoad(gameObject);
-        }        
+        }
+
+        //new
+        GameData data = SaveSystem.LoadData();
+
+        mode = data.gameMode;
+        moveControls = data.movement;
+        interactControls = data.interact;
+
+        if (moveControls)
+        {
+            Player.GetComponent<PlayerController>().enabled = true;
+            Player.GetComponent<PlayerFollowCursor>().enabled = false;
+        }
+        else
+        {
+            Player.GetComponent<PlayerController>().enabled = false;
+            Player.GetComponent<PlayerFollowCursor>().enabled = true;
+        }
     }
 
 
@@ -89,23 +105,15 @@ public class GameManager : MonoBehaviour
         canRestock = false;
         getRestock = true;
 
-        //new
-        GameData data = SaveSystem.LoadData();
+        //Debug.Log("GAME MANAGER HAS STARTED NOW");
 
-        gameMode = data.gameMode;
-        moveControls = data.movement;
-        interactControls = data.interact;
+        //mode = true;
 
-        if (moveControls)
-        {
-            Player.GetComponent<PlayerController>().enabled = true;
-            Player.GetComponent<PlayerFollowCursor>().enabled = false;
-        }
-        else
-        {
-            Player.GetComponent<PlayerController>().enabled = false;
-            Player.GetComponent<PlayerFollowCursor>().enabled = true;
-        }
+        
+
+        
+
+
 
     }
 
@@ -178,21 +186,22 @@ public class GameManager : MonoBehaviour
         return canRestock;
     }
 
-    public void setGameMode(bool classicEndless)
+    public void setMode(bool classicEndless)
     {
         // true == Classic
         // false == Endless
-        gameMode = classicEndless;
+        mode = classicEndless;
         //GameModeText = classicEndless.ToString();
         //File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
-        SaveSystem.SaveInfo(gameMode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls);
     }
 
-    public bool getGameMode()
+    public bool getMode()
     {
         // true == Classic
         // false == Endless
-        return gameMode;
+        Debug.Log("HI I'VE BEEN CALLED " + mode);
+        return mode;
     }
 
     public void setMoveControls(bool controls)
@@ -201,7 +210,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         moveControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
-        SaveSystem.SaveInfo(gameMode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls);
     }
 
     public bool getMoveControls()
@@ -217,7 +226,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         interactControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
-        SaveSystem.SaveInfo(gameMode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls);
     }
 
     public bool getInteractControls()

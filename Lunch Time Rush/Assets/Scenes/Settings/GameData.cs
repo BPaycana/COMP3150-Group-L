@@ -18,5 +18,4 @@ public class GameData
         movement = moveControls;
         interact = interactControls;
     }
-
 }

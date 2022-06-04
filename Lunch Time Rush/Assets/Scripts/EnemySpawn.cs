@@ -141,7 +141,7 @@ public class EnemySpawn : MonoBehaviour
         
         enemiesLeft = maxEnemies;
         spawnTime = setSpawnTime;
-        gameMode = FindObjectOfType<GameManager>().getGameMode();
+        gameMode = FindObjectOfType<GameManager>().getMode();
         Debug.Log("Enemy Spawn Gamemode: " + gameMode);
         //speed = setSpeed;
     }

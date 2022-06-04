@@ -6305,7 +6305,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1284843693}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: setGameMode
+        m_MethodName: setMode
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7431,7 +7431,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1284843693}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: setGameMode
+        m_MethodName: setMode
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
