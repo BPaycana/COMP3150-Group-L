@@ -4,13 +4,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveInfo(bool gameMode, bool moveControls, bool interactControls)
+    public static void SaveInfo(bool gameMode, bool moveControls, bool interactControls, string level1Time, string level2Time, string level3Time)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/LunchTimeRushData.GameData";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        GameData data = new GameData(gameMode, moveControls, interactControls);
+        GameData data = new GameData(gameMode, moveControls, interactControls, level1Time, level2Time, level3Time);
 
         formatter.Serialize(stream, data);
         stream.Close();

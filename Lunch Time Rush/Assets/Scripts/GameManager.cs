@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public bool mode;
     public bool moveControls;
     public bool interactControls;
+    public string l1Time;
+    public string l2Time;
+    public string l3Time;
 
     public GameObject Player;
 
@@ -77,6 +80,9 @@ public class GameManager : MonoBehaviour
         mode = data.gameMode;
         moveControls = data.movement;
         interactControls = data.interact;
+        l1Time = data.bestTime1;
+        l2Time = data.bestTime2;
+        l3Time = data.bestTime3;
 
         if (moveControls)
         {
@@ -193,7 +199,7 @@ public class GameManager : MonoBehaviour
         mode = classicEndless;
         //GameModeText = classicEndless.ToString();
         //File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
     }
 
     public bool getMode()
@@ -210,7 +216,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         moveControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
     }
 
     public bool getMoveControls()
@@ -226,7 +232,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         interactControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
     }
 
     public bool getInteractControls()
@@ -234,5 +240,38 @@ public class GameManager : MonoBehaviour
         // true == Joystick
         // false == Move Towards Finger
         return interactControls;
+    }
+
+    public void setTimes(string levelTime, int levelNum)
+    {
+        if(levelNum == 1)
+        {
+            l1Time = levelTime;
+        }
+        if (levelNum == 2)
+        {
+            l2Time = levelTime;
+        }
+        if (levelNum == 3)
+        {
+            l3Time = levelTime;
+        }
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+    }
+
+    public string getTimes(int levelNum)
+    {
+        if (levelNum == 1)
+        {
+            return l1Time;
+        }
+        if (levelNum == 2)
+        {
+            return l2Time;
+        }
+        else
+        {
+            return l3Time;
+        }
     }
 }

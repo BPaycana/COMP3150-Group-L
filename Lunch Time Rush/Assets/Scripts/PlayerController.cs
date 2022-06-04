@@ -153,6 +153,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("hello");
         }
         */
+
+        // *** DEVELOPER ONLY CONTROL - RESETS BEST LEVEL TIMES *** //
+        /*
+        if (input.actions["PrimaryContact"].ReadValue<float>() == 1)
+        {
+            Debug.Log("BAZINGA");
+            gameManager.setTimes("0:00:00", 1);
+            gameManager.setTimes("0:00:00", 2);
+            gameManager.setTimes("0:00:00", 3);
+        }
+        */
     }
 
     private void FixedUpdate()

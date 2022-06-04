@@ -16,11 +16,15 @@ public class GameData
     public string bestTime2;
     public string bestTime3;
 
-    public GameData(bool classicEndless, bool moveControls, bool interactControls)
+    public GameData(bool classicEndless, bool moveControls, bool interactControls, string level1Time, string level2Time, string level3Time)
     {
         gameMode = classicEndless;
         movement = moveControls;
         interact = interactControls;
+
+        bestTime1 = level1Time;
+        bestTime2 = level2Time;
+        bestTime3 = level3Time;
     }
 
 }
