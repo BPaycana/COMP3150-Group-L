@@ -48,11 +48,13 @@ public class TowerRestock : MonoBehaviour
             // true == tap on screen, false == tap on object
             if (gameManager.getInteractControls())
             {
+                Debug.Log("FUCK ME");
                 Debug.Log("towerRestock restocking player");
                 gameManager.GetComponent<GameManager>().restock();
             }
             else
             {
+                Debug.Log("FUCK YOU");
                 Ray ray = Camera.main.ScreenPointToRay(input.actions["PrimaryPosition"].ReadValue<Vector2>());
                 RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity, ~IgnoreMe);
                 if (hit2D.collider != null)
