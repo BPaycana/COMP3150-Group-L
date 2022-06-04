@@ -309,12 +309,16 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
     }
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Application Exiting...");
+    }
 
     public void Resume()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
-        
     }
      
     public void Home(int sceneID)
