@@ -141,6 +141,7 @@ public class UIManager : MonoBehaviour
 
     public void SetMaxHealth(float health)
     {
+        Debug.Log("HEALTH BITCH " + health);
         playerHealth = health;
     }
 
