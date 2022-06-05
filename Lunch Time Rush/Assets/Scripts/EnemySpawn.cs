@@ -15,12 +15,15 @@ public class EnemySpawn : MonoBehaviour
     //public Path path;
     public Path[] pathArray;
     public float maxEnemies;
-    public float setSpawnTime;
+    //public float setSpawnTime;
     //public float setSpeed;
     public float setMinHealth;
     public float setMaxHealth;
     public float setMinSpeed;
     public float setMaxSpeed;
+
+    public float minSpawnTime;
+    public float maxSpawnTime;
 
     public string[] foodType = { "burger", "pizza", "soda" };
 
@@ -50,6 +53,8 @@ public class EnemySpawn : MonoBehaviour
             specHealth = (int)Random.Range(setMinHealth, setMaxHealth);
             speed = Random.Range(setMinSpeed, setMaxSpeed);
             isSpecial = (int)Random.Range(1, 100);
+            spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+            Debug.Log("SpawnTime: " + spawnTime);
             if (isSpecial < specialEnemyChance)
             {
                 specialState = true;
@@ -81,7 +86,7 @@ public class EnemySpawn : MonoBehaviour
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy);
-                spawnTime = setSpawnTime;
+                //spawnTime = setSpawnTime;
 
                 // if Classic game mode
                 if (gameMode)
@@ -115,7 +120,7 @@ public class EnemySpawn : MonoBehaviour
                     enemy.GetComponent<EnemyHealth>().specHealthBarBackground.enabled = false;
                 }
                 Debug.Log("path: " + enemy.path + ", enemytype: " + enemy.getType() + ", health: " + health + ", speed: " + speed + ", isSpecial: " + specialState + ", isLastEnemy: " + enemy.isLastEnemy + "|||| spechealth" + specHealth);
-                spawnTime = setSpawnTime;
+                //spawnTime = setSpawnTime;
 
                 // if Classic game mode
                 if (gameMode)
@@ -140,7 +145,7 @@ public class EnemySpawn : MonoBehaviour
     {
         
         enemiesLeft = maxEnemies;
-        spawnTime = setSpawnTime;
+        spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         gameMode = FindObjectOfType<GameManager>().getMode();
         Debug.Log("Enemy Spawn Gamemode: " + gameMode);
         //speed = setSpeed;
