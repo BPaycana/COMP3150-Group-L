@@ -195,8 +195,8 @@ public class TowerMove : MonoBehaviour
             case TowerState.Held:
 
                 //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-
-                transform.position = player.position + new Vector3(.25f, .25f, 0f);
+                
+                transform.position = player.position + new Vector3(-.18f, .25f, 0);
                 deltaPos = player.position - lastPos;
                 //areaOfEffect.enabled = true;
                 //towerPos = player.position + new Vector3(.5f, 0, 0);
