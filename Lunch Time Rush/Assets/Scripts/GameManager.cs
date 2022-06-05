@@ -27,6 +27,20 @@ public class GameManager : MonoBehaviour
     public bool mode;
     public bool moveControls;
     public bool interactControls;
+    
+    public int l1TimeMin;
+    public int l2TimeMin;
+    public int l3TimeMin;
+    public int l1TimeSec;
+    public int l2TimeSec;
+    public int l3TimeSec;
+    public int l1TimeMs;
+    public int l2TimeMs;
+    public int l3TimeMs;
+
+    //string l1Time;
+    //string l2Time;
+    //string l3Time;
 
     public GameObject Player;
 
@@ -77,6 +91,17 @@ public class GameManager : MonoBehaviour
         mode = data.gameMode;
         moveControls = data.movement;
         interactControls = data.interact;
+        l1TimeMin = data.bestTime1Min;
+        l2TimeMin = data.bestTime2Min;
+        l3TimeMin = data.bestTime3Min;
+        l1TimeSec = data.bestTime1Sec;
+        l2TimeSec = data.bestTime2Sec;
+        l3TimeSec = data.bestTime3Sec;
+        l1TimeMs = data.bestTime1Ms;
+        l2TimeMs = data.bestTime2Ms;
+        l3TimeMs = data.bestTime3Ms;
+
+
 
         if (moveControls)
         {
@@ -108,13 +133,6 @@ public class GameManager : MonoBehaviour
         //Debug.Log("GAME MANAGER HAS STARTED NOW");
 
         //mode = true;
-
-        
-
-        
-
-
-
     }
 
     void Update() 
@@ -193,7 +211,7 @@ public class GameManager : MonoBehaviour
         mode = classicEndless;
         //GameModeText = classicEndless.ToString();
         //File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
     }
 
     public bool getMode()
@@ -210,7 +228,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         moveControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
     }
 
     public bool getMoveControls()
@@ -226,7 +244,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         interactControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
     }
 
     public bool getInteractControls()
@@ -234,5 +252,118 @@ public class GameManager : MonoBehaviour
         // true == Joystick
         // false == Move Towards Finger
         return interactControls;
+    }
+
+    public void setTimes(string levelTime, int levelNum)
+    {
+
+        if (levelNum == 1)
+        {
+            
+            string[] level1TimeSplit = levelTime.Split(':');
+            l1TimeMin = int.Parse(level1TimeSplit[0]);
+            l1TimeSec = int.Parse(level1TimeSplit[1]);
+            l1TimeMs = int.Parse(level1TimeSplit[2]);
+        }
+        if (levelNum == 2)
+        {
+
+            string[] level2TimeSplit = levelTime.Split(':');
+            l2TimeMin = int.Parse(level2TimeSplit[0]);
+            l2TimeSec = int.Parse(level2TimeSplit[1]);
+            l2TimeMs = int.Parse(level2TimeSplit[2]);
+        }
+        if (levelNum == 3)
+        {
+            string[] level3TimeSplit = levelTime.Split(':');
+            l3TimeMin = int.Parse(level3TimeSplit[0]);
+            l3TimeSec = int.Parse(level3TimeSplit[1]);
+            l3TimeMs = int.Parse(level3TimeSplit[2]);
+        }
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
+        
+
+        /*
+        if (levelNum == 1)
+        {
+            l1Time = levelTime;
+        }
+        if (levelNum == 2)
+        {
+            l2Time = levelTime;
+        }
+        if (levelNum == 3)
+        {
+            l3Time = levelTime;
+        }
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        */
+    }
+
+    public string getTimes(int levelNum)
+    {
+        
+        string append = "";
+        if (levelNum == 1)
+        {
+            append += l1TimeMin.ToString() + ":";
+            if(l1TimeSec < 10)
+            {
+                append += "0" + l1TimeSec.ToString() + ":";
+            }
+            else
+            {
+                append += l1TimeSec.ToString() + ":";
+            }
+            if (l1TimeMs < 10)
+            {
+                append += "0" + l1TimeMs.ToString();
+            }
+            else
+            {
+                append += l1TimeMs.ToString();
+            }
+        }
+        if (levelNum == 2)
+        {
+            append += l2TimeMin.ToString() + ":";
+            if (l2TimeSec < 10)
+            {
+                append += "0" + l2TimeSec.ToString() + ":";
+            }
+            else
+            {
+                append += l2TimeSec.ToString() + ":";
+            }
+            if (l2TimeMs < 10)
+            {
+                append += "0" + l2TimeMs.ToString();
+            }
+            else
+            {
+                append += l2TimeMs.ToString();
+            }
+        }
+        if (levelNum == 3)
+        {
+            append += l3TimeMin.ToString() + ":";
+            if (l3TimeSec < 10)
+            {
+                append += "0" + l3TimeSec.ToString() + ":";
+            }
+            else
+            {
+                append += l3TimeSec.ToString() + ":";
+            }
+            if (l3TimeMs < 10)
+            {
+                append += "0" + l3TimeMs.ToString();
+            }
+            else
+            {
+                append += l3TimeMs.ToString();
+            }
+        }
+        return append;      
     }
 }

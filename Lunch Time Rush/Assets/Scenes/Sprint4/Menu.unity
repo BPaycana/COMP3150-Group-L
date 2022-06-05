@@ -3654,7 +3654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5131459707877289611, guid: e9f13c8af640ca640aff847a60bbb5b4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5131459708594465632, guid: e9f13c8af640ca640aff847a60bbb5b4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3813,7 +3813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &441843682
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6944,7 +6944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1145448481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7330,6 +7330,8 @@ MonoBehaviour:
   spawner: {fileID: 34200161}
   enemyHolder: {fileID: 340239772}
   endlessTimer: {fileID: 0}
+  button1Outline: {fileID: 0}
+  button2Outline: {fileID: 0}
   survivePanel: {fileID: 0}
   surviveTime: {fileID: 0}
   playerHealth: 99999
@@ -7344,6 +7346,7 @@ MonoBehaviour:
   Level2BestTimes: {fileID: 0}
   Level3BestTimes: {fileID: 0}
   pausePanel: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!4 &1428500894
 Transform:
   m_ObjectHideFlags: 0
@@ -7838,7 +7841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1685489506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7914,7 +7917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1711311725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8091,7 +8094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1873265572
 RectTransform:
   m_ObjectHideFlags: 0

@@ -35,6 +35,9 @@ public class UIManager : MonoBehaviour
     private String timer;
     private bool gameMode;
 
+    public Image button1Outline;
+    public Image button2Outline;
+
     public GameObject survivePanel;
     public TextMeshPro surviveTime;
 
@@ -57,6 +60,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject pausePanel;
 
+    public GameManager gameManager;
+
     void Awake()
     {
         if (instance != null)
@@ -73,8 +78,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        
-        gameMode = FindObjectOfType<GameManager>().getMode();
+        gameManager = FindObjectOfType<GameManager>();
+        gameMode = gameManager.getMode();
         Debug.Log("game mode = " + gameMode);
         enemyCount = spawner.maxEnemies;
 
@@ -94,7 +99,33 @@ public class UIManager : MonoBehaviour
         {
             survivePanel.SetActive(false);
         }
-                
+        if(button1Outline != null && SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            if (gameManager.getMoveControls())
+            {
+                button1Outline.enabled = true;
+                button2Outline.enabled = false;
+            }
+            else
+            {
+                button1Outline.enabled = false;
+                button2Outline.enabled = true;
+            }
+        }
+        if (button1Outline != null && SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            if (gameManager.getInteractControls())
+            {
+                button1Outline.enabled = true;
+                button2Outline.enabled = false;
+            }
+            else
+            {
+                button1Outline.enabled = false;
+                button2Outline.enabled = true;
+            }
+        }
+
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Menu")
         {
@@ -103,9 +134,15 @@ public class UIManager : MonoBehaviour
 
         if(Level1BestTimes != null)
         {
-            Level1BestTimes.SetText("Level 1 Best Time: " + File.ReadAllText("Assets/Scenes/Endless/BestTimes/Level1Times.txt"));
-            Level2BestTimes.SetText("Level 2 Best Time: " + File.ReadAllText("Assets/Scenes/Endless/BestTimes/Level2Times.txt"));
-            Level3BestTimes.SetText("Level 3 Best Time: " + File.ReadAllText("Assets/Scenes/Endless/BestTimes/Level3Times.txt"));
+            Debug.Log("ha ha ha: " + Level1BestTimes);
+            Level1BestTimes.SetText(gameManager.getTimes(1));
+            
+            Level2BestTimes.SetText(gameManager.getTimes(2));
+            Level3BestTimes.SetText(gameManager.getTimes(3));
+        }
+        else
+        {
+            Debug.Log("abra kadabra");
         }
         
         UpdateHealth();
@@ -171,60 +208,82 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("BLT0");
             //spawner.enabled = false;
             enemyHolder.SetActive(false);
             gameState = "survived";
             survivePanel.SetActive(true);
-            surviveTime.text = "You survived for: " + timer;
-            string bestTimes;
+            surviveTime.text = "You survived for: " + timer;            
+            int levelNum;
+
+            Debug.Log("BLT1");
 
             // if level 1
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                bestTimes = "Assets/Scenes/Endless/BestTimes/Level1Times.txt";  
+                levelNum = 1;
             }
             // if level 2
             else if (SceneManager.GetActiveScene().buildIndex == 3)
             {
-                bestTimes = "Assets/Scenes/Endless/BestTimes/Level2Times.txt";
+                levelNum = 2;
             }
             // if level 3
             else
             {
-                bestTimes = "Assets/Scenes/Endless/BestTimes/Level3Times.txt";
+                levelNum = 3;
             }
 
+            Debug.Log("BLT2");
+
             // splits the timers into numbers
-            string textTimer = File.ReadAllText(bestTimes);
-            string[] textTimerSplit = textTimer.Split(':');
+            string[] textTimer = gameManager.getTimes(levelNum).Split(':');
+            //string[] textTimer = new string[3];
+
+            /*
+            for(int i = 0; i < 3; i++)
+            {
+                textTimer[i] = intTimer[i].ToString();
+            }
+            */
+
+            Debug.Log("BLT3");
+
             string[] timerSplit = timer.Split(':');
 
+            Debug.Log("yo timer time: " + textTimer[0] + ":" + textTimer[1] + ":" + textTimer[2] + " | " + timerSplit[0] + ":" + timerSplit[1] + ":" + timerSplit[2]);
+
             // if minutes are equal
-            if (textTimerSplit[0] == timerSplit[0])
+            if (textTimer[0] == timerSplit[0])
             {
+                Debug.Log("sooooo here????");
                 // if seconds are equal
-                if (textTimerSplit[1] == timerSplit[1])
+                if (int.Parse(textTimer[1]) == int.Parse(timerSplit[1]))
                 {
                     // if miliseconds are greater than previous best time
-                    if (int.Parse(timerSplit[2]) > int.Parse(textTimerSplit[2]))
+                    if (int.Parse(timerSplit[2]) > int.Parse(textTimer[2]))
                     {
+                        Debug.Log("OVERWRITE MILLISECOND");
                         // overwrite best time with new time
-                        File.WriteAllText(bestTimes, timer);
+                        gameManager.setTimes(timer, levelNum);
                     }
                 }
                 // if seconds are greater than previous best time
-                else if (int.Parse(timerSplit[1]) > int.Parse(textTimerSplit[1]))
+                else if (int.Parse(timerSplit[1]) > int.Parse(textTimer[1]))
                 {
+                    Debug.Log("OVERWRITE SECOND");
                     // overwrite best time with new time
-                    File.WriteAllText(bestTimes, timer);
+                    gameManager.setTimes(timer, levelNum);
                 }
             }
             // if minutes are greater than previous best time
-            else if (int.Parse(timerSplit[0]) > int.Parse(textTimerSplit[0]))
+            else if (int.Parse(timerSplit[0]) > int.Parse(textTimer[0]))
             {
+                Debug.Log("OVERWRITE MINUTE");
                 // overwrite best time with new time
-                File.WriteAllText(bestTimes, timer);
+                gameManager.setTimes(timer, levelNum);
             }
+            Debug.Log("BLT4");
         }
 
     }
@@ -290,6 +349,12 @@ public class UIManager : MonoBehaviour
     {
         gameWonPanel.SetActive(false);
         SceneManager.LoadScene(10);
+    }
+
+    public void LoadHowToPlay()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(11);
     }
 
     public void EndlessMenu()

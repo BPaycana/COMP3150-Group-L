@@ -107,6 +107,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d5573245-1a62-4ada-aa1f-fcd1431c4fc9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -360,6 +369,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22bb403e-1fee-48d1-a601-4a437e5865bd"",
+                    ""path"": ""<Touchscreen>/pressure"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -687,6 +707,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Hold = m_Player.FindAction("Hold", throwIfNotFound: true);
         m_Player_StartPosition = m_Player.FindAction("StartPosition", throwIfNotFound: true);
         m_Player_Delta = m_Player.FindAction("Delta", throwIfNotFound: true);
+        m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
         // Input
         m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
         m_Input_TouchInput = m_Input.FindAction("TouchInput", throwIfNotFound: true);
@@ -773,6 +794,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Hold;
     private readonly InputAction m_Player_StartPosition;
     private readonly InputAction m_Player_Delta;
+    private readonly InputAction m_Player_RightClick;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -786,6 +808,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Hold => m_Wrapper.m_Player_Hold;
         public InputAction @StartPosition => m_Wrapper.m_Player_StartPosition;
         public InputAction @Delta => m_Wrapper.m_Player_Delta;
+        public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -822,6 +845,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Delta.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDelta;
                 @Delta.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDelta;
                 @Delta.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDelta;
+                @RightClick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightClick;
+                @RightClick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightClick;
+                @RightClick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightClick;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -853,6 +879,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Delta.started += instance.OnDelta;
                 @Delta.performed += instance.OnDelta;
                 @Delta.canceled += instance.OnDelta;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
             }
         }
     }
@@ -1039,6 +1068,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnHold(InputAction.CallbackContext context);
         void OnStartPosition(InputAction.CallbackContext context);
         void OnDelta(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
     }
     public interface IInputActions
     {
