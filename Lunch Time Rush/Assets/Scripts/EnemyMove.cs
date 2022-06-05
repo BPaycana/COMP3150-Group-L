@@ -128,7 +128,7 @@ public class EnemyMove : MonoBehaviour
         {
             EnemyHealth enemyHealth = gameObject.GetComponent<EnemyHealth>();
 
-            if (enemyHealth.Health > 0)
+            if (enemyHealth.Health > 0 || enemyHealth.SpecHealth > 0)
             {
                 GameManager.Instance.DamageRestaurant(reviewDamage);
             }
