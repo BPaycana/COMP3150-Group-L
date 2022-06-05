@@ -205,6 +205,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1473
   towerType: pizza
+  animator: {fileID: 0}
 --- !u!114 &5515274419942380800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,11 +221,17 @@ MonoBehaviour:
   interactRange: 1
   player: {fileID: 0}
   maxTowerAmmo: 5
-  outline: {fileID: 0}
+  towerOutline: {fileID: 0}
+  foodOutline: {fileID: 0}
   cantPlaceCross: {fileID: 7661588999503571152}
   areaOfEffect: {fileID: 202303489333469712}
   DropTower: {fileID: 8300000, guid: 26e8285749aec3a43aae5dfc01645e28, type: 3}
   CantPlaceSound: {fileID: 8300000, guid: 6edd3dd74017dda4c986fc0f54063e27, type: 3}
+  FoodIcon: {fileID: 0}
+  animator: {fileID: 0}
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6794160920087126291
 Rigidbody2D:
   serializedVersion: 4
@@ -410,6 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5462903303038875998}
   - component: {fileID: 202303489333469712}
+  - component: {fileID: 4597463982822531105}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -484,6 +492,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4597463982822531105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035482813490486980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c27e12c32907244bd815339754a861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8446803553703371771
 GameObject:
   m_ObjectHideFlags: 0

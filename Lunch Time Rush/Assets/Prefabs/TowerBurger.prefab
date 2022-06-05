@@ -153,6 +153,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1473
   towerType: burger
+  animator: {fileID: 0}
 --- !u!114 &1104276683009897158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,11 +169,17 @@ MonoBehaviour:
   interactRange: 1
   player: {fileID: 0}
   maxTowerAmmo: 5
-  outline: {fileID: 0}
+  towerOutline: {fileID: 0}
+  foodOutline: {fileID: 0}
   cantPlaceCross: {fileID: 3198599710438058387}
   areaOfEffect: {fileID: 6994461641880064644}
   DropTower: {fileID: 8300000, guid: 26e8285749aec3a43aae5dfc01645e28, type: 3}
   CantPlaceSound: {fileID: 8300000, guid: 6edd3dd74017dda4c986fc0f54063e27, type: 3}
+  FoodIcon: {fileID: 0}
+  animator: {fileID: 0}
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &2130387667636553429
 Rigidbody2D:
   serializedVersion: 4
@@ -578,6 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1916197972865899100}
   - component: {fileID: 6994461641880064644}
+  - component: {fileID: 1677472608686753745}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -652,6 +660,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1677472608686753745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853664256491977675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c27e12c32907244bd815339754a861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7550357848276047902
 PrefabInstance:
   m_ObjectHideFlags: 0

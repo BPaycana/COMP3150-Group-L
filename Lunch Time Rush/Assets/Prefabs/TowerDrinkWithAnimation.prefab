@@ -608,6 +608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517323492168102371}
   - component: {fileID: 4255156071167651293}
+  - component: {fileID: 6354100351456527586}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -682,6 +683,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6354100351456527586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379100702888790031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c27e12c32907244bd815339754a861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7087796713930230249
 GameObject:
   m_ObjectHideFlags: 0
