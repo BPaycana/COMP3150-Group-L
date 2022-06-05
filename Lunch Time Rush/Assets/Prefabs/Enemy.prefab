@@ -478,6 +478,7 @@ MonoBehaviour:
   targetSpecHealth: 0
   Eating: {fileID: 8300000, guid: f564d5c59a08f234b870dc1ed0522edd, type: 3}
   Full: {fileID: 8300000, guid: 7c71f70dcf984594090b275129fd5f83, type: 3}
+  Drinking: {fileID: 8300000, guid: cc50f73d953c3ab40a91695e2cd24db0, type: 3}
   healthBar: {fileID: 33234131}
   specHealthBar: {fileID: 2153879540299105557}
   specHealthBarBackground: {fileID: 3554152728162493381}

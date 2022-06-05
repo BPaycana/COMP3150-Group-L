@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
         */
 
         // *** DEVELOPER ONLY CONTROL - RESETS BEST LEVEL TIMES *** //
+        
         /*
         if (input.actions["PrimaryContact"].ReadValue<float>() == 1)
         {
