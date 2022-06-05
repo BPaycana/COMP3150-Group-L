@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     public AudioClip Eating;
     public AudioClip Full;
+    public AudioClip Drinking;
 
     private bool isSpecial = false;
 
@@ -210,6 +211,10 @@ public class EnemyHealth : MonoBehaviour
         {
             GetComponent<AudioSource>().clip = Full;
         }
+        else
+        {
+            GetComponent<AudioSource>().clip = Eating;
+        }
         GetComponent<AudioSource>().Play(0);
 
 
@@ -224,6 +229,10 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0 && specHealth <= 0)
         {
             GetComponent<AudioSource>().clip = Full;
+        }
+        else
+        {
+            GetComponent<AudioSource>().clip = Drinking;
         }
         GetComponent<AudioSource>().Play(0);    //different audio here
         //specHealthBar.fillAmount = specHealth / targetHealth;
