@@ -208,12 +208,15 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("BLT0");
             //spawner.enabled = false;
             enemyHolder.SetActive(false);
             gameState = "survived";
             survivePanel.SetActive(true);
             surviveTime.text = "You survived for: " + timer;            
             int levelNum;
+
+            Debug.Log("BLT1");
 
             // if level 1
             if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -231,16 +234,20 @@ public class UIManager : MonoBehaviour
                 levelNum = 3;
             }
 
+            Debug.Log("BLT2");
+
             // splits the timers into numbers
             string[] textTimer = gameManager.getTimes(levelNum).Split(':');
             //string[] textTimer = new string[3];
-            
+
             /*
             for(int i = 0; i < 3; i++)
             {
                 textTimer[i] = intTimer[i].ToString();
             }
             */
+
+            Debug.Log("BLT3");
 
             string[] timerSplit = timer.Split(':');
 
@@ -276,6 +283,7 @@ public class UIManager : MonoBehaviour
                 // overwrite best time with new time
                 gameManager.setTimes(timer, levelNum);
             }
+            Debug.Log("BLT4");
         }
 
     }

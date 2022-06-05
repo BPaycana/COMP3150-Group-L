@@ -28,9 +28,15 @@ public class GameManager : MonoBehaviour
     public bool moveControls;
     public bool interactControls;
     
-    public int[] l1Time;
-    public int[] l2Time;
-    public int[] l3Time; 
+    public int l1TimeMin;
+    public int l2TimeMin;
+    public int l3TimeMin;
+    public int l1TimeSec;
+    public int l2TimeSec;
+    public int l3TimeSec;
+    public int l1TimeMs;
+    public int l2TimeMs;
+    public int l3TimeMs;
 
     //string l1Time;
     //string l2Time;
@@ -85,9 +91,16 @@ public class GameManager : MonoBehaviour
         mode = data.gameMode;
         moveControls = data.movement;
         interactControls = data.interact;
-        l1Time = data.bestTime1;
-        l2Time = data.bestTime2;
-        l3Time = data.bestTime3;
+        l1TimeMin = data.bestTime1Min;
+        l2TimeMin = data.bestTime2Min;
+        l3TimeMin = data.bestTime3Min;
+        l1TimeSec = data.bestTime1Sec;
+        l2TimeSec = data.bestTime2Sec;
+        l3TimeSec = data.bestTime3Sec;
+        l1TimeMs = data.bestTime1Ms;
+        l2TimeMs = data.bestTime2Ms;
+        l3TimeMs = data.bestTime3Ms;
+
 
 
         if (moveControls)
@@ -198,7 +211,7 @@ public class GameManager : MonoBehaviour
         mode = classicEndless;
         //GameModeText = classicEndless.ToString();
         //File.WriteAllText("Assets/Scenes/Settings/GameMode.txt", classicEndless.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
     }
 
     public bool getMode()
@@ -215,7 +228,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         moveControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/MovementControls.txt", moveControls.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
     }
 
     public bool getMoveControls()
@@ -231,7 +244,7 @@ public class GameManager : MonoBehaviour
         // false == Move Towards Finger
         interactControls = controls;
         //File.WriteAllText("Assets/Scenes/Settings/InteractControls.txt", interactControls.ToString());
-        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
     }
 
     public bool getInteractControls()
@@ -243,45 +256,31 @@ public class GameManager : MonoBehaviour
 
     public void setTimes(string levelTime, int levelNum)
     {
-        
-        int[] level1Text = new int[3];
-        int[] level2Text = new int[3];
-        int[] level3Text = new int[3];
 
         if (levelNum == 1)
         {
             
             string[] level1TimeSplit = levelTime.Split(':');
-            for(int i = 0; i < 3; i++)
-            {
-                level1Text[i] = int.Parse(level1TimeSplit[i]);
-            }          
-            l1Time = level1Text;
-            Debug.Log("hyah1 " + l1Time);
+            l1TimeMin = int.Parse(level1TimeSplit[0]);
+            l1TimeSec = int.Parse(level1TimeSplit[1]);
+            l1TimeMs = int.Parse(level1TimeSplit[2]);
         }
         if (levelNum == 2)
         {
-            
+
             string[] level2TimeSplit = levelTime.Split(':');
-            for (int i = 0; i < 3; i++)
-            {
-                level2Text[i] = int.Parse(level2TimeSplit[i]);
-            }
-            l2Time = level2Text;
-            Debug.Log("hyah2 " + l2Time);
+            l2TimeMin = int.Parse(level2TimeSplit[0]);
+            l2TimeSec = int.Parse(level2TimeSplit[1]);
+            l2TimeMs = int.Parse(level2TimeSplit[2]);
         }
         if (levelNum == 3)
         {
-            
             string[] level3TimeSplit = levelTime.Split(':');
-            for (int i = 0; i < 3; i++)
-            {
-                level3Text[i] = int.Parse(level3TimeSplit[i]);
-            }
-            l3Time = level3Text;
-            Debug.Log("hyah3 " + l3Time);
+            l3TimeMin = int.Parse(level3TimeSplit[0]);
+            l3TimeSec = int.Parse(level3TimeSplit[1]);
+            l3TimeMs = int.Parse(level3TimeSplit[2]);
         }
-        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1TimeMin, l1TimeSec, l1TimeMs, l2TimeMin, l2TimeSec, l2TimeMs, l3TimeMin, l3TimeSec, l3TimeMs);
         
 
         /*
@@ -303,70 +302,68 @@ public class GameManager : MonoBehaviour
 
     public string getTimes(int levelNum)
     {
+        
         string append = "";
         if (levelNum == 1)
         {
-            Debug.Log("hmmmmm1 " + l1Time.Length);
-            append += l1Time[0].ToString() + ":";
-            if(l1Time[1] < 10)
+            append += l1TimeMin.ToString() + ":";
+            if(l1TimeSec < 10)
             {
-                append += "0" + l1Time[1].ToString() + ":";
+                append += "0" + l1TimeSec.ToString() + ":";
             }
             else
             {
-                append += l1Time[1].ToString() + ":";
+                append += l1TimeSec.ToString() + ":";
             }
-            if (l1Time[2] < 10)
+            if (l1TimeMs < 10)
             {
-                append += "0" + l1Time[2].ToString();
+                append += "0" + l1TimeMs.ToString();
             }
             else
             {
-                append += l1Time[2].ToString();
+                append += l1TimeMs.ToString();
             }
         }
         if (levelNum == 2)
         {
-            Debug.Log("hmmmmm2 " + l2Time.Length);
-            append += l2Time[0].ToString() + ":";
-            if (l2Time[1] < 10)
+            append += l2TimeMin.ToString() + ":";
+            if (l2TimeSec < 10)
             {
-                append += "0" + l2Time[1].ToString() + ":";
+                append += "0" + l2TimeSec.ToString() + ":";
             }
             else
             {
-                append += l2Time[1].ToString() + ":";
+                append += l2TimeSec.ToString() + ":";
             }
-            if (l2Time[2] < 10)
+            if (l2TimeMs < 10)
             {
-                append += "0" + l2Time[2].ToString();
+                append += "0" + l2TimeMs.ToString();
             }
             else
             {
-                append += l2Time[2].ToString();
+                append += l2TimeMs.ToString();
             }
         }
         if (levelNum == 3)
         {
-            Debug.Log("hmmmmm3 " + l3Time.Length);
-            append += l3Time[0].ToString() + ":";
-            if (l3Time[1] < 10)
+            append += l3TimeMin.ToString() + ":";
+            if (l3TimeSec < 10)
             {
-                append += "0" + l3Time[1].ToString() + ":";
+                append += "0" + l3TimeSec.ToString() + ":";
             }
             else
             {
-                append += l3Time[1].ToString() + ":";
+                append += l3TimeSec.ToString() + ":";
             }
-            if (l3Time[2] < 10)
+            if (l3TimeMs < 10)
             {
-                append += "0" + l3Time[2].ToString();
+                append += "0" + l3TimeMs.ToString();
             }
             else
             {
-                append += l3Time[2].ToString();
+                append += l3TimeMs.ToString();
             }
         }
-        return append;
+        return append;      
     }
 }
