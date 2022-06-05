@@ -22,8 +22,8 @@ public class EnemySpawn : MonoBehaviour
     public float setMinSpeed;
     public float setMaxSpeed;
 
-    public float minSpawnTime;
-    public float maxSpawnTime;
+    public float minSpawnTime = 10f;
+    public float maxSpawnTime = 10f;
 
     public string[] foodType = { "burger", "pizza", "soda" };
 
