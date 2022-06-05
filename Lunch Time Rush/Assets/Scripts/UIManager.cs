@@ -134,9 +134,15 @@ public class UIManager : MonoBehaviour
 
         if(Level1BestTimes != null)
         {
+            Debug.Log("ha ha ha: " + Level1BestTimes);
             Level1BestTimes.SetText(gameManager.getTimes(1));
+            
             Level2BestTimes.SetText(gameManager.getTimes(2));
             Level3BestTimes.SetText(gameManager.getTimes(3));
+        }
+        else
+        {
+            Debug.Log("abra kadabra");
         }
         
         UpdateHealth();
@@ -225,36 +231,48 @@ public class UIManager : MonoBehaviour
                 levelNum = 3;
             }
 
-
-
             // splits the timers into numbers
-            string textTimer = gameManager.getTimes(levelNum);
-            string[] textTimerSplit = textTimer.Split(':');
+            string[] textTimer = gameManager.getTimes(levelNum).Split(':');
+            //string[] textTimer = new string[3];
+            
+            /*
+            for(int i = 0; i < 3; i++)
+            {
+                textTimer[i] = intTimer[i].ToString();
+            }
+            */
+
             string[] timerSplit = timer.Split(':');
 
+            Debug.Log("yo timer time: " + textTimer[0] + ":" + textTimer[1] + ":" + textTimer[2] + " | " + timerSplit[0] + ":" + timerSplit[1] + ":" + timerSplit[2]);
+
             // if minutes are equal
-            if (textTimerSplit[0] == timerSplit[0])
+            if (textTimer[0] == timerSplit[0])
             {
+                Debug.Log("sooooo here????");
                 // if seconds are equal
-                if (textTimerSplit[1] == timerSplit[1])
+                if (int.Parse(textTimer[1]) == int.Parse(timerSplit[1]))
                 {
                     // if miliseconds are greater than previous best time
-                    if (int.Parse(timerSplit[2]) > int.Parse(textTimerSplit[2]))
+                    if (int.Parse(timerSplit[2]) > int.Parse(textTimer[2]))
                     {
+                        Debug.Log("OVERWRITE MILLISECOND");
                         // overwrite best time with new time
                         gameManager.setTimes(timer, levelNum);
                     }
                 }
                 // if seconds are greater than previous best time
-                else if (int.Parse(timerSplit[1]) > int.Parse(textTimerSplit[1]))
+                else if (int.Parse(timerSplit[1]) > int.Parse(textTimer[1]))
                 {
+                    Debug.Log("OVERWRITE SECOND");
                     // overwrite best time with new time
                     gameManager.setTimes(timer, levelNum);
                 }
             }
             // if minutes are greater than previous best time
-            else if (int.Parse(timerSplit[0]) > int.Parse(textTimerSplit[0]))
+            else if (int.Parse(timerSplit[0]) > int.Parse(textTimer[0]))
             {
+                Debug.Log("OVERWRITE MINUTE");
                 // overwrite best time with new time
                 gameManager.setTimes(timer, levelNum);
             }
@@ -323,6 +341,12 @@ public class UIManager : MonoBehaviour
     {
         gameWonPanel.SetActive(false);
         SceneManager.LoadScene(10);
+    }
+
+    public void LoadHowToPlay()
+    {
+        gameWonPanel.SetActive(false);
+        SceneManager.LoadScene(11);
     }
 
     public void EndlessMenu()

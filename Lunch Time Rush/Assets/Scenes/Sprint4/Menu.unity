@@ -3813,7 +3813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &441843682
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6944,7 +6944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1145448481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7330,6 +7330,8 @@ MonoBehaviour:
   spawner: {fileID: 34200161}
   enemyHolder: {fileID: 340239772}
   endlessTimer: {fileID: 0}
+  button1Outline: {fileID: 0}
+  button2Outline: {fileID: 0}
   survivePanel: {fileID: 0}
   surviveTime: {fileID: 0}
   playerHealth: 99999
@@ -7839,7 +7841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1685489506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7915,7 +7917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1711311725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8092,7 +8094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1873265572
 RectTransform:
   m_ObjectHideFlags: 0

@@ -10042,8 +10042,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1428500893}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadLevelMenu
-        m_Mode: 1
+        m_MethodName: Home
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10211,6 +10211,8 @@ MonoBehaviour:
   spawner: {fileID: 1670029147}
   enemyHolder: {fileID: 1086293373}
   endlessTimer: {fileID: 1675585909}
+  button1Outline: {fileID: 0}
+  button2Outline: {fileID: 0}
   survivePanel: {fileID: 714323729}
   surviveTime: {fileID: 1898560408}
   playerHealth: 1
@@ -10225,6 +10227,7 @@ MonoBehaviour:
   Level2BestTimes: {fileID: 0}
   Level3BestTimes: {fileID: 0}
   pausePanel: {fileID: 312594297}
+  gameManager: {fileID: 0}
 --- !u!4 &1428500894
 Transform:
   m_ObjectHideFlags: 0

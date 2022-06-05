@@ -4,10 +4,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveInfo(bool gameMode, bool moveControls, bool interactControls, string level1Time, string level2Time, string level3Time)
+    
+    public static void SaveInfo(bool gameMode, bool moveControls, bool interactControls, int[] level1Time, int[] level2Time, int[] level3Time)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/LunchTimeRushData.GameData";
+        //string path = Application.persistentDataPath + "/LunchTimeRushData.GameData";
+        string path = Application.persistentDataPath + "/LunchTimeRushDataV2.GameData";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         GameData data = new GameData(gameMode, moveControls, interactControls, level1Time, level2Time, level3Time);
@@ -18,7 +20,8 @@ public static class SaveSystem
 
     public static GameData LoadData()
     {
-        string path = Application.persistentDataPath + "/LunchTimeRushData.GameData";
+        //string path = Application.persistentDataPath + "/LunchTimeRushData.GameData";
+        string path = Application.persistentDataPath + "/LunchTimeRushDataV2.GameData";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -36,22 +39,23 @@ public static class SaveSystem
         }
     }
 
+
     /*
-    public static void SaveTime(string level1Time, string level2Time, string level3Time)
+    public static void SaveInfo(bool gameMode, bool moveControls, bool interactControls, string level1Time, string level2Time, string level3Time)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/LunchTimeRushData.TimeData";
+        string path = Application.persistentDataPath + "/LunchTimeRushData.GameDataBoogaloo";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        GameData data = new TimeData(level1Time, level2Time, level3Time);
+        GameData data = new GameData(gameMode, moveControls, interactControls, level1Time, level2Time, level3Time);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static GameData LoadTime()
+        public static GameData LoadData()
     {
-        string path = Application.persistentDataPath + "/LunchTimeRushData.TimeData";
+        string path = Application.persistentDataPath + "/LunchTimeRushData.GameDataBoogaloo";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -69,4 +73,5 @@ public static class SaveSystem
         }
     }
     */
+
 }

@@ -9092,8 +9092,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1428500893}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadLevelMenu
-        m_Mode: 1
+        m_MethodName: Home
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14489,6 +14489,8 @@ MonoBehaviour:
   spawner: {fileID: 1670029147}
   enemyHolder: {fileID: 1853921714}
   endlessTimer: {fileID: 965102768}
+  button1Outline: {fileID: 0}
+  button2Outline: {fileID: 0}
   survivePanel: {fileID: 1989995232}
   surviveTime: {fileID: 1273834974}
   playerHealth: 1
@@ -15937,8 +15939,8 @@ RectTransform:
   m_GameObject: {fileID: 1989995232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4927785, y: 1.4927785, z: 1.4927785}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1273834971}
   - {fileID: 312673511}

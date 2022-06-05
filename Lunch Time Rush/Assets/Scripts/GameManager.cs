@@ -27,9 +27,14 @@ public class GameManager : MonoBehaviour
     public bool mode;
     public bool moveControls;
     public bool interactControls;
-    public string l1Time;
-    public string l2Time;
-    public string l3Time;
+    
+    public int[] l1Time;
+    public int[] l2Time;
+    public int[] l3Time; 
+
+    //string l1Time;
+    //string l2Time;
+    //string l3Time;
 
     public GameObject Player;
 
@@ -84,6 +89,7 @@ public class GameManager : MonoBehaviour
         l2Time = data.bestTime2;
         l3Time = data.bestTime3;
 
+
         if (moveControls)
         {
             Player.GetComponent<PlayerController>().enabled = true;
@@ -114,13 +120,6 @@ public class GameManager : MonoBehaviour
         //Debug.Log("GAME MANAGER HAS STARTED NOW");
 
         //mode = true;
-
-        
-
-        
-
-
-
     }
 
     void Update() 
@@ -244,7 +243,49 @@ public class GameManager : MonoBehaviour
 
     public void setTimes(string levelTime, int levelNum)
     {
-        if(levelNum == 1)
+        
+        int[] level1Text = new int[3];
+        int[] level2Text = new int[3];
+        int[] level3Text = new int[3];
+
+        if (levelNum == 1)
+        {
+            
+            string[] level1TimeSplit = levelTime.Split(':');
+            for(int i = 0; i < 3; i++)
+            {
+                level1Text[i] = int.Parse(level1TimeSplit[i]);
+            }          
+            l1Time = level1Text;
+            Debug.Log("hyah1 " + l1Time);
+        }
+        if (levelNum == 2)
+        {
+            
+            string[] level2TimeSplit = levelTime.Split(':');
+            for (int i = 0; i < 3; i++)
+            {
+                level2Text[i] = int.Parse(level2TimeSplit[i]);
+            }
+            l2Time = level2Text;
+            Debug.Log("hyah2 " + l2Time);
+        }
+        if (levelNum == 3)
+        {
+            
+            string[] level3TimeSplit = levelTime.Split(':');
+            for (int i = 0; i < 3; i++)
+            {
+                level3Text[i] = int.Parse(level3TimeSplit[i]);
+            }
+            l3Time = level3Text;
+            Debug.Log("hyah3 " + l3Time);
+        }
+        SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        
+
+        /*
+        if (levelNum == 1)
         {
             l1Time = levelTime;
         }
@@ -257,21 +298,75 @@ public class GameManager : MonoBehaviour
             l3Time = levelTime;
         }
         SaveSystem.SaveInfo(mode, moveControls, interactControls, l1Time, l2Time, l3Time);
+        */
     }
 
     public string getTimes(int levelNum)
     {
+        string append = "";
         if (levelNum == 1)
         {
-            return l1Time;
+            Debug.Log("hmmmmm1 " + l1Time.Length);
+            append += l1Time[0].ToString() + ":";
+            if(l1Time[1] < 10)
+            {
+                append += "0" + l1Time[1].ToString() + ":";
+            }
+            else
+            {
+                append += l1Time[1].ToString() + ":";
+            }
+            if (l1Time[2] < 10)
+            {
+                append += "0" + l1Time[2].ToString();
+            }
+            else
+            {
+                append += l1Time[2].ToString();
+            }
         }
         if (levelNum == 2)
         {
-            return l2Time;
+            Debug.Log("hmmmmm2 " + l2Time.Length);
+            append += l2Time[0].ToString() + ":";
+            if (l2Time[1] < 10)
+            {
+                append += "0" + l2Time[1].ToString() + ":";
+            }
+            else
+            {
+                append += l2Time[1].ToString() + ":";
+            }
+            if (l2Time[2] < 10)
+            {
+                append += "0" + l2Time[2].ToString();
+            }
+            else
+            {
+                append += l2Time[2].ToString();
+            }
         }
-        else
+        if (levelNum == 3)
         {
-            return l3Time;
+            Debug.Log("hmmmmm3 " + l3Time.Length);
+            append += l3Time[0].ToString() + ":";
+            if (l3Time[1] < 10)
+            {
+                append += "0" + l3Time[1].ToString() + ":";
+            }
+            else
+            {
+                append += l3Time[1].ToString() + ":";
+            }
+            if (l3Time[2] < 10)
+            {
+                append += "0" + l3Time[2].ToString();
+            }
+            else
+            {
+                append += l3Time[2].ToString();
+            }
         }
+        return append;
     }
 }
