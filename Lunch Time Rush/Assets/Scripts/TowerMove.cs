@@ -265,12 +265,14 @@ public class TowerMove : MonoBehaviour
                     if(tooClose == true)
                     {
                         GetComponent<AudioSource>().clip = CantPlaceSound;
+                        GetComponent<AudioSource>().volume = 0.75f;
                         GetComponent<AudioSource>().Play(0);
                     }
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
                         GetComponent<AudioSource>().clip = DropTower;
+                        GetComponent<AudioSource>().volume = 0.25f;
                         GetComponent<AudioSource>().Play(0);
                         //spriteRenderer.color = Color.green;
                         towerOutline.enabled = true;

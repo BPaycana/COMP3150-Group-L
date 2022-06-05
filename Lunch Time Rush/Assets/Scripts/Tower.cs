@@ -156,6 +156,7 @@ public class Tower : MonoBehaviour
         return false;
         */
         GetComponent<AudioSource>().clip = RestockTowerSound;
+        GetComponent<AudioSource>().volume = 0.75f;
         GetComponent<AudioSource>().Play(0);
         ammo = refillAmount;
         ammoBar.fillAmount = ammo / ammoCapacity;
