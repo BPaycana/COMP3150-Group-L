@@ -271,6 +271,7 @@ public class TowerMove : MonoBehaviour
                     if(tooClose == false)
                     {
                         gameManager.towerHoldBool();
+                        transform.position = player.position + new Vector3(-.18f, .25f, -1f);   //fix tower Z-height
                         GetComponent<AudioSource>().clip = DropTower;
                         GetComponent<AudioSource>().volume = 0.25f;
                         GetComponent<AudioSource>().Play(0);
