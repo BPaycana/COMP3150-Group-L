@@ -12651,7 +12651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35c691d291b280c4bb3af1c9ce626c64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd18ae611d0699c4a83fa31603693dad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14489,6 +14489,8 @@ MonoBehaviour:
   spawner: {fileID: 1670029147}
   enemyHolder: {fileID: 1853921714}
   endlessTimer: {fileID: 965102768}
+  button1Outline: {fileID: 0}
+  button2Outline: {fileID: 0}
   survivePanel: {fileID: 1989995232}
   surviveTime: {fileID: 1273834974}
   playerHealth: 1
@@ -14503,6 +14505,7 @@ MonoBehaviour:
   Level2BestTimes: {fileID: 0}
   Level3BestTimes: {fileID: 0}
   pausePanel: {fileID: 1637712897}
+  gameManager: {fileID: 0}
 --- !u!4 &1428500894
 Transform:
   m_ObjectHideFlags: 0
@@ -14635,7 +14638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a16d86f9fd908894f9b414e487538978, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62c2269be9b726b4281b85d1685130af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

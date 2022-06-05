@@ -1030,6 +1030,8 @@ MonoBehaviour:
   spawner: {fileID: 913371377}
   enemyHolder: {fileID: 1558534462}
   endlessTimer: {fileID: 1687886645}
+  button1Outline: {fileID: 0}
+  button2Outline: {fileID: 0}
   survivePanel: {fileID: 223836407}
   surviveTime: {fileID: 1551118067}
   playerHealth: 1
@@ -1044,6 +1046,7 @@ MonoBehaviour:
   Level2BestTimes: {fileID: 0}
   Level3BestTimes: {fileID: 0}
   pausePanel: {fileID: 984738747}
+  gameManager: {fileID: 0}
 --- !u!4 &230362128
 Transform:
   m_ObjectHideFlags: 0
@@ -1069,12 +1072,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_Size.x
+      value: 6.0060062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_Size.y
+      value: 6.0060062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188051491832205153, guid: b27e32b763484e04d858dccabd657f00, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188051491832205154, guid: b27e32b763484e04d858dccabd657f00, type: 3}
       propertyPath: m_RootOrder
@@ -19719,7 +19734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35c691d291b280c4bb3af1c9ce626c64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd18ae611d0699c4a83fa31603693dad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19852,7 +19867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a16d86f9fd908894f9b414e487538978, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62c2269be9b726b4281b85d1685130af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
